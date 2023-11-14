@@ -307,9 +307,10 @@ main {
     font-family: 'Font Awesome 6 Pro';
     font-weight: 700;
     font-size: 16px; }
-  .type--comm .thread--wrap::before,
-  .type--social .thread--wrap::before {
+  .type--comm .thread--wrap::before, {
     content: '\f3cd'; }
+  .type--social .thread--wrap::before {
+    content: '\f007'; }
   .type--thread .thread--wrap::before {
     content: '\f02d'; }
   .type--event .thread--wrap::before {
