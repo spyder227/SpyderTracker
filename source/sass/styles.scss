@@ -332,9 +332,11 @@ main {
             font-size: 16px;
         }
 
-        .type--comm &::before,
-        .type--social &::before {
+        .type--comm &::before {
             content: '\f3cd';
+        }
+        .type--social &::before {
+            content: '\f007';
         }
     
         .type--thread &::before, {
