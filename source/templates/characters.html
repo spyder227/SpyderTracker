@@ -1,0 +1,129 @@
+<section class="characters">
+    <div class="tracker--header" data-type="flex">
+        <input id="quicksearch" class="forminput memberlist-namesearch" type="text" size="25" name="name" value="" placeholder="Filter by name...">
+        <div class="tracker--sort-buttons" data-type="flex">
+            <button type="button" class="tracker--sort is-checked" data-sort="charAsc">Name (A -> Z)</button>
+            <button type="button" class="tracker--sort" data-sort="charDesc">Name (Z -> A)</button>
+            <button type="button" class="tracker--sort" data-sort="ageAsc">Age (Asc)</button>
+            <button type="button" class="tracker--sort" data-sort="ageDesc">Age (Desc)</button>
+        </div>
+    </div>
+    <div class="tracker--wrapper">
+        <div class="tracker--filters">
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Gender</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="gender">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".gender-male">male</label>
+                        <label><input type="checkbox" value=".gender-female">female</label>
+                        <label><input type="checkbox" value=".gender-nonbinary">nonbinary</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Age</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="age">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        @@if (showMortality !== 'true') {
+                            <label><input type="checkbox" value=".age-under20">Under 20</label>
+                            <label><input type="checkbox" value=".age-20-29">20-29</label>
+                            <label><input type="checkbox" value=".age-30-39">30-39</label>
+                            <label><input type="checkbox" value=".age-40-49">40-49</label>
+                            <label><input type="checkbox" value=".age-50">50+</label>
+                        }
+                        @@if (showMortality === 'true') {
+                            <label><input type="checkbox" value=".age-under30">Under 30</label>
+                            <label><input type="checkbox" value=".age-30-59">30-59</label>
+                            <label><input type="checkbox" value=".age-50-99">60-99</label>
+                            <label><input type="checkbox" value=".age-100-499">100-499</label>
+                            <label><input type="checkbox" value=".age-500-999">500-999</label>
+                            <label><input type="checkbox" value=".age-1000-1999">1000-1999</label>
+                            <label><input type="checkbox" value=".age-2000-2999">2000-2999</label>
+                            <label><input type="checkbox" value=".age-3000">3000+</label>
+                        }
+                    </div>
+                    @@if (showMortality === 'true') {
+                        <hr>
+                        <div class="tracker--filter-group claim--labels" data-filter-group="immortality">
+                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">either</label>
+                            <label><input type="checkbox" value=".age-mortal">Mortal</label>
+                            <label><input type="checkbox" value=".age-immortal">Immortal</label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Shipped</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="shipped">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".shipped-taken">taken</label>
+                        <label><input type="checkbox" value=".shipped-wanted">wanted</label>
+                        <label><input type="checkbox" value=".shipped-open">open</label>
+                        <label><input type="checkbox" value=".shipped-none">not interested</label>
+                    </div>
+                </div>
+            </div>
+            @@if (siteSheet === 'Godly Behaviour') {
+                @@include('../../source/templates/gbFilters.html')
+            }
+        </div>
+        <div class="tracker--content">
+            <div id="tracker--rows" class="tracker--threads"></div>
+        </div>
+    </div>
+    <script>
+        //set overall variables
+        const typeSearch = `#quicksearch`;
+        const blockTitle = `.grid-item .name`;
+        const visible = `is-visible`;
+        const filterGroup = `.tracker--filter-group`;
+        const filterOptions = `.tracker--filter-group input`;
+        const sorts = `.tracker--header button`;
+        const gridItem = `.grid-item`;
+        const defaultShow = `:not(.status--complete)`;
+
+        //set class variables
+        let $container = $('#tracker--rows');
+        let filters = "@@extraFilters";
+        console.log(filters.split(', '));
+
+        fetch(`https://opensheet.elk.sh/${characterSheet}/@@siteSheet`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            populateCharacters(data, filters = filters.split(', '), '@@siteURL');
+
+        }).then(() => {
+            //initialize isotope
+            // quick search regex
+            let qsRegex;
+            let elements = document.querySelectorAll(gridItem);
+
+            // init Isotope
+            $container.isotope({
+                itemSelector: gridItem,
+                percentPosition: true,
+                filter: defaultShow,
+                getSortData: {
+                    charAsc: '.name',
+                    charDesc: '.name',
+                    ageAsc: '.age parseInt',
+                    ageDesc: '.age parseInt',
+                },
+                sortAscending: {
+                    charAsc: true,
+                    charDesc: false,
+                    ageAsc: true,
+                    ageDesc: false,
+                }
+            });
+            setTimeout(function() {
+                $container.isotope('layout');
+            }, 300);
+            initIsotope();
+        });
+    </script>
+</section>

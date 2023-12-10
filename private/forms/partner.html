@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../../source/templates/head.html', {
+            "prefix": "../../dist",
+            "siteTitle": "Spy | Add Partner",
+            "stylesheetName": "newStyles.css"
+        })
+    </head>
+    <body>
+        @@include('../../source/templates/nav.html', {
+            "prefix": "../.."
+        })
+        <section>
+            <form id="add-partner">
+                <label class="fullWidth">
+                    <b>Site</b>
+                    <select required id="site">
+                        <option value="">(select)</option>
+                    </select>
+                </label>
+                <label>
+                    <b>Writer</b>
+                    <input required type="text" id="writer" />
+                </label>
+                <label>
+                    <b>Writer ID</b>
+                    <input required type="text" id="writerID" />
+                </label>
+                <label>
+                    <b>Character</b>
+                    <input required type="text" id="character" />
+                </label>
+                <label>
+                    <b>Character ID</b>
+                    <input required type="text" id="characterID" />
+                </label>
+                <button type="submit" class="fullWidth">Submit</button>
+            </form>
+        </section>
+
+        <!--Scripts-->
+        @@include('../../source/templates/bottomScripts.html', {
+            "prefix": "../../dist"
+        })
+    </body>
+</html>

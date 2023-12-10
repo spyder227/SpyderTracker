@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../../source/templates/head.html', {
+            "prefix": "../../dist",
+            "siteTitle": "Spy | Corson Forever Charts",
+            "stylesheetName": "newStyles.css"
+        })
+    </head>
+    <body>
+        @@include('../../source/templates/nav.html', {
+            "prefix": "../.."
+        })
+        @@include('../../source/templates/charts.html', {
+            "prefix": "../../dist",
+            "sitename": "Corson Forever"
+        })
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../../source/templates/head.html', {
+            "prefix": "../../dist",
+            "siteTitle": "Spy | Godly Behaviour Characters",
+            "stylesheetName": "newStyles.css"
+        })
+        <link rel="stylesheet" href="../../dist/css/totlCharacters.css" />
+    </head>
+    <body>
+        @@include('../../source/templates/nav.html', {
+            "prefix": "../.."
+        })
+        @@include('../../source/templates/characters.html', {
+            "siteSheet": "TOTL",
+            "extraFilters": "FilterShippedWith, FilterBloodStatus",
+            "siteURL": "https://totl.jcink.net/",
+            "showMortality": "false",
+        })
+    </body>
+</html>

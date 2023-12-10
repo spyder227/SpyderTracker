@@ -3,7 +3,7 @@
   --offwhite: rgba(236,236,236,1);
   --ltgrey: rgba(193,193,193,1);
   --dkgrey: rgba(100,100,100,1);
-  --accent: rgb(100, 165, 160, 1);
+  --accent: rgb(152, 159, 125, 1);
   --bg-body: var(--offwhite);
   --bg-content: var(--white);
   --bg-accent: var(--accent);
@@ -307,14 +307,13 @@ main {
     font-family: 'Font Awesome 6 Pro';
     font-weight: 700;
     font-size: 16px; }
-  .type--comm .thread--wrap::before {
-    content: '\f3cd'; }
+  .type--comm .thread--wrap::before,
   .type--social .thread--wrap::before {
-    content: '\f007'; }
+    content: '\f3cd'; }
   .type--thread .thread--wrap::before {
     content: '\f02d'; }
-  .type--event .thread--wrap::before {
-    content: '\e31a'; }
+  .type--oneshot .thread--wrap::before {
+    content: '\f8c4'; }
   .status--mine .thread--wrap,
   .status--start .thread--wrap {
     background: var(--bg-accent);
@@ -383,16 +382,30 @@ main {
 .tracker.charts {
   display: -ms-grid;
   display: grid;
-  grid-gap: 15px; }
-  @media only screen and (min-width: 768px) {
+  grid-gap: 15px;
+  padding: 15px;
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%; }
+  @media only screen and (min-width: 1024px) {
     .tracker.charts {
-      -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr); } }
+      -ms-grid-columns: (calc(50% - (15px / 2)))[2];
+      grid-template-columns: repeat(2, calc(50% - (15px / 2))); } }
   .tracker.charts .chart {
-    max-width: 97vw; }
-    @media only screen and (min-width: 768px) {
+    max-width: 100%;
+    width: 100%;
+    background: var(--bg-content);
+    border-radius: 10px;
+    padding: 15px 20px; }
+    @media only screen and (min-width: 1024px) {
       .tracker.charts .chart {
-        max-width: calc(97vw / 2); } }
+        width: 100%;
+        max-width: 100%; } }
+    .tracker.charts .chart b {
+      font-family: var(--font-accent);
+      text-transform: uppercase;
+      font-size: 20px; }
+    .tracker.charts .chart .apexcharts-canvas {
+      max-width: 100%; }
 
 .tracker--header {
   position: -webkit-sticky;
@@ -435,22 +448,6 @@ main {
   @media only screen and (min-width: 600px) {
     .tracker--content {
       padding: 0 15px 30px 30px; } }
-
-.tracker .charts {
-  display: -ms-grid;
-  display: grid;
-  grid-gap: 15px; }
-
-.chart {
-  background: var(--bg-content);
-  border-radius: 10px;
-  padding: 15px 20px; }
-  .chart b {
-    font-family: var(--font-accent);
-    text-transform: uppercase;
-    font-size: 20px; }
-  .chart > div {
-    height: 400px !important; }
 
 .grid-sizer,
 .grid-item {

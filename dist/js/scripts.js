@@ -1,27 +1,29 @@
-const sheet = `https://opensheet.elk.sh/1rblIWd8uyKP0sX1fLCBodSMzw09hwdD-_vdXZm53fwA`;
 let threads = [];
 var filters = {};
-const typeSearch = `#quicksearch`;
-const threadTitle = `.thread--title`;
-const visible = `is-visible`;
-const filterGroup = `.tracker--filter-group`;
-const filterOptions = `.tracker--filter-group input`;
-const sorts = `.tracker--header button`;
-const gridItem = `.grid-item`;
-const defaultShow = `:not(.status--complete)`;
 if(document.querySelectorAll('#add-thread').length > 0) {
     loadPartnerFields();
 }
 
+if(document.querySelectorAll('.tracker--header').length > 0) {
+    setTimeout(() => {
+        let menuHeight = document.querySelector('nav').clientHeight;
+        document.querySelector('.tracker--header').style.top = `${menuHeight}px`;
+    }, 200);
+    window.addEventListener('resize', () => {
+        let menuHeight = document.querySelector('nav').clientHeight;
+        document.querySelector('.tracker--header').style.top = `${menuHeight}px`;
+    });
+}
+
 let threadForm = document.querySelector('#add-thread');
 if(threadForm) {
-    fetch(`${sheet}/Sites`)
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Sites`)
     .then((response) => response.json())
     .then((siteData) => {
-        fetch(`${sheet}/Characters`)
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Characters`)
         .then((response) => response.json())
         .then((characterData) => {
-            fetch(`${sheet}/Featured`)
+            fetch(`https://opensheet.elk.sh/${threadSheet}/Featured`)
             .then((response) => response.json())
             .then((featureData) => {
                 fillThreadForm(siteData, characterData, featureData, threadForm);
@@ -38,7 +40,7 @@ if(threadForm) {
 
 let characterForm = document.querySelector('#add-character');
 if(characterForm) {
-    fetch(`${sheet}/Sites`)
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Sites`)
     .then((response) => response.json())
     .then((siteData) => {
         fillSiteSelect(siteData, characterForm);
@@ -62,10 +64,10 @@ if(siteForm) {
 
 let partnerForm = document.querySelector('#add-partner');
 if(partnerForm) {
-    fetch(`${sheet}/Sites`)
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Sites`)
     .then((response) => response.json())
     .then((siteData) => {
-        fetch(`${sheet}/Featured`)
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Featured`)
         .then((response) => response.json())
         .then((featureData) => {
             fillSiteSelect(siteData, partnerForm);

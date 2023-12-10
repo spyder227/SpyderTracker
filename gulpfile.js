@@ -14,7 +14,8 @@
     const gulpSass = require('gulp-sass'),
           postcss = require('gulp-postcss'),
           autoprefixer = require('autoprefixer'),
-          concat = require('gulp-concat');
+          concat = require('gulp-concat'),
+          fileinclude = require('gulp-file-include');
 
     // PostCSS settings
     var processors = [
@@ -67,17 +68,37 @@
 
         exports.fonts = fonts;
 
+        function files() {
+            return gulp.src(['./private/**/*.html'])
+            .pipe(fileinclude({
+                prefix: '@@',
+                basepath: '@file'
+            }))
+            .pipe(gulp.dest('./public'));
+        }
+
+        exports.files = files;
+
         function watch(done) {
-            gulp.watch(srcPath +
-              '/**/*.js', gulp.series(scripts));
-            gulp.watch(srcPath +
-              '/**/*.scss', gulp.series(sass, css));
+            gulp.watch(srcPath + '/**/*.js', gulp.series(scripts));
+            gulp.watch(srcPath + '/**/*.scss', gulp.series(sass, css));
+            gulp.watch('./private/**/*.html', gulp.series(files));
+            gulp.watch('./source/**/*.html', gulp.series(files));
             done();
         }
 
-        gulp.task(theme, gulp.series(exports.scripts, exports.styles, exports.fonts, watch));
+        gulp.task('fileinclude', async function() {
+            gulp.src(['./private/**/*.html'])
+                .pipe(fileinclude({
+                    prefix: '@@',
+                    basepath: '@file'
+                }))
+                .pipe(gulp.dest('./public'));
+        });
 
-        gulp.task(theme+'_build', gulp.series(exports.scripts, exports.styles, exports.fonts));
+        gulp.task(theme, gulp.series(exports.scripts, exports.styles, exports.fonts, exports.files, watch));
+
+        gulp.task(theme+'_build', gulp.series(exports.scripts, exports.styles, exports.fonts, exports.files));
     });
 
 })();

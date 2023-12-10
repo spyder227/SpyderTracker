@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Spyder | Thread Tracker</title>
+        <title>Lux | Thread Tracker</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!--Styles-->
         <link rel="stylesheet" href="../dist/css/styles.css" />
+        <link rel="stylesheet" href="https://dawneggleton.github.io/jcink-temps/sslp/characters.css" />
 
         <!--Fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,24 +44,24 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="./gb.html">Godly Behaviour</a>
+                    <a href="./gb.html" class="current">Godly Behaviour</a>
                     <ul>
                     <li><a href="./gb.html">Thread List</a></li>
-                    <li><a href="./gb-charts.html">Statistics</a></li>
+                    <li><a href="./gb-charts.html">Charts</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="./rtn.html">Remember The Name</a>
+                    <a href="./totl.html">Turn on the Light</a>
                     <ul>
-                    <li><a href="./rtn.html">Thread List</a></li>
-                    <li><a href="./rtn-charts.html">Statistics</a></li>
+                    <li><a href="./totl.html">Thread List</a></li>
+                    <li><a href="./totl-charts.html">Charts</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="./corson.html">Corson Forever</a>
+                    <a href="./legends.html">Legends</a>
                     <ul>
-                    <li><a href="./corson.html">Thread List</a></li>
-                    <li><a href="./corson-charts.html">Statistics</a></li>
+                    <li><a href="./legends.html">Thread List</a></li>
+                    <li><a href="./legends-charts.html">Charts</a></li>
                     </ul>
                 </li>
             </ul>
@@ -86,7 +87,7 @@
             <script src="./../dist/js/charts.js"></script>
             <script>
                 //set overall variables
-                let siteName = 'Corson Forever';
+                let siteName = 'Godly Behaviour';
 
                 //set class variables
                 let $container = $('#tracker--rows');
@@ -94,7 +95,7 @@
                 fetch(`${sheet}/Threads`)
                 .then((response) => response.json())
                 .then((threadData) => {
-                    let siteThreads = threadData.filter(item => item.Site === siteName.toLowerCase().trim());
+                    let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
                     let threads = loadThreads(siteThreads);
 
                     console.log(threads);

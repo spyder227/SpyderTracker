@@ -5,7 +5,7 @@
     --offwhite: rgba(236,236,236,1);
     --ltgrey: rgba(193,193,193,1);
     --dkgrey: rgba(100,100,100,1);
-    --accent: rgb(100, 165, 160, 1);
+    --accent: rgb(152, 159, 125, 1);
 
     --bg-body: var(--offwhite);
     --bg-content: var(--white);
@@ -332,19 +332,17 @@ main {
             font-size: 16px;
         }
 
-        .type--comm &::before {
+        .type--comm &::before,
+        .type--social &::before {
             content: '\f3cd';
         }
-        .type--social &::before {
-            content: '\f007';
-        }
     
-        .type--thread &::before, {
+        .type--thread &::before {
             content: '\f02d';
         }
     
-        .type--event &::before {
-            content: '\e31a';
+        .type--oneshot &::before {
+            content: '\f8c4';
         }
 
         .status--mine &,
@@ -415,16 +413,33 @@ main {
     &.charts {
         display: grid;
         grid-gap: 15px;
+        padding: 15px;
+        grid-template-columns: 100%;
 
-        @media only screen and (min-width: $md) {
-            grid-template-columns: repeat(2,1fr);
+        @media only screen and (min-width: $lg) {
+            grid-template-columns: repeat(2, calc(50% - (15px / 2)));
         }
 
         .chart {
-            max-width: 97vw;
+            max-width: 100%;
+            width: 100%;
+            background: var(--bg-content);
+            border-radius: 10px;
+            padding: 15px 20px;
 
-            @media only screen and (min-width: $md) {
-                max-width: calc(97vw / 2);
+            @media only screen and (min-width: $lg) {
+                width: 100%;
+                max-width: 100%;
+            }
+        
+            b {
+                font-family: var(--font-accent);
+                text-transform: uppercase;
+                font-size: 20px;
+            }
+
+            .apexcharts-canvas {
+                max-width: 100%;
             }
         }
     }
@@ -466,27 +481,7 @@ main {
             padding: 0 15px 30px 30px;
         }
     }
-    .charts {
-        display: grid;
-        grid-gap: 15px;
-    }
 }
-.chart {
-    background: var(--bg-content);
-    border-radius: 10px;
-    padding: 15px 20px;
-
-    b {
-        font-family: var(--font-accent);
-        text-transform: uppercase;
-        font-size: 20px;
-    }
-
-    & > div {
-        height: 400px !important;
-    }
-}
-
 
 .grid-sizer,
 .grid-item {

@@ -1,0 +1,376 @@
+@import './mixins.scss';
+
+.character--profile-item {
+    .scroll {
+        b {
+            color: var(--character-text);
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            padding: 0 2px;
+        }
+        i {
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            font-size: 1.1em;
+            color: var(--character-text);
+            padding: 0 2px;
+        }
+        u {
+            text-decoration: none;
+            border-bottom: 2px solid var(--character-bg);
+            padding: 0 7px;
+        }
+        a {
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--character-bg);
+            padding: 0 var(--spacing-xs);
+        }
+        s {
+            font-style: italic;
+            text-decoration-style: dotted;
+            text-decoration-color: var(--text-body);
+            color: var(--character-text);
+            text-decoration-thickness: 1px;
+        }
+    
+        h2,
+        .h2,
+        h3,
+        .h3,
+        h4,
+        .h4,
+        h5,
+        .h5,
+        h6,
+        .h6,
+        h7,
+        .h7,
+        h8,
+        .h8 {
+            line-height: 160%;
+            max-width: max-content;
+        
+            &:first-child {
+                margin-top: 0;
+            }
+        
+            &:not(:first-child) {
+                margin-top: 30px;
+            }
+        
+            p + &:not(:first-child) {
+                margin-top: 60px;
+            }
+    
+            & + br {
+                display: none;
+            }
+    
+            a {
+                font-size: 1em !important;
+                border-bottom: none !important;
+    
+                &::after {
+                    font-family: 'Font Awesome 6 Pro';
+                    padding-left: 10px;
+                    font-weight: 300;
+                    position: relative;
+                    right: 0;
+                    transition-duration: 0.3s;
+                }
+    
+                &:hover::after {
+                    right: -5px;
+                }
+            }
+        
+            &[data-align="left"],
+            &[data-align="Left"],
+            &[data-align="LEFT"] {
+                margin-left: 0;
+                margin-right: auto;
+                text-align: left;
+            }
+        
+            &[data-align="center"],
+            &[data-align="Center"],
+            &[data-align="CENTER"] {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        
+            &[data-align="right"],
+            &[data-align="Right"],
+            &[data-align="RIGHT"] {
+                margin-left: auto;
+                margin-right: 0;
+                text-align: right;
+            }
+        }
+        h2,
+        .h2 {
+            @include fluid-type(24, 40, 480, 1920);
+            font-family: var(--font-accent);
+            margin: 0 auto 30px;
+            padding-bottom: 10px;
+            text-align: center;
+        
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: calc(50% - 32.5px);
+                width: 75px;
+                height: 3px;
+                background: var(--character-bg);
+                border-radius: 2px;
+            }
+        }
+        h3,
+        .h3 {
+            @include fluid-type(18, 26, 480, 1920);
+            font-family: var(--font-accent);
+            margin: 0 auto 30px 0;
+            padding: 0 0 10px 15px;
+        
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 75px;
+                height: 3px;
+                background: var(--character-bg);
+                border-radius: 2px;
+            }
+        }
+        h4,
+        .h4 {
+            @include fluid-type(16, 22, 480, 1920);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            padding: 10px 0 10px 30px;
+        
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                background: var(--character-bg);
+                border-radius: 2px;
+            }
+    
+            &[data-align="right"],
+            &[data-text-align="right"],
+            &[data-box-align="right"] {
+                padding: 10px 30px 10px 0;
+    
+                &::before {
+                    display: none;
+                }
+        
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 3px;
+                    height: 100%;
+                    background: var(--character-bg);
+                    border-radius: 2px;
+                }
+            }
+        }
+        h5,
+        .h5 {
+            @include fluid-type(14, 16, 480, 1920);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 5px 0 5px 15px;
+        
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                background: var(--character-bg);
+                border-radius: 2px;
+            }
+    
+            &[data-align="right"],
+            &[data-text-align="right"],
+            &[data-box-align="right"] {
+                padding: 5px 15px 5px 0;
+    
+                &::before {
+                    display: none;
+                }
+        
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 3px;
+                    height: 100%;
+                    background: var(--character-bg);
+                    border-radius: 2px;
+                }
+            }
+        }
+        h6,
+        .h6 {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            background: var(--character-bg-transparent);
+        
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background: var(--character-bg);
+                border-radius: 1px;
+            }
+    
+            &[data-align="right"],
+            &[data-text-align="right"],
+            &[data-box-align="right"] {
+                &::before {
+                    display: none;
+                }
+        
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 2px;
+                    height: 100%;
+                    background: var(--character-bg);
+                    border-radius: 1px;
+                }
+            }
+        }
+        h7,
+        .h7 {
+            display: block;
+            max-width: max-content;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            background: var(--character-bg-transparent);
+        
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background: var(--character-bg);
+                border-radius: 1px;
+            }
+    
+            &[data-align="right"],
+            &[data-text-align="right"],
+            &[data-box-align="right"] {
+                &::before {
+                    display: none;
+                }
+        
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 2px;
+                    height: 100%;
+                    background: var(--character-bg);
+                    border-radius: 1px;
+                }
+            }
+        }
+        h8,
+        .h8 {
+            display: block;
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-align: justify;
+            max-width: 300px;
+            line-height: 275%;
+        }
+        .h2,
+        .h3,
+        .h8 {
+            &::before {
+                display: none;
+            }
+        }
+        .h4,
+        .h5,
+        .h6,
+        .h7,
+        .h8 {
+            &::after {
+                display: none;
+            }
+        }
+        blockquote {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: justify;
+            border-left: 3px solid var(--character-bg);
+            padding: 10px 15px;
+            background: var(--character-bg-transparent);
+            font-size: 14px;
+            font-weight: 300;
+            border-radius: 3px;
+            line-height: 200%;
+            letter-spacing: 0.025em;
+        }
+    
+        ul,
+        ol {
+            margin: 0;
+            padding: 0 0 0 12px;
+            line-height: 200%;
+        
+            br {
+                display: none;
+            }
+        
+            li {
+                padding-left: 10px;
+                
+                &::marker {
+                    content: '\f178';
+                    font-family: 'Font Awesome 6 Pro';
+                    font-weight: 300;
+                    font-style: normal;
+                    font-size: 0.7em;
+                    color: var(--character-text);
+                }
+            }
+        }
+    }
+}

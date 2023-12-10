@@ -40,6 +40,53 @@ function getMonthName(monthNum) {
             break;
     }
 }
+function getMonthNum(monthName) {
+    let month;
+
+    switch(monthName.toLowerCase().trim()) {
+        case 'january':
+            month = 1;
+            break;
+        case 'february':
+            month = 2;
+            break;
+        case 'march':
+            month = 3;
+            break;
+        case 'april':
+            month = 4;
+            break;
+        case 'may':
+            month = 5;
+            break;
+        case 'june':
+            month = 6;
+            break;
+        case 'july':
+            month = 7;
+            break;
+        case 'august':
+            month = 8;
+            break;
+        case 'september':
+            month = 9;
+            break;
+        case 'october':
+            month = 10;
+            break;
+        case 'november':
+            month = 11;
+            break;
+        case 'december':
+            month = 12;
+            break;
+        default:
+            month = -1;
+            break;
+    }
+
+    return month;
+}
 function getDelay(date) {
     let elapsed = (new Date() - Date.parse(date)) / (1000*60*60*24);
     let delayClass;
@@ -58,7 +105,7 @@ function getDelay(date) {
     }
     return delayClass;
 }
-function formatThread(site, siteURL, status, character, feature, title, threadID, icDate, partnerObjects, type, lastPost, delayClass, directoryString) {
+function formatOldThread(site, siteURL, status, character, feature, title, threadID, icDate, partnerObjects, type, lastPost, delayClass, directoryString) {
     //set writing partners
     let partners = ``;
     let partnerClasses = ``;
@@ -110,10 +157,73 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
 
     return html;
 }
-function sendAjax(data, thread, form = null, complete = null) {
+function formatThread(site, siteURL, status, character, feature, title, threadID, icDate, partnerObjects, type, lastPost, delayClass, directoryString) {
+    //set writing partners
+    let partners = ``;
+    let partnerClasses = ``;
+    partnerObjects.forEach((partner, i) => {
+        if(partnerObjects.length === (i + 1) && partnerObjects.length !== 1) {
+            partners += ` and `;
+        } else if(i !== 0) {
+            partners += ` `;
+            partnerClasses += ` `;
+        }
+        partners += `<a href="${siteURL}/${directoryString}${partner.id.toLowerCase().trim()}">${partner.partner.toLowerCase().trim()}</a>`;
+        partnerClasses += `partner--${partner.partner.toLowerCase().trim().replaceAll(' ', '').toLowerCase().trim()}`;
+        if(partnerObjects.length !== (i + 1)) {
+            partnerClasses += ` `;
+            if(partnerObjects.length !== 2) {
+                partners += `,`;
+            }
+        }
+    });
+
+    //set featured characters
+    let featuring = ``;
+    let ftObjects = feature.split('+').map(character => JSON.parse(character));
+    ftObjects.forEach((character, i) => {
+        if(ftObjects.length === (i + 1) && ftObjects.length !== 1) {
+            featuring += ` and `;
+        } else if(i !== 0) {
+            featuring += ` `;
+        }
+        featuring += `<a href="${siteURL}/?showuser=${character.id.toLowerCase().trim()}">${character.character.toLowerCase().trim()}</a>`;
+        if(ftObjects.length !== (i + 1) && ftObjects.length !== 2) {
+            featuring += `,`;
+        }
+    });
+    let buttons = ``;
+    if (status !== 'complete' && status !== 'archived') {
+        buttons = `<button onClick="changeStatus(this)" data-status="${status}" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Change Turn"><i class="fa-regular fa-arrow-right-arrow-left"></i><i class="fa-solid fa-spinner fa-spin"></i></button>
+        <button onClick="markComplete(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Mark Complete"><i class="fa-regular fa-badge-check"></i><i class="fa-solid fa-spinner fa-spin"></i></button>
+        <button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button>`;
+    } else if (status !== 'archived') {
+        buttons = `<button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button>`;
+    }
+    let html = `<div class="thread lux-track grid-item status--${status} ${character.split(' ')[0]} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item">
+        <div class="thread--wrap">
+            <div class="thread--main">
+                <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
+                <div class="thread--info">
+                    <span>Writing as <a class="thread--character" href="${siteURL}/?showuser=${character.split('#')[1]}">${character.split('#')[0]}</a></span>
+                    <span class="thread--feature">ft. ${featuring}</span>
+                    <span class="thread--partners">Writing with ${partners}</span>
+                </div>
+                <div class="thread--info">
+                    <span class="thread--ic-date">Set <span>${icDate}</span></span>
+                    <span class="thread--last-post">Last Active <span>${lastPost}</span></span>
+                </div>
+            </div>
+            <div class="thread--buttons">${buttons}</div>
+        </div>
+    </div>`;
+
+    return html;
+}
+function sendAjax(data, thread, deployId, form = null, complete = null) {
     console.log('send ajax');
     $.ajax({
-        url: `https://script.google.com/macros/s/AKfycbyhWkeLS1VlAMFP5mS9Omqax8BHjcUTkvWGdpQIHNy8iQsIKx59usD2KVrjy_JOTfi3/exec`,   
+        url: `https://script.google.com/macros/s/${deployId}/exec`,   
         data: data,
         method: "POST",
         type: "POST",
@@ -134,16 +244,17 @@ function sendAjax(data, thread, form = null, complete = null) {
                 thread.classList.remove('status--theirs');
                 thread.classList.remove('status--expecting');
                 thread.classList.add('status--complete');
-            }else if(data.Status === 'Theirs') {
+                thread.querySelectorAll('button').forEach(button => button.classList.remove('is-updating'));
+            } else if(data.Status === 'Theirs') {
                 thread.classList.remove('status--mine');
                 thread.classList.remove('status--start');
                 thread.classList.add('status--theirs');
-                thread.querySelector('[data-status]').innerText = 'Change Turn';
+                thread.querySelector('[data-status]').classList.remove('is-updating');
             } else if(data.Status === 'Mine') {
                 thread.classList.remove('status--theirs');
                 thread.classList.remove('status--expecting');
                 thread.classList.add('status--mine');
-                thread.querySelector('[data-status]').innerText = 'Change Turn';
+                thread.querySelector('[data-status]').classList.remove('is-updating');
             }
         }
     });
@@ -152,38 +263,50 @@ function changeStatus(e) {
     if(e.dataset.status === 'mine' || e.dataset.status === 'start') {
         e.dataset.status = 'theirs';
         let thread = e.parentNode.parentNode.parentNode;
-        thread.querySelector('[data-status]').innerText = 'Changing...';
+        e.classList.add('is-updating');
         sendAjax({
             'SubmissionType': 'edit-thread',
             'ThreadID': e.dataset.id,
             'Site': e.dataset.site,
             'Character': e.dataset.character,
             'Status': 'Theirs'
-        }, thread);
+        }, thread, threadDeploy);
     } else if(e.dataset.status === 'theirs' || e.dataset.status === 'planned') {
         e.dataset.status = 'mine';
         let thread = e.parentNode.parentNode.parentNode;
-        thread.querySelector('[data-status]').innerText = 'Changing...';
+        e.classList.add('is-updating');
         sendAjax({
             'SubmissionType': 'edit-thread',
             'ThreadID': e.dataset.id,
             'Site': e.dataset.site,
             'Character': e.dataset.character,
             'Status': 'Mine'
-        }, thread);
+        }, thread, threadDeploy);
     }
 }
 function markComplete(e) {
     e.dataset.status = 'complete';
     let thread = e.parentNode.parentNode.parentNode;
-    thread.querySelector('[data-status] + button').innerText = 'Updating...';
+    e.classList.add('is-updating');
     sendAjax({
         'SubmissionType': 'edit-thread',
         'ThreadID': e.dataset.id,
         'Site': e.dataset.site,
         'Character': e.dataset.character,
         'Status': 'Complete'
-    }, thread, null, 'complete');
+    }, thread, threadDeploy, null, 'complete');
+}
+function markArchived(e) {
+    e.dataset.status = 'archived';
+    let thread = e.parentNode.parentNode.parentNode;
+    e.classList.add('is-updating');
+    sendAjax({
+        'SubmissionType': 'edit-thread',
+        'ThreadID': e.dataset.id,
+        'Site': e.dataset.site,
+        'Character': e.dataset.character,
+        'Status': 'Archived'
+    }, thread, threadDeploy, null, 'archived');
 }
 function addThread(e) {
     let site = e.currentTarget.querySelector('#site').options[e.currentTarget.querySelector('#site').selectedIndex].value.toLowerCase().trim(),
@@ -232,9 +355,9 @@ function addThread(e) {
         'Partner': partner,
         'Type': type,
         'LastUpdated': update
-    }, null, e);
+    }, null, threadDeploy, e);
 }
-function populatePage(array, siteObject) {
+function populateThreads(array, siteObject) {
     let html = ``;
     let characters = [], partners = [];
 
@@ -309,7 +432,7 @@ function setCustomFilter() {
     
     //check each item
     elements.forEach(el => {
-        let name = el.querySelector(threadTitle).textContent;
+        let name = el.querySelector(blockTitle).textContent;
         if(!name.toLowerCase().includes(qsRegex)) {
             el.classList.remove(visible);
             searchFilter = `.${visible}`;
@@ -379,7 +502,7 @@ function setCustomFilter() {
     }
 
     //join array into string
-    if(hideUnless.classList.contains('is-checked')) {
+    if(hideUnless && hideUnless.classList.contains('is-checked')) {
         filter = filter.join(', ');
     } else {
         filter = filter.map(item => `${item}${defaultShow}`);
@@ -452,7 +575,7 @@ function initIsotope() {
     });
 }
 function prepThreads(data, site) {
-    let threads = data.filter(item => item.Site.toLowerCase().trim() === site.toLowerCase().trim());
+    let threads = data.filter(item => item.Site.toLowerCase().trim() === site.toLowerCase().trim() && item.Status.toLowerCase().trim() !== 'archived');
     threads.sort((a, b) => {
         let aStatus = a.Status.toLowerCase() === 'complete' ? 1 : 0;
         let bStatus = b.Status.toLowerCase() === 'complete' ? 1 : 0;
@@ -463,6 +586,27 @@ function prepThreads(data, site) {
         } else if(aStatus < bStatus) {
             return -1;
         } else if (aStatus > bStatus) {
+            return 1;
+        } else if(new Date(a.ICDate) < new Date(b.ICDate)) {
+            return -1;
+        } else if (new Date(a.ICDate) > new Date(b.ICDate)) {
+            return 1;
+        } else if(new Date(a.LastUpdate) < new Date(b.LastUpdate)) {
+            return -1;
+        } else if (new Date(a.LastUpdate) > new Date(b.LastUpdate)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    return threads;
+}
+function prepArchivedThreads(data, site) {
+    let threads = data.filter(item => item.Site.toLowerCase().trim() === site.toLowerCase().trim() && item.Status.toLowerCase().trim() === 'archived');
+    threads.sort((a, b) => {
+        if(a.Character < b.Character) {
+            return -1;
+        } else if (a.Character > b.Character) {
             return 1;
         } else if(new Date(a.ICDate) < new Date(b.ICDate)) {
             return -1;
@@ -587,7 +731,7 @@ function addCharacter(e) {
         'Site': site,
         'Character': character,
         'CharacterID': characterID
-    }, null, e);
+    }, null, threadDeploy, e);
 }
 function addSite(e) {
     let directory = e.currentTarget.querySelector('#directory').options[e.currentTarget.querySelector('#directory').selectedIndex].value.trim(),
@@ -599,7 +743,7 @@ function addSite(e) {
         'Site': site,
         'URL': url,
         'Directory': directory
-    }, null, e);
+    }, null, threadDeploy, e);
 }
 function partnerCheck(featureData, form) {
     let partnerField = form.querySelector('#writer');
@@ -613,7 +757,6 @@ function partnerCheck(featureData, form) {
             form.querySelector('#writerID').value = '';
         }
     });
-
 }
 function addPartner(e) {
     let site = e.currentTarget.querySelector('#site').options[e.currentTarget.querySelector('#site').selectedIndex].value.toLowerCase().trim(),
@@ -629,7 +772,7 @@ function addPartner(e) {
         'CharacterID': characterID,
         'Writer': writer,
         'WriterID': writerID
-    }, null, e);
+    }, null, threadDeploy, e);
 }
 function fixMc(str) {
     return (""+str).replace(/Mc(.)/g, function(m, m1) {
@@ -674,4 +817,204 @@ function loadPartnerFields() {
     for(let i = 0; i < count; i++) {
         active.insertAdjacentHTML('beforeend', addPartnerFields(i));
     }
+}
+function populateCharacters(array, filters, baseUrl) {
+    let html = ``;
+    let generatedFilters = {};
+    //Make Generated Arrays
+    filters.forEach(filter => {
+        generatedFilters[filter] = [];
+    });
+
+    for (let i = 0; i < array.length; i++) {
+        let characterFilters = '';
+
+        //Assigned values after they're made, so as not to override with empty array
+        filters.forEach(filter => {
+            if(array[i][filter]) {
+                let filterName = array[i][filter].toLowerCase();
+                
+                filterName.split('+').forEach(name => {
+                    if(jQuery.inArray(name, generatedFilters[filter]) == -1 && name != '') {
+                        generatedFilters[filter].push(name);
+                    }
+                });
+    
+                if(characterFilters !== '') {
+                    characterFilters += ' ';
+                }
+                characterFilters += array[i][filter].split('+').map(item => `${filter.replace('Filter', '')}-${item}`).join(' ');
+            }
+        });
+
+        html += formatCharacter(array[i], characterFilters, baseUrl);
+    }
+
+    //sort appendable filters
+    filters.forEach(filter => {
+        generatedFilters[filter].sort();
+        generatedFilters[filter].forEach(filterName => {
+            document.querySelector(`[data-filter-group="${filter}"]`).insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${filter.replace('Filter', '')}-${filterName.replaceAll(' ', '')}"/>${capitalize(filterName)}</label>`);
+        });
+    });
+    document.querySelector('#tracker--rows').insertAdjacentHTML('beforeend', html);
+}
+
+function formatCharacter(data, characterFilters, baseUrl) {
+    let adjustedYear = 2023 + parseInt(data.YearAdjustment);
+    let bYear = parseInt(data.BirthYear);
+    let bMonth = getMonthNum(data.BirthMonth);;
+    let bDay = parseInt(data.BirthDay);
+    let ageNum = ``;
+    if(bMonth < month || (bMonth === month && bDay <= day)) {
+        ageNum = adjustedYear - bYear;
+    } else {
+        ageNum = adjustedYear - bYear - 1;
+    }
+
+    let ageFilters;
+    if(data.FilterAge) {
+        ageFilters = data.FilterAge.split('+').map(item => `age-${item}`).join(' ');
+    }
+
+    let links = ``;
+    if(data.Links) {
+        let characterLinks = data.Links.split('+');
+        for(let i = 0; i < characterLinks.length; i++) {
+            let link = JSON.parse(characterLinks[i]);
+            links += `<a href="${link.url}" target="_blank">${link.title}</a>`;
+        }
+    }
+    
+    let app = ``;
+    for(item in data) {
+        //Check if it's a field you don't want to show
+        if (item !== 'YearAdjustment'
+        && item !== 'Character'
+        && item !== 'Account'
+        && item !== 'Image'
+        && item !== 'Vibes'
+        && item !== 'Links'
+        && item !== 'BirthYear'
+        && item !== 'BirthDay'
+        && item !== 'Weight'
+        && !item.includes('Filter')
+        && data[item] !== `<i>No Information</i>`
+        && !(item === 'YearsDead' && data[item] === '0')) {
+
+            //if not, assign title and content (field name and field content)
+            let title = item;
+            let content = data[item];
+
+            //check for tildelist hack from gb and accommodate
+            if(content.split(`~ `).length > 1 && !content.includes(`<tl>`) ) {
+                content = `<ul>
+                    ${content
+                    .split(`~ `)
+                    .filter(item => item !== '' && item !== '\n')
+                    .map(item => `<li>${item}</li>`).join('')}
+                </ul>`;
+            }
+            if(content.includes(`<tl>`) ) {
+                content = content
+                    .replaceAll(`<tl>`, `<ul>`)
+                    .replaceAll(`</tl>`, `</ul>`)
+                    .split(`~ `)
+                    .filter(item => item !== '' && item !== '\n')
+                    .map(item => `<li>${item}</li>`).join('');
+            }
+
+            //Title and Content adjustments, such as multi-word titles and fields that are being combined (like birthday combines BirthYear, BirthMonth, and BirthDay)
+            if(title === 'FullName') {
+                title = 'Full Name'
+            } else if (title === 'BirthMonth') {
+                title = 'Birthday';
+                if (parseInt(data.BirthYear) < 0) {
+                    content = `${data.BirthMonth} ${data.BirthDay}, ${parseInt(data.BirthYear) * -1} BC`;
+                } else {
+                    content = `${data.BirthMonth} ${data.BirthDay}, ${data.BirthYear}`;
+                }
+            }  else if (title === 'Height') {
+                title = 'Height & Weight';
+                content = `${data.Height}, ${data.Weight}`;
+            } else if (title === 'SexualOrientation') {
+                title = 'Sexual Orientation';
+            } else if (title === 'RomanticOrientation') {
+                title = 'Romantic Orientation';
+            } else if (title === 'YearsDead') {
+                title = 'Years Dead';
+            } else if (title === 'BloodStatus') {
+                title = 'Blood Status';
+            } else if (title === 'ImportantPeople') {
+                title = 'Important People';
+            }
+
+            //Template stage
+            //Check if it's a field you want full width on non-mobile
+            if(title === 'Warnings'
+            || title === 'Cheatsheet'
+            || title === 'Freeform'
+            || title === 'Relationships'
+            || title === 'Summary'
+            || title === 'Shipper') {
+                //If so, use this template
+                app += `<div class="character--profile-item fullWidth">
+                    <strong>${title}</strong>
+                    <span class="scroll">${content}</span>
+                </div>`;
+            } else {
+                //If not, use this template
+                app += `<div class="character--profile-item">
+                    <strong>${title}</strong>
+                    <span class="scroll">${content}</span>
+                </div>`;
+            }
+        }
+    }
+
+    return `<div class="${data.Character.split(' ')[0]} lux-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters}">
+        <div class="character">
+            <div class="character--image">
+                <img src="${data.Image}" />
+            </div>
+            <div class="character--main">
+                <b class="name">${data.Character}</b>
+                <div class="character--info">
+                    <div>${data.Gender}</div>
+                    <div>${data.Pronouns}</div>
+                    <div><span class="age">${ageNum}</span> years old</div>
+                    <div>${data.Face}</div>
+                </div>
+                ${data.Vibes && data.Vibes !== '' ? `<p>${data.Vibes}</p>` : ''}
+            </div>
+            <div class="character--links">
+                <button onClick="openModalProfile(this)">View More</button>
+                <a href="${baseUrl}?showuser=${data.Account}" target="_blank">Profile</a>
+                ${links}
+            </div>
+        </div>
+        <div class="character--modal">
+            <button onClick="closeModalProfile(this)" class="character--modal-close">Close</button>
+            <strong>${data.Character}</strong>
+            <div class="scroll"><div class="character--app">
+                ${app}
+            </div></div>
+        </div>
+    </div>`;
+}
+
+function openFilters(e) {
+    e.classList.toggle('is-open');
+    e.parentNode.querySelector('.tracker--filter-dropdown').classList.toggle('is-open');
+}
+
+function openModalProfile(e) {
+    document.querySelectorAll('.character--modal').forEach(modal => modal.classList.remove('is-open'));
+    e.closest('.grid-item').querySelector('.character--modal').classList.add('is-open');
+    document.querySelector('body').classList.add('modal-open');
+}
+
+function closeModalProfile(e) {
+    document.querySelectorAll('.character--modal').forEach(modal => modal.classList.remove('is-open'));
+    document.querySelector('body').classList.remove('modal-open');
 }

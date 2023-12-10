@@ -1,0 +1,36 @@
+<section class="tracker charts">
+    <div class="chart">
+        <b>Last Reply</b>
+        <div class="chart--time chart--box"></div>
+    </div>
+    <div class="chart">
+        <b>Status</b>
+        <div class="chart--status chart--box"></div>
+    </div>
+    <div class="chart">
+        <b>Type</b>
+        <div class="chart--type chart--box"></div>
+    </div>
+    <div class="chart">
+        <b>Partners</b>
+        <div class="chart--partner chart--box"></div>
+    </div>
+
+    <script src="@@prefix/js/charts.js"></script>
+    <script>
+        //set overall variables
+        let siteName = '@@sitename';
+
+        //set class variables
+        let $container = $('#tracker--rows');
+
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+        .then((response) => response.json())
+        .then((threadData) => {
+            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
+            let threads = loadThreads(siteThreads);
+
+            loadCharts(threads);
+        });
+    </script>
+</section>

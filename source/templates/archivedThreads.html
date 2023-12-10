@@ -1,0 +1,106 @@
+<section class="tracker">
+    <div class="tracker--header" data-type="flex">
+        <input id="quicksearch" class="forminput memberlist-namesearch" type="text" size="25" name="name" value="" placeholder="Filter by name...">
+        <div class="tracker--sort-buttons" data-type="flex">
+            <button type="button" class="tracker--sort is-checked" data-sort="character">Character (A -> Z)</button>
+            <button type="button" class="tracker--sort" data-sort="title">Title (A -> Z)</button>
+            <button type="button" class="tracker--sort" data-sort="icdate">IC Date (Asc)</button>
+            <button type="button" class="tracker--sort" data-sort="lastpost">Last Post (Desc)</button>
+        </div>
+    </div>
+    <div class="tracker--wrapper">
+
+        <div class="tracker--filters">
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Character</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels tracker--characters" data-filter-group="charater">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Partner</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels tracker--partners" data-filter-group="partner">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Thread Type</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="type">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".type--thread">thread</label>
+                        <label><input type="checkbox" value=".type--comm">comm</label>
+                        <label><input type="checkbox" value=".type--social">social media</label>
+                        <label><input type="checkbox" value=".type--one-shot">one-shot</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tracker--content">
+            <div id="tracker--rows" class="tracker--threads"></div>
+        </div>
+    </div>
+    <script>
+        //set overall variables
+        let siteName = '@@sitename';
+        const typeSearch = `#quicksearch`;
+        const blockTitle = `.thread--title`;
+        const visible = `is-visible`;
+        const filterGroup = `.tracker--filter-group`;
+        const filterOptions = `.tracker--filter-group input`;
+        const sorts = `.tracker--header button`;
+        const gridItem = `.grid-item`;
+        const defaultShow = `:not(.status--complete)`;
+
+        //set class variables
+        let $container = $('#tracker--rows');
+
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+        .then((response) => response.json())
+        .then((threadData) => {
+            fetch(`https://opensheet.elk.sh/${threadSheet}/Sites`)
+            .then((response) => response.json())
+            .then((siteData) => {
+                let siteObject = siteData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim())[0];
+                let threads = prepArchivedThreads(threadData, siteObject.Site);
+                populateThreads(threads, siteObject);
+            }).then(() => {
+            //initialize isotope
+            // quick search regex
+            let qsRegex;
+            let elements = document.querySelectorAll(gridItem);
+
+            // init Isotope
+            $container.isotope({
+                itemSelector: gridItem,
+                percentPosition: true,
+                filter: defaultShow,
+                getSortData: {
+                    character: '.thread--character',
+                    title: '.thread--title',
+                    icdate: function ($elem) {
+                        return Date.parse($elem.querySelector('.thread--ic-date span').innerText);
+                    },
+                    lastpost: function ($elem) {
+                        return Date.parse($elem.querySelector('.thread--last-post span').innerText);
+                    },
+                },
+                sortAscending: {
+                    character: true,
+                    title: true,
+                    icdate: false,
+                    lastpost: true,
+                }
+            });
+            setTimeout(function() {
+                $container.isotope('layout');
+            }, 300);
+            initIsotope();
+        });
+        });
+    </script>
+</section>

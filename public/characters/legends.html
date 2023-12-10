@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+<title>Spy | Godly Behaviour Characters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--Styles-->
+<link rel="stylesheet" href="../../dist/css/newStyles.css" />
+<link rel="stylesheet" href="https://spyder227.github.io/dist/css/characters.css" />
+
+<!--Fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+<!--Icons-->
+<link href="https://dawneggleton.github.io/css/all.css" rel="stylesheet" />
+
+<!--Script Libraries-->
+<script type='text/javascript' src='https://files.jcink.net/html/jquery-1.7.2.min.js'></script>
+<script type='text/javascript' src='https://files.jcink.net/html/jquery.cookie-1.3.1.js'></script> 
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<!--Settings-->
+<script type='text/javascript' src='../../dist/js/settings.js'></script>
+
+<!--Scripts-->
+<script type='text/javascript' src='../../dist/js/functions.js'></script>
+        <link rel="stylesheet" href="../../dist/css/legendsCharacters.css" />
+    </head>
+    <body>
+        <nav>
+    <ul>
+        <li>
+            <a href="../../public/index.html" class="highlight"><i class="fa-solid fa-plus"></i> Add</a>
+            <ul>
+                <li><a href="../../public/forms/thread.html">Add a Thread</a></li>
+                <li><a href="../../public/forms/site.html">Add a Site</a></li>
+                <li><a href="../../public/forms/character.html">Add a Character</a></li>
+                <li><a href="../../public/forms/partner.html">Add a Partner</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../../public/sites/gb.html">Godly Behaviour</a>
+            <ul>
+                <li><a href="../../public/tracking/gb.html">Threads</a></li>
+                <li><a href="../../public/tracking/gb-archived.html">Archived Threads</a></li>
+                <li><a href="../../public/charts/gb.html">Charts</a></li>
+                <li><a href="../../public/characters/gb.html">Characters</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../../public/sites/rtn.html">RTN</a>
+            <ul>
+                <li><a href="../../public/tracking/rtn.html">Threads</a></li>
+                <li><a href="../../public/charts/rtn.html">Charts</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../../public/sites/corson.html">Corson Forever</a>
+            <ul>
+                <li><a href="../../public/tracking/corson.html">Threads</a></li>
+                <li><a href="../../public/charts/corson.html">Charts</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+        <section class="characters">
+    <div class="tracker--header" data-type="flex">
+        <input id="quicksearch" class="forminput memberlist-namesearch" type="text" size="25" name="name" value="" placeholder="Filter by name...">
+        <div class="tracker--sort-buttons" data-type="flex">
+            <button type="button" class="tracker--sort is-checked" data-sort="charAsc">Name (A -> Z)</button>
+            <button type="button" class="tracker--sort" data-sort="charDesc">Name (Z -> A)</button>
+            <button type="button" class="tracker--sort" data-sort="ageAsc">Age (Asc)</button>
+            <button type="button" class="tracker--sort" data-sort="ageDesc">Age (Desc)</button>
+        </div>
+    </div>
+    <div class="tracker--wrapper">
+        <div class="tracker--filters">
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Gender</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="gender">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".gender-male">male</label>
+                        <label><input type="checkbox" value=".gender-female">female</label>
+                        <label><input type="checkbox" value=".gender-nonbinary">nonbinary</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Age</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="age">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        
+                            <label><input type="checkbox" value=".age-under20">Under 20</label>
+                            <label><input type="checkbox" value=".age-20-29">20-29</label>
+                            <label><input type="checkbox" value=".age-30-39">30-39</label>
+                            <label><input type="checkbox" value=".age-40-49">40-49</label>
+                            <label><input type="checkbox" value=".age-50">50+</label>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Shipped</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="shipped">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".shipped-taken">taken</label>
+                        <label><input type="checkbox" value=".shipped-wanted">wanted</label>
+                        <label><input type="checkbox" value=".shipped-open">open</label>
+                        <label><input type="checkbox" value=".shipped-none">not interested</label>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="tracker--content">
+            <div id="tracker--rows" class="tracker--threads"></div>
+        </div>
+    </div>
+    <script>
+        //set overall variables
+        const typeSearch = `#quicksearch`;
+        const blockTitle = `.grid-item .name`;
+        const visible = `is-visible`;
+        const filterGroup = `.tracker--filter-group`;
+        const filterOptions = `.tracker--filter-group input`;
+        const sorts = `.tracker--header button`;
+        const gridItem = `.grid-item`;
+        const defaultShow = `:not(.status--complete)`;
+
+        //set class variables
+        let $container = $('#tracker--rows');
+        let filters = "";
+        console.log(filters.split(', '));
+
+        fetch(`https://opensheet.elk.sh/${characterSheet}/Legends`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            populateCharacters(data, filters = filters.split(', '), 'https://legends.jcink.net/');
+
+        }).then(() => {
+            //initialize isotope
+            // quick search regex
+            let qsRegex;
+            let elements = document.querySelectorAll(gridItem);
+
+            // init Isotope
+            $container.isotope({
+                itemSelector: gridItem,
+                percentPosition: true,
+                filter: defaultShow,
+                getSortData: {
+                    charAsc: '.name',
+                    charDesc: '.name',
+                    ageAsc: '.age parseInt',
+                    ageDesc: '.age parseInt',
+                },
+                sortAscending: {
+                    charAsc: true,
+                    charDesc: false,
+                    ageAsc: true,
+                    ageDesc: false,
+                }
+            });
+            setTimeout(function() {
+                $container.isotope('layout');
+            }, 300);
+            initIsotope();
+        });
+    </script>
+</section>
+    </body>
+</html>
