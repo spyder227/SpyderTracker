@@ -246,7 +246,7 @@ label b {
       font-size: 24px; } }
 
 /** Variable Overrides for Characters **/
-.lux-track {
+.spy-track {
   --character-bg: rgb(var(--rgb, transparent));
   --character-bg-transparent: rgba(var(--rgb), 0.3);
   --character-text: rgb(var(--rgb-dark, var(--rgb, transparent))); }

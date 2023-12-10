@@ -145,7 +145,7 @@ function formatOldThread(site, siteURL, status, character, feature, title, threa
         buttons = `<button onClick="changeStatus(this)" data-status="${status}" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}">Change Turn</button>
         <button onClick="markComplete(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}">Mark Complete</button>`;
     }
-    let html = `<div class="thread lux-track grid-item status--${status} ${character.split(' ')[0]} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item"><div class="thread--wrap">
+    let html = `<div class="thread spy-track grid-item status--${status} ${character.split(' ')[0]} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item"><div class="thread--wrap">
         <a class="thread--character" href="${siteURL}/?showuser=${character.split('#')[1]}">${character.split('#')[0]}</a>
         <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
         <span class="thread--feature">ft. ${featuring}</span>
@@ -200,7 +200,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
     } else if (status !== 'archived') {
         buttons = `<button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button>`;
     }
-    let html = `<div class="thread lux-track grid-item status--${status} ${character.split(' ')[0]} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item">
+    let html = `<div class="thread spy-track grid-item status--${status} ${character.split(' ')[0].toLowerCase()} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item">
         <div class="thread--wrap">
             <div class="thread--main">
                 <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
@@ -972,7 +972,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
         }
     }
 
-    return `<div class="${data.Character.split(' ')[0]} lux-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters}">
+    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters}">
         <div class="character">
             <div class="character--image">
                 <img src="${data.Image}" />
