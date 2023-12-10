@@ -145,7 +145,7 @@ function formatOldThread(site, siteURL, status, character, feature, title, threa
         buttons = `<button onClick="changeStatus(this)" data-status="${status}" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}">Change Turn</button>
         <button onClick="markComplete(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}">Mark Complete</button>`;
     }
-    let html = `<div class="thread spy-track grid-item status--${status} ${character.split(' ')[0]} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item"><div class="thread--wrap">
+    let html = `<div class="thread lux-track grid-item status--${status} ${character.split(' ')[0].toLowerCase()} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item"><div class="thread--wrap">
         <a class="thread--character" href="${siteURL}/?showuser=${character.split('#')[1]}">${character.split('#')[0]}</a>
         <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
         <span class="thread--feature">ft. ${featuring}</span>
@@ -157,7 +157,7 @@ function formatOldThread(site, siteURL, status, character, feature, title, threa
 
     return html;
 }
-function formatThread(site, siteURL, status, character, feature, title, threadID, icDate, partnerObjects, type, lastPost, delayClass, directoryString) {
+function formatThread(site, siteURL, status, character, feature, title, threadID, icDate, partnerObjects, type, lastPost, delayClass, directoryString, snippet) {
     //set writing partners
     let partners = ``;
     let partnerClasses = ``;
@@ -200,7 +200,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
     } else if (status !== 'archived') {
         buttons = `<button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button>`;
     }
-    let html = `<div class="thread spy-track grid-item status--${status} ${character.split(' ')[0].toLowerCase()} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item">
+    let html = `<div class="thread lux-track grid-item status--${status} ${character.split(' ')[0].toLowerCase()} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item">
         <div class="thread--wrap">
             <div class="thread--main">
                 <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
@@ -213,6 +213,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
                     <span class="thread--ic-date">Set <span>${icDate}</span></span>
                     <span class="thread--last-post">Last Active <span>${lastPost}</span></span>
                 </div>
+                ${snippet && snippet !== '' ? `<div class="thread--info"><p>${snippet}</p></div>` : ''}
             </div>
             <div class="thread--buttons">${buttons}</div>
         </div>
@@ -319,7 +320,8 @@ function addThread(e) {
         year = new Date().getFullYear(),
         month = getMonthName(new Date().getMonth()),
         day = new Date().getDate(),
-        update = `${month} ${day}, ${year}`;
+        update = `${month} ${day}, ${year}`,
+        snippet = e.currentTarget.querySelector('#description').value ? e.currentTarget.querySelector('#description').value : '';
 
         let partners = document.querySelectorAll('.partner select');
         let partnerObjects = [];
@@ -354,7 +356,8 @@ function addThread(e) {
         'ICDate': icDate,
         'Partner': partner,
         'Type': type,
-        'LastUpdated': update
+        'LastUpdated': update,
+        'Snippet': snippet
     }, null, threadDeploy, e);
 }
 function populateThreads(array, siteObject) {
@@ -387,7 +390,8 @@ function populateThreads(array, siteObject) {
                             array[i].Type.toLowerCase(),
                             array[i].LastUpdated.toLowerCase(),
                             getDelay(array[i].LastUpdated),
-                            siteObject.Directory);
+                            siteObject.Directory,
+                            array[i].Snippet);
     }
     document.querySelector('#tracker--rows').insertAdjacentHTML('beforeend', html);
 
@@ -397,7 +401,7 @@ function populateThreads(array, siteObject) {
 
     //Append filters
     characters.forEach(character => {
-        document.querySelector('.tracker--characters').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${character.split(' ')[0]}"/>${character.split(' ')[0]}</label>`);
+        document.querySelector('.tracker--characters').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${character.split(' ')[0].toLowerCase()}"/>${character.split(' ')[0].toLowerCase()}</label>`);
     });
     partners.forEach(partner => {
         document.querySelector('.tracker--partners').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".partner--${partner.split('#')[0].replaceAll(' ', '').toLowerCase().trim()}"/>${partner.split('#')[0]}</label>`);
@@ -972,7 +976,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
         }
     }
 
-    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters}">
+    return `<div class="${data.Character.split(' ')[0].toLowerCase()} lux-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters}">
         <div class="character">
             <div class="character--image">
                 <img src="${data.Image}" />
