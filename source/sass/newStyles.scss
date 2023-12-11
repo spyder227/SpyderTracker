@@ -661,19 +661,56 @@ section {
         align-content: start;
         height: 100%;
         padding: 15px 0;
+
+        @include mq-up(sm) {
+            grid-template-columns: repeat(1, 30px);
+        }
         
-        button {
+        button,
+        .icon {
             width: 30px;
             height: 30px;
             background: var(--bg-content);
             border-radius: 2px;
             color: var(--text-body);
             border: none;
-            cursor: pointer;
+        }
 
-            &:hover {
-                color: var(--character-text);
+        .icon {
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-family: 'Font Awesome 6 Pro';
+                font-weight: 700;
+                color: var(--text-secondary);
             }
+            .type--comm &::before {
+                content: '\f3cd';
+            }
+            .type--social &::before {
+                content: '\f390';
+            }
+            .type--thread &::before {
+                content: '\f02d';
+            }
+            .type--oneshot &::before {
+                content: '\f8c4';
+            }
+            .type--event &::before {
+                content: '\f783';
+            }
+        }
+        
+        button {
+            cursor: pointer;
 
             &[data-status="mine"] {
                 background: var(--character-bg);

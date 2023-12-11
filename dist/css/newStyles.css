@@ -608,16 +608,53 @@ section form {
             align-content: start;
     height: 100%;
     padding: 15px 0; }
-    .thread--buttons button {
+    @media (min-width: 769px) {
+      .thread--buttons {
+        -ms-grid-columns: (30px)[1];
+        grid-template-columns: repeat(1, 30px); } }
+    .thread--buttons button,
+    .thread--buttons .icon {
       width: 30px;
       height: 30px;
       background: var(--bg-content);
       border-radius: 2px;
       color: var(--text-body);
-      border: none;
+      border: none; }
+    .thread--buttons .icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      text-align: center;
+      font-family: 'Font Awesome 6 Pro';
+      font-weight: 700;
+      color: var(--text-secondary); }
+    .type--comm .thread--buttons .icon::before {
+      content: '\f3cd'; }
+    .type--social .thread--buttons .icon::before {
+      content: '\f390'; }
+    .type--thread .thread--buttons .icon::before {
+      content: '\f02d'; }
+    .type--oneshot .thread--buttons .icon::before {
+      content: '\f8c4'; }
+    .type--event .thread--buttons .icon::before {
+      content: '\f783'; }
+    .thread--buttons button {
       cursor: pointer; }
-      .thread--buttons button:hover {
-        color: var(--character-text); }
       .thread--buttons button[data-status="mine"] {
         background: var(--character-bg);
         color: var(--bg-content); }
