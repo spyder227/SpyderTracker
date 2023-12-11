@@ -169,8 +169,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
             partnerClasses += ` `;
         }
         partners += `<a href="${siteURL}/${directoryString}${partner.id.toLowerCase().trim()}">${partner.partner.toLowerCase().trim()}</a>`;
-        partnerClasses += `partner--${partner.partner.toLowerCase().trim().replaceAll(' ', '').toLowerCase().trim()}`;
-        if(partnerObjects.length !== (i + 1)) {
+        partnerClasses += `partner--${partner.partner.toLowerCase().trim().replaceAll(' ', '')}`;
             partnerClasses += ` `;
             if(partnerObjects.length !== 2) {
                 partners += `,`;
@@ -180,16 +179,24 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
 
     //set featured characters
     let featuring = ``;
+    let ftClasses = ``;
     let ftObjects = feature.split('+').map(character => JSON.parse(character));
     ftObjects.forEach((character, i) => {
         if(ftObjects.length === (i + 1) && ftObjects.length !== 1) {
             featuring += ` and `;
         } else if(i !== 0) {
             featuring += ` `;
+            ftClasses += ` `;
         }
         featuring += `<a href="${siteURL}/?showuser=${character.id.toLowerCase().trim()}">${character.character.toLowerCase().trim()}</a>`;
-        if(ftObjects.length !== (i + 1) && ftObjects.length !== 2) {
-            featuring += `,`;
+        let characterNameArray = character.character.toLowerCase().trim().split(' ');
+        let characterNameClass = characterNameArray.length > 1 ? `${characterNameArray[0]}-${characterNameArray[1][0]}` : characterNameArray[0];
+        ftClasses += `featured--${characterNameClass}`;
+        if(ftObjects.length !== (i + 1)) {
+            ftClasses += ` `;
+            if(ftObjects.length !== 2) {
+                featuring += `,`;
+            }
         }
     });
     let buttons = ``;
@@ -202,7 +209,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
     } else {
         buttons = `<div class="icon" title="${type}"></div>`;
     }
-    let html = `<div class="thread spy-track grid-item status--${status} ${character.split(' ')[0].toLowerCase()} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} grid-item">
+    let html = `<div class="thread lux-track grid-item status--${status} ${character.split(' ')[0].toLowerCase()} delay--${delayClass} type--${type.split(' ')[0]} ${partnerClasses} ${ftClasses} grid-item">
         <div class="thread--wrap">
             <div class="thread--main">
                 <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
@@ -364,12 +371,13 @@ function addThread(e) {
 }
 function populateThreads(array, siteObject) {
     let html = ``;
-    let characters = [], partners = [];
+    let characters = [], partners = [], featuring = [];
 
     for (let i = 0; i < array.length; i++) {
         //Make Character Array
         let character = array[i].Character.toLowerCase();
         let partnerObjects = array[i].Partner.split('+').map(partner => JSON.parse(partner));
+        let featureObjects = array[i].Featuring.split('+').map(featured => JSON.parse(featured));
 
         if(jQuery.inArray(character, characters) == -1 && character != '') {
             characters.push(character);
@@ -377,6 +385,11 @@ function populateThreads(array, siteObject) {
         partnerObjects.forEach(partner => {
             if(jQuery.inArray(partner.partner, partners) == -1 && partner.partner != '') {
                 partners.push(partner.partner);
+            }
+        });
+        featureObjects.forEach(featured => {
+            if(jQuery.inArray(featured.character, featuring) == -1 && featured.character != '') {
+                featuring.push(featured.character);
             }
         });
 
@@ -400,13 +413,20 @@ function populateThreads(array, siteObject) {
     //sort appendable filters
     characters.sort();
     partners.sort();
+    featuring.sort();
 
     //Append filters
     characters.forEach(character => {
-        document.querySelector('.tracker--characters').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${character.split(' ')[0].toLowerCase()}"/>${character.split(' ')[0].toLowerCase()}</label>`);
+        document.querySelector('.tracker--characters').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${character.split(' ')[0].toLowerCase()}"/>${character.split(' ')[0].toLowerCase()} ${character.split(' ')[1][0].toLowerCase()}.</label>`);
     });
     partners.forEach(partner => {
-        document.querySelector('.tracker--partners').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".partner--${partner.split('#')[0].replaceAll(' ', '').toLowerCase().trim()}"/>${partner.split('#')[0]}</label>`);
+        document.querySelector('.tracker--partners').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".partner--${partner.replaceAll(' ', '').toLowerCase().trim()}"/>${partner}</label>`);
+    });
+    featuring.forEach(featured => {
+        let featuredArray = featured.toLowerCase().trim().split(' ');
+        let featuredClass = featuredArray.length > 1 ? `${featuredArray[0]}-${featuredArray[1][0]}` : featuredArray[0];
+        let featuredName = featuredArray.length > 1 ? `${featuredArray[0]} ${featuredArray[1][0]}.` : featuredArray[0];
+        document.querySelector('.tracker--featuring').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".featured--${featuredClass}"/>${featuredName}</label>`);
     });
 }
 function debounce(fn, threshold) {
