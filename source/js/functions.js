@@ -170,6 +170,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
         }
         partners += `<a href="${siteURL}/${directoryString}${partner.id.toLowerCase().trim()}">${partner.partner.toLowerCase().trim()}</a>`;
         partnerClasses += `partner--${partner.partner.toLowerCase().trim().replaceAll(' ', '')}`;
+        if(partnerObjects.length !== (i + 1)) {
             partnerClasses += ` `;
             if(partnerObjects.length !== 2) {
                 partners += `,`;
@@ -229,7 +230,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
     </div>`;
 
     return html;
-}
+
 function sendAjax(data, thread, deployId, form = null, complete = null) {
     console.log('send ajax');
     $.ajax({
