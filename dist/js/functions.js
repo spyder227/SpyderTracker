@@ -426,7 +426,7 @@ function populateThreads(array, siteObject) {
         let featuredArray = featured.toLowerCase().trim().split(' ');
         let featuredClass = featuredArray.length > 1 ? `${featuredArray[0]}-${featuredArray[1][0]}` : featuredArray[0];
         let featuredName = featuredArray.length > 1 ? `${featuredArray[0]} ${featuredArray[1][0]}.` : featuredArray[0];
-        document.querySelector('.tracker--featuring').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".featured--${featuredClass}"/>${featuredName}</label>`);
+        document.querySelector('.tracker--featuring').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".featured--${featuredClass}"/>${featuredName}</label>`);    
     });
 }
 function debounce(fn, threshold) {
