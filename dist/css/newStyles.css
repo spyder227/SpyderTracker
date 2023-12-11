@@ -556,6 +556,20 @@ section form {
       @media only screen and (min-width: 1920px) {
         .thread--main .thread--title {
           font-size: 26px; } }
+    .thread--main p {
+      font-style: italic;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      line-height: 160%;
+      text-align: justify;
+      border-radius: 2px;
+      background: var(--bg-content);
+      padding: 10px;
+      display: block;
+      width: 100%;
+      text-transform: lowercase;
+      font-weight: normal;
+      margin: 5px 0; }
     .status--mine .thread--main::before {
       background: var(--character-bg); }
   .thread--info {
@@ -571,7 +585,8 @@ section form {
     font-size: 10px;
     letter-spacing: 0.1em;
     font-weight: 600;
-    line-height: 160%; }
+    line-height: 160%;
+    padding: 0 5px; }
     .thread--info a {
       color: var(--character-text); }
     .thread--info + .thread--info {
@@ -587,7 +602,12 @@ section form {
     -webkit-box-pack: end;
     -webkit-justify-content: end;
         -ms-flex-pack: end;
-            justify-content: end; }
+            justify-content: end;
+    -webkit-align-content: start;
+        -ms-flex-line-pack: start;
+            align-content: start;
+    height: 100%;
+    padding: 15px 0; }
     .thread--buttons button {
       width: 30px;
       height: 30px;

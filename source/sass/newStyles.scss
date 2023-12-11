@@ -610,6 +610,22 @@ section {
             font-weight: bold;
         }
 
+        p {
+            font-style: italic;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            line-height: 160%;
+            text-align: justify;
+            border-radius: 2px;
+            background: var(--bg-content);
+            padding: 10px;
+            display: block;
+            width: 100%;
+            text-transform: lowercase;
+            font-weight: normal;
+            margin: 5px 0;
+        }
+
         .status--mine & {
             &::before {
                 background: var(--character-bg);
@@ -625,6 +641,7 @@ section {
         letter-spacing: 0.1em;
         font-weight: 600;
         line-height: 160%;
+        padding: 0 5px;
 
         a {
             color: var(--character-text);
@@ -641,6 +658,9 @@ section {
         grid-template-columns: repeat(3, 30px);
         gap: 5px;
         justify-content: end;
+        align-content: start;
+        height: 100%;
+        padding: 15px 0;
         
         button {
             width: 30px;
