@@ -986,6 +986,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
                 <div class="character--info">
                     <div>${data.Gender}</div>
                     <div>${data.Pronouns}</div>
+                    <div>${data.Species}</div>
                     <div><span class="age">${ageNum}</span> years old</div>
                     <div>${data.Face}</div>
                 </div>
