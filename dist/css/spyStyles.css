@@ -672,7 +672,7 @@ section form {
       .thread--buttons button:hover {
         background: var(--character-bg);
         border-radius: 5px;
-        color: var(--ltgrey); }
+        color: var(--xlgrey); }
       .thread--buttons button .fa-regular {
         display: block; }
       .thread--buttons button .fa-spinner {
@@ -681,7 +681,7 @@ section form {
       .thread--buttons button.is-updating .fa-spinner {
         display: block; }
         .thread--buttons button.is-updating .fa-spinner:hover {
-          color: var(--ltgrey); }
+          color: var(--xlgrey); }
       .thread--buttons button.is-updating .fa-regular {
         display: none; }
 

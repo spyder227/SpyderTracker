@@ -738,7 +738,7 @@ section {
             &:hover {
                 background: var(--character-bg);
                 border-radius:5px;
-                color: var(--ltgrey);
+                color: var(--xlgrey);
             }
 
             cursor: pointer;
@@ -756,7 +756,7 @@ section {
                     display: block;
 
                     &:hover {
-                        color: var(--ltgrey);
+                        color: var(--xlgrey);
                     }
                 }
                 .fa-regular {
