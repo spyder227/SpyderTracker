@@ -215,7 +215,7 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
             <div class="thread--main">
                 <a href="${siteURL}/?showtopic=${threadID}&view=getnewpost" target="_blank" class="thread--title">${title}</a>
                 <div class="thread--info">
-                    <span>Writing as <a class="thread--character" href="${siteURL}/?showuser=${character.split('#')[1]}">${character.split('#')[0]}</a></span>
+                    <span class="thread--writingas">Writing as <a class="thread--character" href="${siteURL}/?showuser=${character.split('#')[1]}">${character.split('#')[0]}</a></span>
                     <span class="thread--feature">ft. ${featuring}</span>
                     <span class="thread--partners">Writing with ${partners}</span>
                 </div>

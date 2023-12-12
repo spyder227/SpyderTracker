@@ -2,6 +2,7 @@
 
 :root {
     --white: rgb(245, 245, 245);
+    --white-transparent: rgb(245, 245, 245, 0.3);
     --offwhite: rgb(235,235,235);
     --xlgrey: rgb(225, 225, 225);
     --ltgrey: rgb(210, 210, 210);
@@ -397,8 +398,7 @@ section {
 /** All Tracking **/
 .tracker {
     &--header {
-        position: fixed;
-        width:100%;
+        position: sticky;
         background: var(--bg-menu);
         border-bottom: 1px solid var(--border-main);
         display: flex;
@@ -442,8 +442,8 @@ section {
     }
     &--filters {
         position:fixed;
+        margin-top:-1px;
         width:100%;
-        margin-top:48px;
         display: flex;
         flex-wrap: wrap;
         padding: 10px;
@@ -545,7 +545,7 @@ section {
             }
 
             .tracker--filter-group {
-                max-height: 295px;
+                max-height: 300px;
                 overflow: auto;
                 scrollbar-color: var(--accent) transparent;
                 scrollbar-width: thin;
@@ -563,7 +563,7 @@ section {
         max-width: 900px;
         margin: 0 auto;
         position:relative;
-        top:110px;
+        top:60px;
 
         .grid-item {
             width: 100%;
@@ -580,13 +580,19 @@ section {
 
 
 /** Thread Lists **/
+
 .thread {
-    margin-top: 0;
+
+    margin-top: 0px;
 
     &--wrap {
         display: grid;
-        grid-template-columns: 2;
+        grid-template-columns: auto 100px;
         gap: 5px 30px;
+
+        .status--mine & {
+            background: var(--character-bg-transparent);
+        }
     
         @include mq-up(sm) {
             grid-template-columns: auto 100px;
@@ -631,11 +637,17 @@ section {
             text-transform: none;
             font-weight: normal;
             margin: 5px 0;
+
+            .status--mine & {
+                background: var(--white-transparent);
+            }
         }
 
         .status--mine & {
             &::before {
                 background: var(--character-bg);
+                height:103%;
+                margin-top:-2px;
             }
         }
     }
@@ -668,6 +680,7 @@ section {
         align-content: start;
         height: 100%;
         padding: 15px 0;
+        padding-right:10px;
 
         @include mq-up(sm) {
             grid-template-columns: repeat(1, 30px);
@@ -681,6 +694,10 @@ section {
             border-radius: 2px;
             color: var(--text-body);
             border: none;
+
+            .status--mine & {
+                background: transparent;
+            }
         }
 
         .icon {
@@ -719,14 +736,6 @@ section {
         button {
             cursor: pointer;
 
-            &[data-status="mine"] {
-                background: var(--character-bg);
-                color: var(--bg-content);
-                .fa-spinner {
-                    color: var(--bg-content);
-                }
-            }
-
             .fa-regular {
                 display: block;
             }
@@ -749,7 +758,7 @@ section {
 
 
 /** Character Lists **/
-.character {
+.characters {
     display: grid;
     grid-template-columns: auto;
     gap: 5px 30px;
