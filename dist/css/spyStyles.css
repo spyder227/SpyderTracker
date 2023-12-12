@@ -413,7 +413,7 @@ section form {
   z-index: 99; }
 
 .tracker--filter {
-  width: 175px; }
+  width: 185px; }
   .tracker--filter hr {
     border: 0;
     border-top: 1px solid var(--border-main); }
