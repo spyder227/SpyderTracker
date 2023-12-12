@@ -445,7 +445,6 @@ section {
         margin-top:-1px;
         width:100%;
         display: flex;
-        flex-wrap: wrap;
         padding: 10px;
         justify-content: center;
         gap: 10px;
@@ -758,7 +757,7 @@ section {
 
 
 /** Character Lists **/
-.characters {
+.character {
     display: grid;
     grid-template-columns: auto;
     gap: 5px 30px;

@@ -398,9 +398,9 @@ section form {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
   padding: 10px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -410,6 +410,12 @@ section form {
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-secondary);
   z-index: 99; }
+  @media screen and (max-width: 630px) {
+    .tracker--filters {
+      margin-top: 78px; } }
+  @media screen and (max-width: 375px) {
+    .tracker--filters {
+      margin-top: 100px; } }
 
 .tracker--filter {
   width: 175px; }
@@ -513,6 +519,12 @@ section form {
   margin: 0 auto;
   position: relative;
   top: 110px; }
+  @media screen and (max-width: 630px) {
+    .tracker--content {
+      top: 150px; } }
+  @media screen and (max-width: 375px) {
+    .tracker--content {
+      top: 180px; } }
   .tracker--content .grid-item {
     width: 100%;
     margin-bottom: 10px;

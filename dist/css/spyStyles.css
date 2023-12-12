@@ -399,9 +399,6 @@ section form {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
   padding: 10px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -683,35 +680,35 @@ section form {
         display: none; }
 
 /** Character Lists **/
-.characters {
+.character {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto;
   grid-template-columns: auto;
   gap: 5px 30px; }
   @media (min-width: 769px) {
-    .characters {
+    .character {
       -ms-grid-columns: 100px auto 125px;
       grid-template-columns: 100px auto 125px;
       -webkit-box-align: center;
       -webkit-align-items: center;
           -ms-flex-align: center;
               align-items: center; } }
-  .characters--image {
+  .character--image {
     border-left: 10px solid var(--character-bg);
     width: 100px;
     padding-left: 10px;
     height: 80px; }
     @media (max-width: 768px) {
-      .characters--image {
+      .character--image {
         display: none; } }
-    .characters--image img {
+    .character--image img {
       width: 80px;
       height: 80px;
       border-radius: 2px;
       -o-object-fit: cover;
          object-fit: cover; }
-  .characters--main .name {
+  .character--main .name {
     font-family: var(--font-accent);
     text-transform: lowercase;
     color: var(--text-secondary);
@@ -719,12 +716,12 @@ section form {
     letter-spacing: -0.05em;
     line-height: 160%; }
     @media only screen and (min-width: 480px) {
-      .characters--main .name {
+      .character--main .name {
         font-size: calc(18px + 8 * (100vw - 480px) / (1920 - 480)); } }
     @media only screen and (min-width: 1920px) {
-      .characters--main .name {
+      .character--main .name {
         font-size: 26px; } }
-  .characters--main p {
+  .character--main p {
     font-style: italic;
     font-size: 11px;
     letter-spacing: 0.05em;
@@ -735,10 +732,10 @@ section form {
     background: var(--bg-content);
     border-radius: 2px; }
     @media (min-width: 769px) {
-      .characters--main p {
+      .character--main p {
         padding: 0;
         background: transparent; } }
-  .characters--info {
+  .character--info {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -752,7 +749,7 @@ section form {
     letter-spacing: 0.1em;
     font-weight: 600;
     line-height: 160%; }
-  .characters--links {
+  .character--links {
     background: var(--bg-content);
     border-radius: 2px;
     padding: 10px;
@@ -766,8 +763,8 @@ section form {
     line-height: 100%;
     gap: 10px;
     text-align: left; }
-    .characters--links button,
-    .characters--links a {
+    .character--links button,
+    .character--links a {
       max-width: -webkit-max-content;
       max-width: -moz-max-content;
       max-width: max-content;
@@ -775,14 +772,14 @@ section form {
       text-transform: uppercase;
       font-size: 10px;
       font-weight: 700; }
-    .characters--links button {
+    .character--links button {
       background: none;
       border: 0;
       padding: 0;
       margin: 0;
       cursor: pointer; }
     @media (min-width: 769px) {
-      .characters--links {
+      .character--links {
         -ms-grid-columns: 80px auto 125px;
         grid-template-columns: 80px auto 125px;
         -webkit-box-orient: vertical;
@@ -790,7 +787,7 @@ section form {
         -webkit-flex-direction: column;
             -ms-flex-direction: column;
                 flex-direction: column; } }
-  .characters--modal {
+  .character--modal {
     display: none;
     position: fixed;
     top: 0;
@@ -800,7 +797,7 @@ section form {
     background: var(--bg-body);
     z-index: 100;
     padding: 30px; }
-    .characters--modal > strong {
+    .character--modal > strong {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -822,30 +819,30 @@ section form {
       margin-bottom: 30px;
       color: var(--character-text); }
       @media only screen and (min-width: 480px) {
-        .characters--modal > strong {
+        .character--modal > strong {
           font-size: calc(36px + 14 * (100vw - 480px) / (1920 - 480)); } }
       @media only screen and (min-width: 1920px) {
-        .characters--modal > strong {
+        .character--modal > strong {
           font-size: 50px; } }
-    .characters--modal > .scroll {
+    .character--modal > .scroll {
       overflow: auto;
       padding-right: 30px;
       scrollbar-color: var(--accent) transparent;
       scrollbar-width: thin;
       height: calc(100vh - 150px); }
-      .characters--modal > .scroll .character--app {
+      .character--modal > .scroll .character--app {
         display: -ms-grid;
         display: grid;
         gap: 10px;
         max-width: 900px;
         margin: 0 auto; }
         @media (min-width: 769px) {
-          .characters--modal > .scroll .character--app {
+          .character--modal > .scroll .character--app {
             -ms-grid-columns: (1fr)[2];
             grid-template-columns: repeat(2, 1fr); } }
-    .characters--modal.is-open {
+    .character--modal.is-open {
       display: initial; }
-    .characters--modal-close {
+    .character--modal-close {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -858,7 +855,7 @@ section form {
       background: none;
       border: 0;
       cursor: pointer; }
-      .characters--modal-close::before, .characters--modal-close::after {
+      .character--modal-close::before, .character--modal-close::after {
         content: '';
         position: absolute;
         top: 0;
@@ -868,16 +865,16 @@ section form {
         z-index: -1;
         -webkit-transition-duration: 0.3s;
                 transition-duration: 0.3s; }
-      .characters--modal-close:hover::before, .characters--modal-close:hover::after {
+      .character--modal-close:hover::before, .character--modal-close:hover::after {
         width: calc(100% - 2px);
         background: var(--character-bg-transparent); }
-      .characters--modal-close::before {
+      .character--modal-close::before {
         left: 0;
         border-right: 0; }
-      .characters--modal-close::after {
+      .character--modal-close::after {
         right: 0;
         border-left: 0; }
-  .characters--profile-item {
+  .character--profile-item {
     background: var(--bg-content);
     border-radius: 2px;
     display: -webkit-box;
@@ -892,19 +889,19 @@ section form {
     gap: 5px;
     font-size: 14px;
     padding: 30px; }
-    .characters--profile-item > strong {
+    .character--profile-item > strong {
       text-transform: lowercase;
       font-family: var(--font-accent);
       font-size: 18px;
       letter-spacing: -0.05em;
       color: var(--character-text); }
       @media only screen and (min-width: 480px) {
-        .characters--profile-item > strong {
+        .character--profile-item > strong {
           font-size: calc(18px + 12 * (100vw - 480px) / (1920 - 480)); } }
       @media only screen and (min-width: 1920px) {
-        .characters--profile-item > strong {
+        .character--profile-item > strong {
           font-size: 30px; } }
-    .characters--profile-item > .scroll {
+    .character--profile-item > .scroll {
       overflow: auto;
       padding-right: 30px;
       scrollbar-color: var(--character-text) transparent;
@@ -912,17 +909,17 @@ section form {
       max-height: 300px;
       line-height: 200%;
       text-align: justify; }
-      .characters--profile-item > .scroll ul br {
+      .character--profile-item > .scroll ul br {
         display: none; }
-      .characters--profile-item > .scroll ul + br,
-      .characters--profile-item > .scroll h1 + br,
-      .characters--profile-item > .scroll h2 + br,
-      .characters--profile-item > .scroll h3 + br,
-      .characters--profile-item > .scroll h4 + br,
-      .characters--profile-item > .scroll h5 + br,
-      .characters--profile-item > .scroll h6 + br,
-      .characters--profile-item > .scroll h7 + br,
-      .characters--profile-item > .scroll h8 + br {
+      .character--profile-item > .scroll ul + br,
+      .character--profile-item > .scroll h1 + br,
+      .character--profile-item > .scroll h2 + br,
+      .character--profile-item > .scroll h3 + br,
+      .character--profile-item > .scroll h4 + br,
+      .character--profile-item > .scroll h5 + br,
+      .character--profile-item > .scroll h6 + br,
+      .character--profile-item > .scroll h7 + br,
+      .character--profile-item > .scroll h8 + br {
         display: none; }
 
 body.modal-open {
