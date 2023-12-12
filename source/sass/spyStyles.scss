@@ -457,12 +457,17 @@ section {
             flex-wrap:wrap;
         }
 
-        @media screen and (max-width:375px) {
+        @media screen and (max-width:415px) {
             flex-wrap:wrap;
         }
     }
     &--filter {
         width: 185px;
+
+        @media screen and (max-width:415px) {
+            width:140px;
+            font-size:0.3em;
+        }
 
         hr {
             border: 0;
@@ -616,9 +621,9 @@ section {
             top:100px;
         }
 
-        @media screen and (max-width:415px) {
+        @media screen and (max-width:315px) {
             position:relative;
-            top:300px;
+            top:260px;
         }
     }
 

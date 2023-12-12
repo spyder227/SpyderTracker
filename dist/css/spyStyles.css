@@ -414,7 +414,7 @@ section form {
       -webkit-flex-wrap: wrap;
           -ms-flex-wrap: wrap;
               flex-wrap: wrap; } }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 415px) {
     .tracker--filters {
       -webkit-flex-wrap: wrap;
           -ms-flex-wrap: wrap;
@@ -422,6 +422,10 @@ section form {
 
 .tracker--filter {
   width: 185px; }
+  @media screen and (max-width: 415px) {
+    .tracker--filter {
+      width: 140px;
+      font-size: 0.3em; } }
   .tracker--filter hr {
     border: 0;
     border-top: 1px solid var(--border-main); }
@@ -556,10 +560,10 @@ section form {
       .thread--wrap {
         position: relative;
         top: 100px; } }
-    @media screen and (max-width: 415px) {
+    @media screen and (max-width: 315px) {
       .thread--wrap {
         position: relative;
-        top: 300px; } }
+        top: 260px; } }
   .thread--main {
     padding: 10px 0 10px 25px; }
     .thread--main::before {
