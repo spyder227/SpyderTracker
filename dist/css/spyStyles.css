@@ -669,6 +669,10 @@ section form {
       content: '\f783'; }
     .thread--buttons button {
       cursor: pointer; }
+      .thread--buttons button:hover {
+        background: var(--character-bg);
+        border-radius: 5px;
+        color: var(--ltgrey); }
       .thread--buttons button .fa-regular {
         display: block; }
       .thread--buttons button .fa-spinner {
@@ -676,6 +680,8 @@ section form {
         color: var(--character-text); }
       .thread--buttons button.is-updating .fa-spinner {
         display: block; }
+        .thread--buttons button.is-updating .fa-spinner:hover {
+          color: var(--ltgrey); }
       .thread--buttons button.is-updating .fa-regular {
         display: none; }
 

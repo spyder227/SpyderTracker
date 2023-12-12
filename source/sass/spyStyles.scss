@@ -700,6 +700,7 @@ section {
         }
 
         .icon {
+
             &::before {
                 content: '';
                 position: absolute;
@@ -733,6 +734,13 @@ section {
         }
         
         button {
+
+            &:hover {
+                background: var(--character-bg);
+                border-radius:5px;
+                color: var(--ltgrey);
+            }
+
             cursor: pointer;
 
             .fa-regular {
@@ -746,6 +754,10 @@ section {
             &.is-updating {
                 .fa-spinner {
                     display: block;
+
+                    &:hover {
+                        color: var(--ltgrey);
+                    }
                 }
                 .fa-regular {
                     display: none;

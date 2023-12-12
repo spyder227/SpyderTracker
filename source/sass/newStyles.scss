@@ -596,6 +596,7 @@ section {
 
 
 /** Thread Lists **/
+
 .thread {
     margin-top: 0;
 
@@ -691,6 +692,7 @@ section {
         
         button,
         .icon {
+
             width: 30px;
             height: 30px;
             background: var(--bg-content);
@@ -731,13 +733,15 @@ section {
                 content: '\f783';
             }
         }
-        
+
         button {
+
             cursor: pointer;
 
             &[data-status="mine"] {
                 background: var(--character-bg);
                 color: var(--bg-content);
+
                 .fa-spinner {
                     color: var(--bg-content);
                 }
