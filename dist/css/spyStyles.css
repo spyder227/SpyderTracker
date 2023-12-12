@@ -387,7 +387,8 @@ section form {
     font-weight: 600;
     border: 0;
     border-radius: 2px;
-    cursor: pointer; }
+    cursor: pointer;
+    margin: 2px; }
     .tracker--header button:hover {
       background: var(--bg-accent-alt); }
 
@@ -408,6 +409,16 @@ section form {
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-secondary);
   z-index: 99; }
+  @media screen and (max-width: 630px) {
+    .tracker--filters {
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap; } }
+  @media screen and (max-width: 375px) {
+    .tracker--filters {
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap; } }
 
 .tracker--filter {
   width: 185px; }
@@ -518,6 +529,9 @@ section form {
     .tracker--content .grid-item:not(:last-child) {
       border-bottom: 1px solid var(--border-main);
       padding-bottom: 10px; }
+      @media screen and (max-width: 630px) {
+        .tracker--content .grid-item:not(:last-child) {
+          border: 0px; } }
 
 /** Thread Lists **/
 .thread {
@@ -538,6 +552,14 @@ section form {
         -webkit-align-items: center;
             -ms-flex-align: center;
                 align-items: center; } }
+    @media screen and (max-width: 630px) {
+      .thread--wrap {
+        position: relative;
+        top: 100px; } }
+    @media screen and (max-width: 415px) {
+      .thread--wrap {
+        position: relative;
+        top: 300px; } }
   .thread--main {
     padding: 10px 0 10px 25px; }
     .thread--main::before {
