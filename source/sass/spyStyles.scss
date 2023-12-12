@@ -468,6 +468,10 @@ section {
             width:140px;
             font-size:0.3em;
         }
+        
+        @media screen and (max-width:330px) {
+            width:100px;
+        }
 
         hr {
             border: 0;
@@ -482,6 +486,10 @@ section {
             align-items: center;
             font-weight: 600;
             cursor: pointer;
+
+            @media screen and (max-width:330px) {
+                font-size:1.8em;
+            }
 
             &:not(:last-child) {
                 margin-bottom: 5px;
@@ -498,6 +506,10 @@ section {
                 border-radius: 2px;
                 background: var(--bg-menu);
                 border: 1px solid var(--border-main);
+
+                @media screen and (max-width:330px) {
+                    display:none;
+                }
             }
 
             &.is-checked {
@@ -521,6 +533,10 @@ section {
             font-weight: 600;
             cursor: pointer;
 
+            @media screen and (max-width:330px) {
+                font-size:1.8em;
+            }
+
             &::after {
                 content: '\f0d7';
                 font-family: 'Font Awesome 6 Pro';
@@ -529,6 +545,7 @@ section {
                 top: 50%;
                 right: 10px;
                 transform: translateY(-50%);
+
             }
 
             &.is-open {
@@ -564,6 +581,7 @@ section {
                 scrollbar-width: thin;
                 padding-right: 10px;
             }
+
         }
 
         &-group {
@@ -619,11 +637,6 @@ section {
         @media screen and (max-width:630px) {
             position:relative;
             top:100px;
-        }
-
-        @media screen and (max-width:315px) {
-            position:relative;
-            top:260px;
         }
     }
 

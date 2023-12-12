@@ -426,6 +426,9 @@ section form {
     .tracker--filter {
       width: 140px;
       font-size: 0.3em; } }
+  @media screen and (max-width: 330px) {
+    .tracker--filter {
+      width: 100px; } }
   .tracker--filter hr {
     border: 0;
     border-top: 1px solid var(--border-main); }
@@ -443,6 +446,9 @@ section form {
             align-items: center;
     font-weight: 600;
     cursor: pointer; }
+    @media screen and (max-width: 330px) {
+      .tracker--filter label {
+        font-size: 1.8em; } }
     .tracker--filter label:not(:last-child) {
       margin-bottom: 5px; }
     .tracker--filter label input {
@@ -454,6 +460,9 @@ section form {
       border-radius: 2px;
       background: var(--bg-menu);
       border: 1px solid var(--border-main); }
+      @media screen and (max-width: 330px) {
+        .tracker--filter label::before {
+          display: none; } }
     .tracker--filter label.is-checked::before {
       background: var(--bg-accent); }
   .tracker--filter button {
@@ -475,6 +484,9 @@ section form {
     font-size: 12px;
     font-weight: 600;
     cursor: pointer; }
+    @media screen and (max-width: 330px) {
+      .tracker--filter button {
+        font-size: 1.8em; } }
     .tracker--filter button::after {
       content: '\f0d7';
       font-family: 'Font Awesome 6 Pro';
@@ -560,10 +572,6 @@ section form {
       .thread--wrap {
         position: relative;
         top: 100px; } }
-    @media screen and (max-width: 315px) {
-      .thread--wrap {
-        position: relative;
-        top: 260px; } }
   .thread--main {
     padding: 10px 0 10px 25px; }
     .thread--main::before {
