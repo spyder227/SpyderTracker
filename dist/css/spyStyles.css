@@ -116,7 +116,6 @@ nav {
         display: -ms-flexbox;
         display: flex; }
       nav > ul li > ul > li:first-child {
-        border-top: 1px solid var(--text-on-accent);
         padding-top: 5px; }
       nav > ul li > ul > li a {
         display: block;
