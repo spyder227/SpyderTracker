@@ -982,6 +982,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
             || title === 'Cheatsheet'
             || title === 'Freeform'
             || title === 'Relationships'
+            || title === 'Questionnaire'
             || title === 'Summary'
             || title === 'Shipper') {
                 //If so, use this template

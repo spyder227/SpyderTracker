@@ -144,6 +144,16 @@
             </div>
             
             
+            
+                <div class="tracker--filter">
+    <button onClick="openFilters(this)">Partner</button>
+    <div class="tracker--filter-dropdown">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterPartner">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+        </div>
+    </div>
+</div>
+            
         </div>
         <div class="tracker--content">
             <div id="tracker--rows" class="tracker--threads"></div>
@@ -162,7 +172,7 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "";
+        let filters = "FilterPartner";
         console.log(filters.split(', '));
 
         fetch(`https://opensheet.elk.sh/${characterSheet}/Corson Forever`)
