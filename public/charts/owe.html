@@ -2,11 +2,11 @@
 <html>
     <head>
         
-<title>Spy | Godly Behaviour</title>
+<title>Spy | OWE Charts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
-<link rel="stylesheet" href="../../dist/css/spyStyles.css" />
+<link rel="stylesheet" href="../../dist/css/newStyles.css" />
 <link rel="stylesheet" href="https://spyder227.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
@@ -79,6 +79,41 @@
         </li>
     </ul>
 </nav>
-        <section>Site Page</section>
+        <section class="tracker charts">
+    <div class="chart">
+        <b>Last Reply</b>
+        <div class="chart--time chart--box"></div>
+    </div>
+    <div class="chart">
+        <b>Status</b>
+        <div class="chart--status chart--box"></div>
+    </div>
+    <div class="chart">
+        <b>Type</b>
+        <div class="chart--type chart--box"></div>
+    </div>
+    <div class="chart">
+        <b>Partners</b>
+        <div class="chart--partner chart--box"></div>
+    </div>
+
+    <script src="../../dist/js/charts.js"></script>
+    <script>
+        //set overall variables
+        let siteName = 'Once We Were';
+
+        //set class variables
+        let $container = $('#tracker--rows');
+
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+        .then((response) => response.json())
+        .then((threadData) => {
+            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
+            let threads = loadThreads(siteThreads);
+
+            loadCharts(threads);
+        });
+    </script>
+</section>
     </body>
 </html>
