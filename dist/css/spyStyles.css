@@ -559,6 +559,8 @@ section form {
     gap: 5px 30px; }
     .status--mine .thread--wrap {
       background: var(--character-bg-transparent); }
+    .status--start .thread--wrap {
+      background: var(--character-bg-transparent); }
     @media (min-width: 769px) {
       .thread--wrap {
         -ms-grid-columns: auto 100px;
@@ -611,7 +613,13 @@ section form {
       margin: 5px 0; }
       .status--mine .thread--main p {
         background: var(--white-transparent); }
+      .status--start .thread--main p {
+        background: var(--white-transparent); }
     .status--mine .thread--main::before {
+      background: var(--character-bg);
+      height: 103%;
+      margin-top: -2px; }
+    .status--start .thread--main::before {
       background: var(--character-bg);
       height: 103%;
       margin-top: -2px; }
@@ -665,6 +673,9 @@ section form {
       color: var(--text-body);
       border: none; }
       .status--mine .thread--buttons button, .status--mine
+      .thread--buttons .icon {
+        background: transparent; }
+      .status--start .thread--buttons button, .status--start
       .thread--buttons .icon {
         background: transparent; }
     .thread--buttons .icon::before {

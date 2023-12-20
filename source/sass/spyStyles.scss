@@ -627,6 +627,11 @@ section {
         .status--mine & {
             background: var(--character-bg-transparent);
         }
+
+        .status--start & {
+            background: var(--character-bg-transparent);
+        }
+    
     
         @include mq-up(sm) {
             grid-template-columns: auto 100px;
@@ -680,9 +685,21 @@ section {
             .status--mine & {
                 background: var(--white-transparent);
             }
+
+            .status--start & {
+                background: var(--white-transparent);
+            }
         }
 
         .status--mine & {
+            &::before {
+                background: var(--character-bg);
+                height:103%;
+                margin-top:-2px;
+            }
+        }
+
+        .status--start & {
             &::before {
                 background: var(--character-bg);
                 height:103%;
@@ -735,6 +752,10 @@ section {
             border: none;
 
             .status--mine & {
+                background: transparent;
+            }
+
+            .status--start & {
                 background: transparent;
             }
         }
