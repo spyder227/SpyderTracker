@@ -152,6 +152,22 @@
         </div>
     </div>
 </div>
+<div class="tracker--filter">
+    <button onClick="openFilters(this)">Blood Status</button>
+    <div class="tracker--filter-dropdown">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterBloodStatus">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+        </div>
+    </div>
+</div>
+<div class="tracker--filter">
+    <button onClick="openFilters(this)">Abilities</button>
+    <div class="tracker--filter-dropdown">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterAbility">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+        </div>
+    </div>
+</div>
             
         </div>
         <div class="tracker--content">
@@ -171,7 +187,7 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterShippedWith";
+        let filters = "FilterShippedWith, FilterBloodStatus, FilterAbility";
         console.log(filters.split(', '));
 
         fetch(`https://opensheet.elk.sh/${characterSheet}/Turn On The Light`)
