@@ -2,7 +2,7 @@
 <html>
     <head>
         
-<title>Spy | Godly Behaviour Characters</title>
+<title>Spy | TOTL Characters</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
@@ -31,7 +31,7 @@
 
 <!--Scripts-->
 <script type='text/javascript' src='../../dist/js/functions.js'></script>
-        <link rel="stylesheet" href="../../dist/css/totlCharacters.css" />
+        <link rel="stylesheet" href="../../dist/css/gbCharacters.css" />
     </head>
     <body>
         <nav>
@@ -55,10 +55,27 @@
             </ul>
         </li>
         <li>
+            <a href="../../public/sites/owe.html">Once We Were</a>
+            <ul>
+                <li><a href="../../public/tracking/owe.html">Threads</a></li>
+                <li><a href="../../public/charts/owe.html">Charts</a></li>
+                <li><a href="../../public/characters/owe.html">Characters</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../../public/sites/totl.html">Turn On The Light</a>
+            <ul>
+                <li><a href="../../public/tracking/totl.html">Threads</a></li>
+                <li><a href="../../public/charts/totl.html">Charts</a></li>
+                <li><a href="../../public/characters/totl.html">Characters</a></li>
+            </ul>
+        </li>
+        <li>
             <a href="../../public/sites/rtn.html">Remember The Name</a>
             <ul>
                 <li><a href="../../public/tracking/rtn.html">Threads</a></li>
                 <li><a href="../../public/charts/rtn.html">Charts</a></li>
+                <li><a href="../../public/characters/rtn.html">Characters</a></li>
             </ul>
         </li>
         <li>
@@ -66,6 +83,7 @@
             <ul>
                 <li><a href="../../public/tracking/corson.html">Threads</a></li>
                 <li><a href="../../public/charts/corson.html">Charts</a></li>
+                <li><a href="../../public/characters/corson.html">Characters</a></li>
             </ul>
         </li>
     </ul>
@@ -123,6 +141,8 @@
                 </div>
             </div>
             
+            
+            
         </div>
         <div class="tracker--content">
             <div id="tracker--rows" class="tracker--threads"></div>
@@ -141,14 +161,14 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterShippedWith, FilterBloodStatus";
+        let filters = "FilterShippedWith";
         console.log(filters.split(', '));
 
-        fetch(`https://opensheet.elk.sh/${characterSheet}/TOTL`)
+        fetch(`https://opensheet.elk.sh/${characterSheet}/Turn On The Light`)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            populateCharacters(data, filters = filters.split(', '), 'https://totl.jcink.net/');
+            populateCharacters(data, filters = filters.split(', '), 'https://totl.jcink.net');
 
         }).then(() => {
             //initialize isotope

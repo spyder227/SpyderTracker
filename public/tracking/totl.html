@@ -2,12 +2,12 @@
 <html>
     <head>
         
-<title>Lux | TOTL Threads</title>
+<title>Spy | TOTL Threads</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
-<link rel="stylesheet" href="../../dist/css/newStyles.css" />
-<link rel="stylesheet" href="https://luxacious11.github.io/dist/css/characters.css" />
+<link rel="stylesheet" href="../../dist/css/spyStyles.css" />
+<link rel="stylesheet" href="https://spyder227.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,21 +54,35 @@
             </ul>
         </li>
         <li>
-            <a href="../../public/sites/legends.html">Legends</a>
+            <a href="../../public/sites/owe.html">Once We Were</a>
             <ul>
-                <li><a href="../../public/tracking/legends.html">Threads</a></li>
-                <li><a href="../../public/tracking/legends-archived.html">Archived Threads</a></li>
-                <li><a href="../../public/charts/legends.html">Charts</a></li>
-                <li><a href="../../public/characters/legends.html">Characters</a></li>
+                <li><a href="../../public/tracking/owe.html">Threads</a></li>
+                <li><a href="../../public/charts/owe.html">Charts</a></li>
+                <li><a href="../../public/characters/owe.html">Characters</a></li>
             </ul>
         </li>
         <li>
-            <a href="../../public/sites/totl.html">Turn on the Light</a>
+            <a href="../../public/sites/totl.html">Turn On The Light</a>
             <ul>
                 <li><a href="../../public/tracking/totl.html">Threads</a></li>
-                <li><a href="../../public/tracking/totl-archived.html">Archived Threads</a></li>
                 <li><a href="../../public/charts/totl.html">Charts</a></li>
                 <li><a href="../../public/characters/totl.html">Characters</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../../public/sites/rtn.html">Remember The Name</a>
+            <ul>
+                <li><a href="../../public/tracking/rtn.html">Threads</a></li>
+                <li><a href="../../public/charts/rtn.html">Charts</a></li>
+                <li><a href="../../public/characters/rtn.html">Characters</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="../../public/sites/corson.html">Corson Forever</a>
+            <ul>
+                <li><a href="../../public/tracking/corson.html">Threads</a></li>
+                <li><a href="../../public/charts/corson.html">Charts</a></li>
+                <li><a href="../../public/characters/corson.html">Characters</a></li>
             </ul>
         </li>
     </ul>
@@ -89,7 +103,7 @@
             <div class="tracker--filter">
                 <button onClick="openFilters(this)">Character</button>
                 <div class="tracker--filter-dropdown">
-                    <div class="tracker--filter-group claim--labels tracker--characters" data-filter-group="charater">
+                    <div class="tracker--filter-group claim--labels tracker--characters" data-filter-group="character">
                         <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
                     </div>
                 </div>
@@ -103,6 +117,14 @@
                 </div>
             </div>
             <div class="tracker--filter">
+                <button onClick="openFilters(this)">Featuring</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels tracker--featuring" data-filter-group="featuring">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
                 <button onClick="openFilters(this)">Last Reply</button>
                 <div class="tracker--filter-dropdown">
                     <div class="tracker--filter-group claim--labels" data-filter-group="lastreply">
@@ -110,8 +132,8 @@
                         <label><input type="checkbox" value=".delay--okay">less than a week</label>
                         <label><input type="checkbox" value=".delay--week">more than a week</label>
                         <label><input type="checkbox" value=".delay--month">more than a month</label>
-                        <label><input type="checkbox" value=".delay--quarter">more than three months</label>
-                        <label><input type="checkbox" value=".delay--half">more than six months</label>
+                        <label><input type="checkbox" value=".delay--quarter">more than 3 months</label>
+                        <label><input type="checkbox" value=".delay--half">more than 6 months</label>
                         <label><input type="checkbox" value=".delay--year">more than a year</label>
                     </div>
                 </div>
@@ -137,7 +159,7 @@
                         <label><input type="checkbox" value=".type--thread">thread</label>
                         <label><input type="checkbox" value=".type--comm">comm</label>
                         <label><input type="checkbox" value=".type--social">social media</label>
-                        <label><input type="checkbox" value=".type--one-shot">one-shot</label>
+                        <label><input type="checkbox" value=".type--event">event</label>
                     </div>
                 </div>
             </div>
@@ -148,7 +170,7 @@
     </div>
     <script>
         //set overall variables
-        let siteName = 'Turn on the Light';
+        let siteName = 'Turn On The Light';
         const typeSearch = `#quicksearch`;
         const blockTitle = `.thread--title`;
         const visible = `is-visible`;

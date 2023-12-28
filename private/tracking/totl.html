@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../../source/templates/head.html', {
+            "prefix": "../../dist",
+            "siteTitle": "Spy | TOTL Threads",
+            "stylesheetName": "spyStyles.css"
+        })
+    </head>
+    <body>
+        @@include('../../source/templates/nav.html', {
+            "prefix": "../.."
+        })
+        @@include('../../source/templates/threads.html', {
+            "sitename": "Turn On The Light"
+        })
+
+        <!--Scripts-->
+        @@include('../../source/templates/bottomScripts.html', {
+            "prefix": "../../dist"
+        })
+    </body>
+</html>
