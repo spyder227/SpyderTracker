@@ -92,6 +92,7 @@ nav {
         padding: 0;
 
         li {
+
             & > ul {
                 display: none;
                 flex-direction: column;
