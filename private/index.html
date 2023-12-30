@@ -6,27 +6,30 @@
             "siteTitle": "Spy | Site Tracker",
             "stylesheetName": "newStyles.css"
         })
+        <script src="../dist/js/minicharts.js"></script>
     </head>
     <body>
         @@include('../source/templates/nav.html', {
             "prefix": ".."
         })
         <section class="tracker charts">
-                <div class="chart">
+                <div class="chart gb-charts">
                     <b>Godly Behaviour</b>
                     <div class="chart--status chart--box">
                         @@include('../../spydertracker/source/templates/minicharts.html', {
                             "prefix": "../../dist",
-                            "sitename": "Godly Behaviour"
+                            "sitename": "Godly Behaviour",
+                            "selector": ".gb-charts"
                         })
                     </div>
                 </div>
-                <div class="chart">
+                <div class="chart oww-charts">
                     <b>Once We Were</b>
                     <div class="chart--status chart--box">
                         @@include('../../spydertracker/source/templates/minicharts.html', {
                             "prefix": "../../dist",
-                            "sitename": "Once We Were"
+                            "sitename": "Once We Were",
+                            "selector": ".oww-charts"
                         })
                     </div>
                 </div>

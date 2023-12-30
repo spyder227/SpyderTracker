@@ -31,6 +31,7 @@
 
 <!--Scripts-->
 <script type='text/javascript' src='../dist/js/functions.js'></script>
+        <script src="../dist/js/minicharts.js"></script>
     </head>
     <body>
         <nav>
@@ -88,52 +89,36 @@
     </ul>
 </nav>
         <section class="tracker charts">
-                <div class="chart">
+                <div class="chart gb-charts">
                     <b>Godly Behaviour</b>
                     <div class="chart--status chart--box">
-                        <section class="tracker charts">
-    <script src="/dist/js/minicharts.js"></script>
-    <script>
-        //set overall variables
-        let siteName = 'Godly Behaviour';
+                        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Godly Behaviour'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
 
-        //set class variables
-        let $container = $('#tracker--rows');
-
-        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
-        .then((response) => response.json())
-        .then((threadData) => {
-            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
-            let threads = loadThreads(siteThreads);
-
-            loadCharts(threads);
-        });
-    </script>
-</section>
+        loadCharts(threads, '.gb-charts');
+    });
+</script>
                     </div>
                 </div>
-                <div class="chart">
+                <div class="chart oww-charts">
                     <b>Once We Were</b>
                     <div class="chart--status chart--box">
-                        <section class="tracker charts">
-    <script src="/dist/js/minicharts.js"></script>
-    <script>
-        //set overall variables
-        let siteName = 'Once We Were';
+                        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Once We Were'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
 
-        //set class variables
-        let $container = $('#tracker--rows');
-
-        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
-        .then((response) => response.json())
-        .then((threadData) => {
-            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
-            let threads = loadThreads(siteThreads);
-
-            loadCharts(threads);
-        });
-    </script>
-</section>
+        loadCharts(threads, '.oww-charts');
+    });
+</script>
                     </div>
                 </div>
                 <div class="chart">

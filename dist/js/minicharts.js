@@ -12,12 +12,12 @@ function loadThreads(data) {
     return threads;
 }
 
-function loadCharts(threads) {
-    let statusChart = new ApexCharts(document.querySelector(".chart--status"), configStatus(threads));
+function loadCharts(threads, selector) {
+    let statusChart = new ApexCharts(document.querySelector(`${selector} .chart--status`), configStatus(threads));
     statusChart.render();
 
     window.addEventListener('resize', () => {
-        let statusChart = new ApexCharts(document.querySelector(".chart--status"), configStatus(threads));
+        let statusChart = new ApexCharts(document.querySelector(`${selector} .chart--status`), configStatus(threads));
         statusChart.render();
     });
 }

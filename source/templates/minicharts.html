@@ -1,19 +1,11 @@
-<section class="tracker charts">
-    <script src="/dist/js/minicharts.js"></script>
-    <script>
-        //set overall variables
-        let siteName = '@@sitename';
+<script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === '@@sitename'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
 
-        //set class variables
-        let $container = $('#tracker--rows');
-
-        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
-        .then((response) => response.json())
-        .then((threadData) => {
-            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
-            let threads = loadThreads(siteThreads);
-
-            loadCharts(threads);
-        });
-    </script>
-</section>
+        loadCharts(threads, '@@selector');
+    });
+</script>
