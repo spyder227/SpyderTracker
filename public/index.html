@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
-<link rel="stylesheet" href="../dist/css/newStyles.css" />
+<link rel="stylesheet" href="../dist/css/spyStyles.css" />
 <link rel="stylesheet" href="https://spyder227.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
@@ -88,11 +88,7 @@
         </li>
     </ul>
 </nav>
-        <section class="tracker charts">
-                <div class="chart gb-charts">
-                    <b>Godly Behaviour</b>
-                    <div class="chart--status chart--box">
-                        <script>
+        <script>
     fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
     .then((response) => response.json())
     .then((threadData) => {
@@ -103,12 +99,7 @@
         loadCharts(threads, '.gb-charts');
     });
 </script>
-                    </div>
-                </div>
-                <div class="chart oww-charts">
-                    <b>Once We Were</b>
-                    <div class="chart--status chart--box">
-                        <script>
+        <script>
     fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
     .then((response) => response.json())
     .then((threadData) => {
@@ -116,20 +107,62 @@
         let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Once We Were'.toLowerCase().trim());
         let threads = loadThreads(siteThreads);
 
-        loadCharts(threads, '.oww-charts');
+        loadCharts(threads, '.owe-charts');
     });
 </script>
+        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Turn On The Light'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
+
+        loadCharts(threads, '.totl-charts');
+    });
+</script>
+        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Remember The Name'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
+
+        loadCharts(threads, '.rtn-charts');
+    });
+</script>
+        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Corson Forever'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
+
+        loadCharts(threads, '.corson-charts');
+    });
+</script>
+        <section class="tracker charts">
+                <div class="chart gb-charts">
+                    <b>Godly Behaviour</b>
+                    <div class="chart--status chart--box">
                     </div>
                 </div>
-                <div class="chart">
+                <div class="chart owe-charts">
+                    <b>Once We Were</b>
+                    <div class="chart--status chart--box">
+                    </div>
+                </div>
+                <div class="chart totl-charts">
                     <b>Turn On The Light</b>
                     <div class="chart--status chart--box"></div>
                 </div>
-                <div class="chart">
+                <div class="chart rtn-charts">
                     <b>Remember The Name</b>
                     <div class="chart--status chart--box"></div>
                 </div>
-                <div class="chart">
+                <div class="chart corson-charts">
                     <b>Corson Forever</b>
                     <div class="chart--status chart--box"></div>
                 </div>

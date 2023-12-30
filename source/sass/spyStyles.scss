@@ -358,7 +358,7 @@ section {
     grid-template-columns: 100%;
 
     @include mq-up(lg) {
-        grid-template-columns: repeat(2, calc(50% - (30px / 2)));
+        grid-template-columns: repeat(3, calc(33% - (30px / 2)));
     }
 
     .chart {

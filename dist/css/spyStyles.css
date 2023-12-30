@@ -316,8 +316,8 @@ section form {
   grid-template-columns: 100%; }
   @media (min-width: 1281px) {
     .charts {
-      -ms-grid-columns: (calc(50% - (30px / 2)))[2];
-      grid-template-columns: repeat(2, calc(50% - (30px / 2))); } }
+      -ms-grid-columns: (calc(33% - (30px / 2)))[3];
+      grid-template-columns: repeat(3, calc(33% - (30px / 2))); } }
   .charts .chart {
     max-width: 100%;
     width: 100%;

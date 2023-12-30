@@ -4,7 +4,7 @@
         @@include('../source/templates/head.html', {
             "prefix": "../dist",
             "siteTitle": "Spy | Site Tracker",
-            "stylesheetName": "newStyles.css"
+            "stylesheetName": "spyStyles.css"
         })
         <script src="../dist/js/minicharts.js"></script>
     </head>
@@ -12,36 +12,51 @@
         @@include('../source/templates/nav.html', {
             "prefix": ".."
         })
+        @@include('../../spydertracker/source/templates/minicharts.html', {
+            "prefix": "../../dist",
+            "sitename": "Godly Behaviour",
+            "selector": ".gb-charts"
+        })
+        @@include('../../spydertracker/source/templates/minicharts.html', {
+            "prefix": "../../dist",
+            "sitename": "Once We Were",
+            "selector": ".owe-charts"
+        })
+        @@include('../../spydertracker/source/templates/minicharts.html', {
+            "prefix": "../../dist",
+            "sitename": "Turn On The Light",
+            "selector": ".totl-charts"
+        })
+        @@include('../../spydertracker/source/templates/minicharts.html', {
+            "prefix": "../../dist",
+            "sitename": "Remember The Name",
+            "selector": ".rtn-charts"
+        })
+        @@include('../../spydertracker/source/templates/minicharts.html', {
+            "prefix": "../../dist",
+            "sitename": "Corson Forever",
+            "selector": ".corson-charts"
+        })
         <section class="tracker charts">
                 <div class="chart gb-charts">
                     <b>Godly Behaviour</b>
                     <div class="chart--status chart--box">
-                        @@include('../../spydertracker/source/templates/minicharts.html', {
-                            "prefix": "../../dist",
-                            "sitename": "Godly Behaviour",
-                            "selector": ".gb-charts"
-                        })
                     </div>
                 </div>
-                <div class="chart oww-charts">
+                <div class="chart owe-charts">
                     <b>Once We Were</b>
                     <div class="chart--status chart--box">
-                        @@include('../../spydertracker/source/templates/minicharts.html', {
-                            "prefix": "../../dist",
-                            "sitename": "Once We Were",
-                            "selector": ".oww-charts"
-                        })
                     </div>
                 </div>
-                <div class="chart">
+                <div class="chart totl-charts">
                     <b>Turn On The Light</b>
                     <div class="chart--status chart--box"></div>
                 </div>
-                <div class="chart">
+                <div class="chart rtn-charts">
                     <b>Remember The Name</b>
                     <div class="chart--status chart--box"></div>
                 </div>
-                <div class="chart">
+                <div class="chart corson-charts">
                     <b>Corson Forever</b>
                     <div class="chart--status chart--box"></div>
                 </div>
