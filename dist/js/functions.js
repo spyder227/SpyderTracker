@@ -925,9 +925,12 @@ function formatCharacter(data, characterFilters, baseUrl) {
         && item !== 'BirthYear'
         && item !== 'BirthDay'
         && item !== 'Weight'
+        && item !== 'BloodStatus'
         && !item.includes('Filter')
         && data[item] !== `<i>No Information</i>`
-        && !(item === 'YearsDead' && data[item] === '0')) {
+        && !(item === 'YearsDead' && data[item] === '0')) 
+
+        {
 
             //if not, assign title and content (field name and field content)
             let title = item;
@@ -970,8 +973,6 @@ function formatCharacter(data, characterFilters, baseUrl) {
                 title = 'Romantic Orientation';
             } else if (title === 'YearsDead') {
                 title = 'Years Dead';
-            } else if (title === 'BloodStatus') {
-                title = 'Blood Status';
             } else if (title === 'ImportantPeople') {
                 title = 'Important People';
             }
