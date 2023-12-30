@@ -3,13 +3,45 @@
     <head>
         @@include('../source/templates/head.html', {
             "prefix": "../dist",
-            "siteTitle": "Spy | Site Tracker"
+            "siteTitle": "Spy | Site Tracker",
+            "stylesheetName": "newStyles.css"
         })
     </head>
     <body>
         @@include('../source/templates/nav.html', {
             "prefix": ".."
         })
-        <section>Index content</section>
+        <section class="tracker charts">
+                <div class="chart">
+                    <b>Godly Behaviour</b>
+                    <div class="chart--status chart--box">
+                        @@include('../../spydertracker/source/templates/minicharts.html', {
+                            "prefix": "../../dist",
+                            "sitename": "Godly Behaviour"
+                        })
+                    </div>
+                </div>
+                <div class="chart">
+                    <b>Once We Were</b>
+                    <div class="chart--status chart--box">
+                        @@include('../../spydertracker/source/templates/minicharts.html', {
+                            "prefix": "../../dist",
+                            "sitename": "Once We Were"
+                        })
+                    </div>
+                </div>
+                <div class="chart">
+                    <b>Turn On The Light</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+                <div class="chart">
+                    <b>Remember The Name</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+                <div class="chart">
+                    <b>Corson Forever</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+        </section>
     </body>
 </html>

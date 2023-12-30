@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
-<link rel="stylesheet" href="../dist/css/@@stylesheetName" />
+<link rel="stylesheet" href="../dist/css/newStyles.css" />
 <link rel="stylesheet" href="https://spyder227.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
@@ -87,6 +87,67 @@
         </li>
     </ul>
 </nav>
-        <section>Index content</section>
+        <section class="tracker charts">
+                <div class="chart">
+                    <b>Godly Behaviour</b>
+                    <div class="chart--status chart--box">
+                        <section class="tracker charts">
+    <script src="C:\Users\ricka\Desktop\Coding\SpyderTracker\source\js\minicharts.js"></script>
+    <script>
+        //set overall variables
+        let siteName = 'Godly Behaviour';
+
+        //set class variables
+        let $container = $('#tracker--rows');
+
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+        .then((response) => response.json())
+        .then((threadData) => {
+            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
+            let threads = loadThreads(siteThreads);
+
+            loadCharts(threads);
+        });
+    </script>
+</section>
+                    </div>
+                </div>
+                <div class="chart">
+                    <b>Once We Were</b>
+                    <div class="chart--status chart--box">
+                        <section class="tracker charts">
+    <script src="C:\Users\ricka\Desktop\Coding\SpyderTracker\source\js\minicharts.js"></script>
+    <script>
+        //set overall variables
+        let siteName = 'Once We Were';
+
+        //set class variables
+        let $container = $('#tracker--rows');
+
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+        .then((response) => response.json())
+        .then((threadData) => {
+            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
+            let threads = loadThreads(siteThreads);
+
+            loadCharts(threads);
+        });
+    </script>
+</section>
+                    </div>
+                </div>
+                <div class="chart">
+                    <b>Turn On The Light</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+                <div class="chart">
+                    <b>Remember The Name</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+                <div class="chart">
+                    <b>Corson Forever</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+        </section>
     </body>
 </html>

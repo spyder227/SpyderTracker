@@ -1,0 +1,19 @@
+<section class="tracker charts">
+    <script src="C:\Users\ricka\Desktop\Coding\SpyderTracker\source\js\minicharts.js"></script>
+    <script>
+        //set overall variables
+        let siteName = '@@sitename';
+
+        //set class variables
+        let $container = $('#tracker--rows');
+
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+        .then((response) => response.json())
+        .then((threadData) => {
+            let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim());
+            let threads = loadThreads(siteThreads);
+
+            loadCharts(threads);
+        });
+    </script>
+</section>
