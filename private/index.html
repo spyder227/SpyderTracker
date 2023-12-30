@@ -37,6 +37,10 @@
             "sitename": "Corson Forever",
             "selector": ".corson-charts"
         })
+        @@include('../../spydertracker/source/templates/total.html', {
+            "prefix": "../../dist",
+            "selector": ".total-charts"
+        })
         <section class="tracker charts">
                 <div class="chart gb-charts">
                     <b>Godly Behaviour</b>
@@ -58,6 +62,10 @@
                 </div>
                 <div class="chart corson-charts">
                     <b>Corson Forever</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+                <div class="chart total-charts">
+                    <b>Total</b>
                     <div class="chart--status chart--box"></div>
                 </div>
         </section>

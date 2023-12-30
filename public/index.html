@@ -143,6 +143,17 @@
         loadCharts(threads, '.corson-charts');
     });
 </script>
+        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let totalThreads = threadData;
+        let threads = loadThreads(totalThreads);
+
+        loadCharts(threads, '.total-charts');
+    });
+</script>
         <section class="tracker charts">
                 <div class="chart gb-charts">
                     <b>Godly Behaviour</b>
@@ -164,6 +175,10 @@
                 </div>
                 <div class="chart corson-charts">
                     <b>Corson Forever</b>
+                    <div class="chart--status chart--box"></div>
+                </div>
+                <div class="chart total-charts">
+                    <b>Total</b>
                     <div class="chart--status chart--box"></div>
                 </div>
         </section>

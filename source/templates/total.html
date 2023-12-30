@@ -1,0 +1,11 @@
+<script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
+        let totalThreads = threadData;
+        let threads = loadThreads(totalThreads);
+
+        loadCharts(threads, '@@selector');
+    });
+</script>
