@@ -12,6 +12,7 @@
     --accent: rgb(100, 165, 160);
     --dkAccent: rgb(77, 132, 128);
     --accent-30: rgb(100, 165, 160, 0.3);
+    --accent-60: rgb(100, 165, 160, 0.6);
 
     --bg-body: var(--offwhite);
     --bg-content: var(--white);
@@ -1072,4 +1073,26 @@ section {
 }
 body.modal-open {
     overflow: hidden;
+}
+
+.site--box {
+    width:80%;
+    margin:40px;
+}
+
+.site--links {
+    width:100%;
+    padding:30px;
+    text-align:center;
+    font-size:40px;
+    background:var(--accent);
+    color:var(--text-on-accent);
+    border-radius:10px;
+    letter-spacing:2px;
+    margin:10px;
+}
+
+.site--links:hover {
+    background:var(--accent-60);
+    letter-spacing:5px;
 }
