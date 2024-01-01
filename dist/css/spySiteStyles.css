@@ -320,8 +320,8 @@ section form {
   grid-template-columns: 100%; }
   @media (min-width: 1281px) {
     .charts {
-      -ms-grid-columns: (calc(33% - (30px / 2)))[3];
-      grid-template-columns: repeat(3, calc(33% - (30px / 2))); } }
+      -ms-grid-columns: (calc(50% - (45px / 2)))[1];
+      grid-template-columns: repeat(1, calc(50% - (45px / 2))); } }
   .charts .chart {
     max-width: 100%;
     width: 100%;
@@ -342,6 +342,7 @@ section form {
       text-transform: lowercase;
       font-weight: 700;
       color: var(--text-accent);
+      text-align: center;
       letter-spacing: -0.075em; }
       @media (min-width: 769px) {
         .charts .chart b {

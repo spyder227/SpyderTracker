@@ -106,6 +106,9 @@ nav {
                 background: var(--bg-accent);
                 flex-wrap: wrap;
                 gap: 5px;
+                border-bottom-left-radius:5px;
+                border-bottom-right-radius:5px;
+                border-bottom: 3px solid var(--dkAccent);
 
                 &:hover {
                     display: flex;
@@ -1090,9 +1093,11 @@ body.modal-open {
     border-radius:10px;
     letter-spacing:2px;
     margin:10px;
+    transition-duration:0.2s;
 }
 
 .site--links:hover {
     background:var(--accent-60);
-    letter-spacing:5px;
+    letter-spacing:6px;
+    transition-duration:0.2s;
 }
