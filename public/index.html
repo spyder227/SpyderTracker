@@ -79,17 +79,9 @@
             </ul>
         </li>
         <li>
-            <a href="../public/sites/corson.html">Corson Forever</a>
-            <ul>
-                <li><a href="../public/tracking/corson.html">Threads</a></li>
-                <li><a href="../public/charts/corson.html">Charts</a></li>
-                <li><a href="../public/characters/corson.html">Characters</a></li>
-            </ul>
-        </li>
-        <li>
             <a href="../public/index.html">Archives</a>
             <ul>
-                <li><a href="xxx">Will Go Here</a></li>
+                <li><a href="../public/sites/corson.html">Corson Forever</a></li>
             </ul>
         </li>
     </ul>
@@ -143,18 +135,7 @@
     .then((response) => response.json())
     .then((threadData) => {
         console.log(threadData);
-        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Corson Forever'.toLowerCase().trim());
-        let threads = loadThreads(siteThreads);
-
-        loadCharts(threads, '.corson-charts');
-    });
-</script>
-        <script>
-    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
-    .then((response) => response.json())
-    .then((threadData) => {
-        console.log(threadData);
-        let totalThreads = threadData;
+        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'corson forever'.toLowerCase().trim());
         let threads = loadThreads(totalThreads);
 
         loadCharts(threads, '.total-charts');
@@ -177,10 +158,6 @@
                 </div>
                 <div class="chart rtn-charts">
                     <b>Remember The Name</b>
-                    <div class="chart--status chart--box"></div>
-                </div>
-                <div class="chart corson-charts">
-                    <b>Corson Forever</b>
                     <div class="chart--status chart--box"></div>
                 </div>
                 <div class="chart total-charts">
