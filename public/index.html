@@ -55,14 +55,6 @@
             </ul>
         </li>
         <li>
-            <a href="../public/sites/owe.html">Once We Were</a>
-            <ul>
-                <li><a href="../public/tracking/owe.html">Threads</a></li>
-                <li><a href="../public/charts/owe.html">Charts</a></li>
-                <li><a href="../public/characters/owe.html">Characters</a></li>
-            </ul>
-        </li>
-        <li>
             <a href="../public/sites/totl.html">Turn On The Light</a>
             <ul>
                 <li><a href="../public/tracking/totl.html">Threads</a></li>
@@ -82,6 +74,7 @@
             <a href="../public/index.html">Archives</a>
             <ul>
                 <li><a href="../public/sites/corson.html">Corson Forever</a></li>
+                <li><a href="../public/sites/owe.html">Once We Were</a></li>
             </ul>
         </li>
     </ul>
@@ -95,17 +88,6 @@
         let threads = loadThreads(siteThreads);
 
         loadCharts(threads, '.gb-charts');
-    });
-</script>
-        <script>
-    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
-    .then((response) => response.json())
-    .then((threadData) => {
-        console.log(threadData);
-        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Once We Were'.toLowerCase().trim());
-        let threads = loadThreads(siteThreads);
-
-        loadCharts(threads, '.owe-charts');
     });
 </script>
         <script>
@@ -135,7 +117,7 @@
     .then((response) => response.json())
     .then((threadData) => {
         console.log(threadData);
-        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'corson forever'.toLowerCase().trim());
+        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'corson forever'.toLowerCase().trim() );
         let threads = loadThreads(totalThreads);
 
         loadCharts(threads, '.total-charts');
@@ -144,11 +126,6 @@
         <section class="tracker charts">
                 <div class="chart gb-charts">
                     <b>Godly Behaviour</b>
-                    <div class="chart--status chart--box">
-                    </div>
-                </div>
-                <div class="chart owe-charts">
-                    <b>Once We Were</b>
                     <div class="chart--status chart--box">
                     </div>
                 </div>
