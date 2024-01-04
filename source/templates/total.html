@@ -3,9 +3,8 @@
     .then((response) => response.json())
     .then((threadData) => {
         console.log(threadData);
-        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'corson forever'.toLowerCase().trim() );
+        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'corson forever'.toLowerCase().trim() && item.Site.toLowerCase().trim() !== 'once we were'.toLowerCase().trim() );
         let threads = loadThreads(totalThreads);
-
         loadCharts(threads, '@@selector');
     });
 </script>
