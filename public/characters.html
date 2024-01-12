@@ -2,11 +2,11 @@
 <html>
     <head>
         
-<title>Spy | OWE Characters</title>
+<title>Spy | Character Directory</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
-<link rel="stylesheet" href="../../dist/css/newStyles.css" />
+<link rel="stylesheet" href="../dist/css/newStyles.css" />
 <link rel="stylesheet" href="https://spyder227.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
@@ -27,61 +27,61 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <!--Settings-->
-<script type='text/javascript' src='../../dist/js/settings.js'></script>
+<script type='text/javascript' src='../dist/js/settings.js'></script>
 
 <!--Scripts-->
-<script type='text/javascript' src='../../dist/js/functions.js'></script>
-        <link rel="stylesheet" href="../../dist/css/gbCharacters.css" />
+<script type='text/javascript' src='../dist/js/functions.js'></script>
+        <link rel="stylesheet" href="../dist/css/gbCharacters.css" />
     </head>
     <body>
         <nav>
     <ul>
         <li>
-            <a href="../../public/index.html"><i class="fa-solid fa-house" width="30px"></i></a>
+            <a href="../public/index.html"><i class="fa-solid fa-house" width="30px"></i></a>
         </li>
         <li>
-            <a href="../../public/forms/thread.html" class="highlight"><i class="fa-solid fa-plus"></i> Add</a>
+            <a href="../public/forms/thread.html" class="highlight"><i class="fa-solid fa-plus"></i> Add</a>
             <ul>
-                <li><a href="../../public/forms/thread.html">Add a Thread</a></li>
-                <li><a href="../../public/forms/site.html">Add a Site</a></li>
-                <li><a href="../../public/forms/character.html">Add a Character</a></li>
-                <li><a href="../../public/forms/partner.html">Add a Partner</a></li>
+                <li><a href="../public/forms/thread.html">Add a Thread</a></li>
+                <li><a href="../public/forms/site.html">Add a Site</a></li>
+                <li><a href="../public/forms/character.html">Add a Character</a></li>
+                <li><a href="../public/forms/partner.html">Add a Partner</a></li>
             </ul>
         </li>
         <li>
-            <a href="../../public/sites/gb.html">Godly Behaviour</a>
+            <a href="../public/sites/gb.html">Godly Behaviour</a>
             <ul>
-                <li><a href="../../public/tracking/gb.html">Threads</a></li>
-                <li><a href="../../public/tracking/gb-archived.html">Archived Threads</a></li>
-                <li><a href="../../public/charts/gb.html">Charts</a></li>
-                <li><a href="../../public/characters/gb.html">Characters</a></li>
+                <li><a href="../public/tracking/gb.html">Threads</a></li>
+                <li><a href="../public/tracking/gb-archived.html">Archived Threads</a></li>
+                <li><a href="../public/charts/gb.html">Charts</a></li>
+                <li><a href="../public/characters/gb.html">Characters</a></li>
             </ul>
         </li>
         <li>
-            <a href="../../public/sites/totl.html">Turn On The Light</a>
+            <a href="../public/sites/totl.html">Turn On The Light</a>
             <ul>
-                <li><a href="../../public/tracking/totl.html">Threads</a></li>
-                <li><a href="../../public/charts/totl.html">Charts</a></li>
-                <li><a href="../../public/characters/totl.html">Characters</a></li>
+                <li><a href="../public/tracking/totl.html">Threads</a></li>
+                <li><a href="../public/charts/totl.html">Charts</a></li>
+                <li><a href="../public/characters/totl.html">Characters</a></li>
             </ul>
         </li>
         <li>
-            <a href="../../public/sites/rtn.html">Remember The Name</a>
+            <a href="../public/sites/rtn.html">Remember The Name</a>
             <ul>
-                <li><a href="../../public/tracking/rtn.html">Threads</a></li>
-                <li><a href="../../public/charts/rtn.html">Charts</a></li>
-                <li><a href="../../public/characters/rtn.html">Characters</a></li>
+                <li><a href="../public/tracking/rtn.html">Threads</a></li>
+                <li><a href="../public/charts/rtn.html">Charts</a></li>
+                <li><a href="../public/characters/rtn.html">Characters</a></li>
             </ul>
         </li>
         <li>
             <a href="" class="inactive">Archives</a>
             <ul>
-                <li><a href="../../public/sites/corson.html">Corson Forever</a></li>
-                <li><a href="../../public/sites/owe.html">Once We Were</a></li>
+                <li><a href="../public/sites/corson.html">Corson Forever</a></li>
+                <li><a href="../public/sites/owe.html">Once We Were</a></li>
             </ul>
         </li>
         <li>
-            <a href="../../public/characters.html">Character Directory</a>
+            <a href="../public/characters.html">Character Directory</a>
         </li>
     </ul>
 </nav>
@@ -149,6 +149,9 @@
             </div>
             
             
+            
+            
+            
                 <div class="tracker--filter">
     <button onClick="openFilters(this)">Shipped With</button>
     <div class="tracker--filter-dropdown">
@@ -158,24 +161,17 @@
     </div>
 </div>
 <div class="tracker--filter">
-    <button onClick="openFilters(this)">Race</button>
+    <button onClick="openFilters(this)">Sites Played</button>
     <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterRace">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterSitesPlayed">
             <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+            <label><input type="checkbox" value=".sitesPlayed-cf">corson forever</label>
+            <label><input type="checkbox" value=".sitesPlayed-gb">godly behaviour</label>
+            <label><input type="checkbox" value=".sitesPlayed-rtn">remember the name</label>
+            <label><input type="checkbox" value=".sitesPlayed-totl">turn on the light</label>
         </div>
     </div>
 </div>
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Class</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterClass">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-        </div>
-    </div>
-</div>
-            
-            
-            
             
         </div>
         <div class="tracker--content">
@@ -195,14 +191,14 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterRace, FilterClass, FilterShippedWith";
+        let filters = "FilterShippedWith";
         console.log(filters.split(', '));
 
-        fetch(`https://opensheet.elk.sh/${characterSheet}/Once We Were`)
+        fetch(`https://opensheet.elk.sh/${characterSheet}/Directory`)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            populateCharacters(data, filters = filters.split(', '), 'https://owe.jcink.net');
+            populateCharacters(data, filters = filters.split(', '), '@@siteURL');
 
         }).then(() => {
             //initialize isotope

@@ -903,6 +903,11 @@ function formatCharacter(data, characterFilters, baseUrl) {
     if(data.FilterAge) {
         ageFilters = data.FilterAge.split('+').map(item => `age-${item}`).join(' ');
     }
+    
+    let sitesPlayed;
+    if(data.FilterSitesPlayed) {
+        sitesPlayed = data.FilterSitesPlayed.split('+').map(item => `sitesPlayed-${item}`).join(' ');
+    }
 
     let links = ``;
     if(data.Links) {
@@ -1001,7 +1006,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
         }
     }
 
-    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters}">
+    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} shipped-${data.FilterShipped} gender-${data.FilterGender} ${ageFilters} ${sitesPlayed}">
         <div class="character">
             <div class="character--image">
                 <img src="${data.Image}" />

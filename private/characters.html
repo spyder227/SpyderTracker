@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../source/templates/head.html', {
+            "prefix": "../dist",
+            "siteTitle": "Spy | Character Directory",
+            "stylesheetName": "newStyles.css"
+        })
+        <link rel="stylesheet" href="../dist/css/gbCharacters.css" />
+    </head>
+    <body>
+        @@include('../source/templates/nav.html', {
+            "prefix": ".."
+        })
+        @@include('../source/templates/characters.html', {
+            "siteSheet": "Directory",
+            "extraFilters": "FilterShippedWith",
+            "showMortality": "true",
+        })
+    </body>
+</html>
