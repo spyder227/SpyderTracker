@@ -1073,8 +1073,8 @@ function addDirectory(e) {
         genderfilter = e.currentTarget.querySelector('#genderfilter').options[e.currentTarget.querySelector('#genderfilter').selectedIndex].innerText.toLowerCase().trim(),
         agefilter = e.currentTarget.querySelector('#agefilter').options[e.currentTarget.querySelector('#agefilter').selectedIndex].innerText.toLowerCase().trim(),
         shippedfilter = e.currentTarget.querySelector('#shippedfilter').options[e.currentTarget.querySelector('#shippedfilter').selectedIndex].innerText.toLowerCase().trim(),
-        shippedwith = e.currentTarget.querySelector('#shippedwith').value,
-        sitesplayed = e.currentTarget.querySelector('#sitesplayed').value,
+        shippedwith = e.currentTarget.querySelector('#shippedwith').value.toLowerCase().trim();
+        sitesplayed = e.currentTarget.querySelector('#sitesplayed').value.toLowerCase().trim();
         links = e.currentTarget.querySelector('#links').value.toLowerCase().trim();
 
     sendAjax({
