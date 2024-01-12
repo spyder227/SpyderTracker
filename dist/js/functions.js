@@ -1017,7 +1017,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
                     <div>${data.Gender}</div>
                     <div>${data.Pronouns}</div>
                     <div>${data.Species}</div>
-                    <div><span class="age">${ageNum}</span> years old</div>
+                    <div><span class="age">${ageNum}</span>yo (${data.BirthMonth} ${data.BirthDay})</div>
                     <div>${data.Face}</div>
                 </div>
                 ${data.Vibes && data.Vibes !== '' ? `<p>${data.Vibes}</p>` : ''}
