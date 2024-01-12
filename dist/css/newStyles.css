@@ -932,3 +932,6 @@ section form {
 
 body.modal-open {
   overflow: hidden; }
+
+.inactive {
+  opacity: 0.7; }
