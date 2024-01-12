@@ -124,3 +124,14 @@ if(document.querySelectorAll('#partner-count').length > 0) {
         });
     });
 }
+
+// add directory form
+
+let directoryForm = document.querySelector('#add-directory');
+if(directoryForm) {
+    directoryForm.addEventListener('submit', e => {
+        e.preventDefault();
+        e.currentTarget.querySelector('button[type="submit"]').innerText = 'Submitting...';
+        addDirectory(e);
+    });
+}

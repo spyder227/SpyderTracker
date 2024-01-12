@@ -1053,3 +1053,52 @@ function closeModalProfile(e) {
     document.querySelectorAll('.character--modal').forEach(modal => modal.classList.remove('is-open'));
     document.querySelector('body').classList.remove('modal-open');
 }
+
+// add to directory function
+
+function addDirectory(e) {
+    let charname = e.currentTarget.querySelector('#charname').value,
+        nicknames = e.currentTarget.querySelector('#nicknames').value,
+        year = e.currentTarget.querySelector('#year').value,
+        month = e.currentTarget.querySelector('#month').value,
+        day = e.currentTarget.querySelector('#day').value,
+        species = e.currentTarget.querySelector('#species').value,
+        gender = e.currentTarget.querySelector('#gender').value,
+        pronouns = e.currentTarget.querySelector('#pronouns').value,
+        occupation = e.currentTarget.querySelector('#occupation').value,
+        romantic = e.currentTarget.querySelector('#romantic').value,
+        sexual = e.currentTarget.querySelector('#sexual').value,
+        face = e.currentTarget.querySelector('#face').value,
+        image = e.currentTarget.querySelector('#image').value,
+        genderfilter = e.currentTarget.querySelector('#genderfilter').options[e.currentTarget.querySelector('#genderfilter').selectedIndex].innerText.toLowerCase().trim(),
+        agefilter = e.currentTarget.querySelector('#agefilter').options[e.currentTarget.querySelector('#agefilter').selectedIndex].innerText.toLowerCase().trim(),
+        shippedfilter = e.currentTarget.querySelector('#shippedfilter').options[e.currentTarget.querySelector('#shippedfilter').selectedIndex].innerText.toLowerCase().trim(),
+        shippedwith = e.currentTarget.querySelector('#shippedwith').value,
+        sitesplayed = e.currentTarget.querySelector('#sitesplayed').value,
+        links = e.currentTarget.querySelector('#links').value.toLowerCase().trim();
+
+    sendAjax({
+        'SubmissionType': 'new-directory',
+        'Character': charname,
+        'FullName': charname,
+        'Nicknames': nicknames,
+        'BirthMonth': month,
+        'BirthDay': day,
+        'BirthYear': year,
+        'YearAdjustment': 0,
+        'Species': species,
+        'Gender': gender,
+        'Pronouns': pronouns,
+        'Occupation': occupation,
+        'RomanticOrientation': romantic,
+        'SexualOrientation': sexual,
+        'Face': face,
+        'Image': image,
+        'FilterGender': genderfilter,
+        'FilterAge': agefilter,
+        'FilterShipped': shippedfilter,
+        'FilterShippedWith': shippedwith,
+        'FilterSitesPlayed': sitesplayed,
+        'Links': links
+    }, null, directoryDeploy, e);
+}

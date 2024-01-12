@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../../source/templates/head.html', {
+            "prefix": "../../dist",
+            "siteTitle": "Spy | Add To Directory",
+            "stylesheetName": "newStyles.css"
+        })
+    </head>
+    <body>
+        @@include('../../source/templates/nav.html', {
+            "prefix": "../.."
+        })
+        <section>
+            <form id="add-directory">
+                <label class="fullWidth">
+                    <b>Character Name</b>
+                    <input required type="text" id="charname" />
+                </label>
+                <label>
+                    <b>Nicknames</b>
+                    <input required type="text" id="nicknames">
+                </label>
+                <label>
+                    <b>Birth Year</b>
+                    <input required type="text" id="year" />
+                </label>
+                <label>
+                    <b>Birth Month</b>
+                    <input required type="text" id="month" />
+                </label>
+                <label>
+                    <b>Birth Day</b>
+                    <input required type="text" id="day" />
+                </label>
+                <label>
+                    <b>Species</b>
+                    <input required type="text" id="species" />
+                </label>
+                <label>
+                    <b>Gender</b>
+                    <input required type="text" id="gender" />
+                </label>
+                <label>
+                    <b>Pronouns</b>
+                    <input required type="text" id="pronouns" />
+                </label>
+                <label>
+                    <b>Occupation</b>
+                    <input required type="text" id="occupation" />
+                </label>
+                <label>
+                    <b>Romantic Orientation</b>
+                    <input required type="text" id="romantic" />
+                </label>
+                <label>
+                    <b>Sexual Orientation</b>
+                    <input required type="text" id="sexual" />
+                </label>
+                <label>
+                    <b>Face</b>
+                    <input required type="text" id="face" />
+                </label>
+                <label>
+                    <b>Image</b>
+                    <input required type="text" id="image" />
+                </label>
+                <label>
+                    <b>Gender Filter</b>
+                    <select required id="genderfilter">
+                        <option value="">(select)</option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="nonbinary">nonbinary</option>
+                    </select>
+                </label>
+                <label>
+                    <b>Age Filter</b>
+                    <select required id="agefilter">
+                        <option value="">(select)</option>
+                        <option value="under30">Under 30</option>
+                        <option value="30-59">30-59</option>
+                        <option value="60-99">60-99</option>
+                        <option value="100-499">100-499</option>
+                        <option value="500-999">500-999</option>
+                        <option value="1000-1999">1000-1999</option>
+                        <option value="2000-2999">2000-2999</option>
+                        <option value="3000">3000</option>
+                    </select>
+                </label>
+                <label>
+                    <b>Shipped Filter</b>
+                    <select required id="shippedfilter">
+                        <option value="">(select)</option>
+                        <option value="taken">taken</option>
+                        <option value="wanted">wanted</option>
+                        <option value="open">open</option>
+                        <option value="none">not interested</option>
+                    </select>
+                </label>
+                <label>
+                    <b>Shipped With</b>
+                    <input required type="text" id="shippedwith" />
+                </label>
+                <label>
+                    <b>Sites Played On</b>
+                    <input required type="text" id="sitesplayed" />
+                </label>
+                <label>
+                    <b>Links</b>
+                    <input required type="text" id="links" value="{&quot;url&quot;:&quot;here&quot;,&quot;title&quot;:&quot;click&quot;}"/>
+                </label>
+                <button type="submit" class="fullWidth">Submit</button>
+            </form>
+        </section>
+
+        <!--Scripts-->
+        @@include('../../source/templates/bottomScripts.html', {
+            "prefix": "../../dist"
+        })
+    </body>
+</html>
