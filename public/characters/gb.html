@@ -165,6 +165,14 @@
         </div>
     </div>
 </div>
+<div class="tracker--filter">
+    <button onClick="openFilters(this)">Membergroup</button>
+    <div class="tracker--filter-dropdown">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterMembergroup">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+        </div>
+    </div>
+</div>
             
             
             
@@ -188,7 +196,7 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterSpecies, FilterShippedWith";
+        let filters = "FilterSpecies, FilterShippedWith, FilterMembergroup";
         console.log(filters.split(', '));
 
         fetch(`https://opensheet.elk.sh/${characterSheet}/Godly Behaviour`)
