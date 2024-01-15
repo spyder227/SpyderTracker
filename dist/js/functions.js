@@ -1024,7 +1024,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
             </div>
             <div class="character--links">
                 <button onClick="openModalProfile(this)">View More</button>
-                <a href="${baseUrl}?showuser=${data.Account}" target="_blank">Profile</a>
+                <a href="${baseUrl}?showuser=${data.Account}" target="_blank" class="profile--remove">Profile</a>
                 ${links}
             </div>
         </div>
