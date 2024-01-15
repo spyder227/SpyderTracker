@@ -176,16 +176,28 @@
 <div class="tracker--filter">
     <button onClick="openFilters(this)">Residence</button>
     <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterHousing">
+        <div class="tracker--filter-group claim--labels" data-filter-group="housing">
             <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+            <label><input type="checkbox" value=".housing-apartment">apartment</label>
+            <label><input type="checkbox" value=".housing-condo">condo</label>
+            <label><input type="checkbox" value=".housing-rowhouse">rowhouse</label>
+            <label><input type="checkbox" value=".housing-house">house</label>
+            <label><input type="checkbox" value=".housing-farm">farm</label>
+            <label><input type="checkbox" value=".housing-other">other</label>
         </div>
         <hr>
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterResidence">
+        <div class="tracker--filter-group claim--labels" data-filter-group="residence">
                 <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+                <label><input type="checkbox" value=".residence-temperance">Temperance</label>
+                <label><input type="checkbox" value=".residence-sydney">Sydney</label>
+                <label><input type="checkbox" value=".residence-other">other</label>
         </div>
         <hr>
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterOwner">
+        <div class="tracker--filter-group claim--labels" data-filter-group="homeowner">
                 <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+                <label><input type="checkbox" value=".homeowner-own">owns</label>
+                <label><input type="checkbox" value=".homeowner-rent">rents</label>
+                <label><input type="checkbox" value=".homeowner-other">other</label>
         </div>
     </div>
 </div>
@@ -212,7 +224,7 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterSpecies, FilterShippedWith, FilterMembergroup, FilterHousing, FilterOwner, FilterResidence";
+        let filters = "FilterSpecies, FilterShippedWith, FilterMembergroup";
         console.log(filters.split(', '));
 
         fetch(`https://opensheet.elk.sh/${characterSheet}/Godly Behaviour`)
