@@ -1054,13 +1054,6 @@ function closeModalProfile(e) {
     document.querySelector('body').classList.remove('modal-open');
 }
 
-setTimeout(() => {
-const currentPage = window.location.pathname.split('/').pop();
-let removeProfile = document.querySelectorAll('.profile--remove')
-if (currentPage === 'characters.html') {
-    removeProfile.forEach(item => item.remove());
-} }, "150");
-
 // add to directory function
 
 function addDirectory(e) {
