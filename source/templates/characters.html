@@ -109,13 +109,6 @@
             populateCharacters(data, filters = filters.split(', '), '@@siteURL');
 
         }).then(() => {
-
-            const currentPage = window.location.pathname.split('/').pop();
-            let removeProfile = document.querySelectorAll('.profile--remove')
-            if (currentPage === 'directory.html') {
-            removeProfile.forEach(item => item.remove());}
-
-        }).then(() => {
             //initialize isotope
             // quick search regex
             let qsRegex;
@@ -139,6 +132,16 @@
                     ageDesc: false,
                 }
             });
+
+        }).then(() => {
+
+            const currentPage = window.location.pathname.split('/').pop();
+            let removeProfile = document.querySelectorAll('.profile--remove')
+            if (currentPage === 'directory.html') {
+            removeProfile.forEach(item => item.remove());}
+        
+        }).then(() => {
+
             setTimeout(function() {
                 $container.isotope('layout');
             }, 300);
