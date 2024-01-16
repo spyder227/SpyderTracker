@@ -218,7 +218,7 @@
             $container.isotope({
                 itemSelector: gridItem,
                 percentPosition: true,
-                filter: defaultShow,
+                filter: '.active',
                 getSortData: {
                     charAsc: '.name',
                     charDesc: '.name',
@@ -231,13 +231,11 @@
                     ageAsc: true,
                     ageDesc: false,
                 }
-            }).then(() => {
-                setTimeout(function() {
-                    $container.isotope('layout');
-                }, 300);
-                initIsotope();
-                });
-
+            });
+            setTimeout(function() {
+                $container.isotope('layout');
+            }, 300);
+            initIsotope();
         });
     </script>
 </section>
