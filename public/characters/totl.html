@@ -205,7 +205,6 @@
             $container.isotope({
                 itemSelector: gridItem,
                 percentPosition: true,
-                filter: '.active',
                 getSortData: {
                     charAsc: '.name',
                     charDesc: '.name',
@@ -224,7 +223,7 @@
 
             const currentPage = window.location.pathname.split('/').pop();
             let removeProfile = document.querySelectorAll('.profile--remove')
-            if (currentPage === 'characters.html') {
+            if (currentPage === 'directory.html') {
             removeProfile.forEach(item => item.remove());}
         
         }).then(() => {
