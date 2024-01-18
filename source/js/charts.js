@@ -23,6 +23,8 @@ function loadCharts(threads) {
     typeChart.render();
     let partnerChart = new ApexCharts(document.querySelector(".chart--partner"), configPartners(threads));
     partnerChart.render();
+    let owingChart = new ApexCharts(document.querySelector(".chart--owing"), configOwing(threads));
+    owingChart.render();
 
     window.addEventListener('resize', () => {
         let timeChart = new ApexCharts(document.querySelector(".chart--time"), configTime(threads));
@@ -33,6 +35,8 @@ function loadCharts(threads) {
         typeChart.render();
         let partnerChart = new ApexCharts(document.querySelector(".chart--partner"), configPartners(threads));
         partnerChart.render();
+        let owingChart = new ApexCharts(document.querySelector(".chart--owing"), configOwing(threads));
+        owingChart.render();
     });
 }
 
@@ -332,4 +336,68 @@ function configPartners(threads) {
     };
 
     return partnerConfig;
+}
+
+function configOwing(threads) {
+    let owingThreads = threads.filter(thread => thread.status === 'mine' || thread.status === 'start');
+    let threadPartners = owingThreads.map(thread => thread.partners.split('+').map(item => JSON.parse(item)));
+    let partnerNames = [];
+    threadPartners.forEach(thread => {
+        thread.forEach(threadPartner => {
+            partnerNames.push(threadPartner.partner);
+        });
+    });
+
+    let consolidatedPartners = [...new Set(partnerNames)];
+    let partnerCounts = consolidatedPartners.reduce((accumulator, value) => {
+        return { ...accumulator, [value]: 0 };
+    }, {});
+
+    owingThreads.forEach(thread => {
+        let thisPartners = thread.partners.split('+').map(item => JSON.parse(item)).map(item => item.partner);
+        thisPartners.forEach(partner => {
+            partnerCounts[partner]++;
+        });
+    });
+
+    let partners = [], counts = [], final = [];
+    for (const partnerName in partnerCounts) {
+        partners.push(capitalize(partnerName, [`'`, `-`]));
+        counts.push(partnerCounts[partnerName]);
+        final.push({
+            x: capitalize(partnerName, [`'`, `-`]).trim(),
+            y: partnerCounts[partnerName],
+            fillColor: 'var(--accent)',
+        })
+    }
+
+    final.sort((a, b) => {
+        if (a.y > b.y) {
+            return -1;
+        } else if (a.y < b.y) {
+            return 1;
+        } else if (a.x < b.x) {
+            return -1;
+        } else if (a.x > b.x) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+    final = final.filter(item => item.x.toLowerCase() !== 'event group' && item.x.toLowerCase() !== 'staff intervention');
+
+    let owingConfig = {
+        series: [{ data: final }],
+        chart: {
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
+    };
+
+    return owingConfig;
 }

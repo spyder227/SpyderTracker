@@ -335,7 +335,7 @@ section form {
     .charts .chart--box {
       background: var(--bg-content);
       border-radius: 2px;
-      padding: 25px 20px; }
+      padding: 15px 20px; }
     .charts .chart b {
       font-family: var(--font-accent);
       font-size: 18px;
