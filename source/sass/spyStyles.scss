@@ -636,7 +636,30 @@ section {
         .status--start & {
             background: var(--character-bg-transparent);
         }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            background: var(--character-bg-transparent);
+        }
     
+        .status--mine & {
+            &::before {
+                background: var(--character-bg);
+                height:100%;
+            }
+        }
+    
+        .status--start & {
+            &::before {
+                background: var(--character-bg);
+                height:100%;
+            }
+        }
     
         @include mq-up(sm) {
             grid-template-columns: auto 100px;
@@ -651,16 +674,6 @@ section {
 
     &--main {
         padding: 10px 0 10px 25px;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 100%;
-            background: var(--character-bg-transparent);
-        }
 
         .thread--title {
             font-family: var(--font-accent);
@@ -696,21 +709,6 @@ section {
             }
         }
 
-        .status--mine & {
-            &::before {
-                background: var(--character-bg);
-                height:103%;
-                margin-top:-2px;
-            }
-        }
-
-        .status--start & {
-            &::before {
-                background: var(--character-bg);
-                height:103%;
-                margin-top:-2px;
-            }
-        }
     }
     &--info {
         display: flex;

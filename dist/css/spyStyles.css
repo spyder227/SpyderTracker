@@ -565,6 +565,20 @@ section form {
       background: var(--character-bg-transparent); }
     .status--start .thread--wrap {
       background: var(--character-bg-transparent); }
+    .thread--wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 100%;
+      background: var(--character-bg-transparent); }
+    .status--mine .thread--wrap::before {
+      background: var(--character-bg);
+      height: 100%; }
+    .status--start .thread--wrap::before {
+      background: var(--character-bg);
+      height: 100%; }
     @media (min-width: 769px) {
       .thread--wrap {
         -ms-grid-columns: auto 100px;
@@ -579,14 +593,6 @@ section form {
         top: 100px; } }
   .thread--main {
     padding: 10px 0 10px 25px; }
-    .thread--main::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 100%;
-      background: var(--character-bg-transparent); }
     .thread--main .thread--title {
       font-family: var(--font-accent);
       text-transform: lowercase;
@@ -619,14 +625,6 @@ section form {
         background: var(--white-transparent); }
       .status--start .thread--main p {
         background: var(--white-transparent); }
-    .status--mine .thread--main::before {
-      background: var(--character-bg);
-      height: 103%;
-      margin-top: -2px; }
-    .status--start .thread--main::before {
-      background: var(--character-bg);
-      height: 103%;
-      margin-top: -2px; }
   .thread--info {
     display: -webkit-box;
     display: -webkit-flex;
