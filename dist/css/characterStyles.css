@@ -115,6 +115,9 @@
   .spy-track.prudence,
   .spy.prudence {
     --rgb: 102, 88, 166; }
+  .spy-track.rafael,
+  .spy.rafael {
+    --rgb: 119, 112, 84; }
   .spy-track.raymond,
   .spy.raymond {
     --rgb: 209, 130, 203; }
@@ -144,6 +147,9 @@
   .spy-track.verona,
   .spy.verona {
     --rgb: 171, 118, 162; }
+  .spy-track.violet,
+  .spy.violet {
+    --rgb: 185, 155, 186; }
   .spy-track.wolfgang,
   .spy.wolfgang {
     --rgb: 98, 96, 185; }
