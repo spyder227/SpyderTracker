@@ -23,12 +23,13 @@ function loadCharts(threads, selector) {
 }
 function configStatus(threads) {
     let owing = threads.filter(thread => thread.status === 'mine' || thread.status === 'start').length;
-    let active = threads.filter(thread => thread.status === 'theirs' || thread.status === 'upcoming').length;
+    let active = threads.filter(thread => thread.status === 'theirs' || thread.status === 'planned').length;
+    let hoarded = threads.filter(thread => thread.status === 'hoarded').length;
     let complete = threads.filter(thread => thread.status === 'complete').length;
     let statusConfig = {
-        series: [owing, active, complete],
-        labels: ['Mine', 'Theirs', 'Completed'],
-        colors: ['rgba(162, 129, 119, 1)', 'rgba(125, 159, 129, 1)', 'rgb(141, 165, 176)'],
+        series: [owing, hoarded, active, complete],
+        labels: ['Mine', 'Hoarded', 'Theirs', 'Completed'],
+        colors: ['rgba(162, 129, 119, 1)', 'rgb(174, 176, 121)', 'rgba(125, 159, 129, 1)', 'rgb(141, 165, 176)'],
         chart: {
             type: 'donut',
         },
