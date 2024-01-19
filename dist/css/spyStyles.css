@@ -740,12 +740,12 @@ section form {
           -ms-flex-line-pack: center;
               align-content: center;
       width: 65px; }
-    .thread--buttons .iconblank::before {
+    .thread--buttons .iconsm::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 65px;
+      width: 30px;
       height: 30px;
       display: -webkit-box;
       display: -webkit-flex;
@@ -763,12 +763,70 @@ section form {
       font-family: 'Font Awesome 6 Pro';
       font-weight: 700;
       color: var(--text-secondary); }
-      .status--theirs .thread--buttons .iconblank::before {
+      .status--theirs .thread--buttons .iconsm::before {
         background: var(--white); }
-      .status--planned .thread--buttons .iconblank::before {
+      .status--planned .thread--buttons .iconsm::before {
         background: var(--white); }
-      .status--hoarded .thread--buttons .iconblank::before {
+      .status--hoarded .thread--buttons .iconsm::before {
         background: var(--white); }
+    .type--comm .thread--buttons .iconsm::before {
+      content: '\f3cd';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 30px;
+      background: var(--white); }
+    .type--social .thread--buttons .iconsm::before {
+      content: '\f390';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 30px;
+      background: var(--white); }
+    .type--thread .thread--buttons .iconsm::before {
+      content: '\f02d';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 30x;
+      background: var(--white); }
+    .type--oneshot .thread--buttons .iconsm::before {
+      content: '\f8c4';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 30px;
+      background: var(--white); }
+    .type--event .thread--buttons .iconsm::before {
+      content: '\f783';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 30px;
+      background: var(--white); }
+    .thread--buttons .iconblank::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 30px;
+      width: 65px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      text-align: center;
+      font-family: 'Font Awesome 6 Pro';
+      font-weight: 700;
+      color: var(--text-secondary); }
     .thread--buttons button {
       cursor: pointer; }
       .thread--buttons button:hover {

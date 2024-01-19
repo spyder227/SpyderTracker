@@ -205,11 +205,12 @@ function configStatus(threads) {
 function configType(threads) {
     let threadCount = threads.filter(thread => thread.type === 'thread').length;
     let comms = threads.filter(thread => thread.type === 'comm').length;
-    let oneshots = threads.filter(thread => thread.type === 'oneshot').length;
+    let events = threads.filter(thread => thread.type === 'event').length;
+    let oneshots = threads.filter(thread => thread.type === 'one-shot').length;
     let typeConfig = {
-        series: [threadCount, comms, oneshots],
-        labels: ['Threads', 'Comms', 'One-shots'],
-        colors: ['rgb(141, 165, 176)', 'rgb(174, 140, 161)', 'rgba(189, 173, 133, 1)'],
+        series: [threadCount, comms, events, oneshots],
+        labels: ['Threads', 'Comms', 'Events', 'One-shots'],
+        colors: ['rgb(141, 165, 176)', 'rgb(174, 140, 161)', 'rgb(125, 159, 129)', 'rgba(189, 173, 133)'],
         chart: {
             type: 'donut',
         },

@@ -796,6 +796,7 @@ section {
                 content: '\f3cd';
                 align-content:center;
                 width:65px;
+
             }
             .type--social &::before {
                 content: '\f390';
@@ -819,14 +820,13 @@ section {
             }
         }
 
-        .iconblank {
-
+        .iconsm {
             &::before {
                 content: '';
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 65px;
+                width: 30px;
                 height: 30px;
                 display: flex;
                 align-items: center;
@@ -835,7 +835,7 @@ section {
                 font-family: 'Font Awesome 6 Pro';
                 font-weight: 700;
                 color: var(--text-secondary);
-
+                
                 .status--theirs & {
                     background: var(--white);
                 }
@@ -845,6 +845,56 @@ section {
                 .status--hoarded & {
                     background: var(--white);
                 }
+            }
+            .type--comm &::before {
+                content: '\f3cd';
+                align-content:center;
+                width:30px;
+                background:var(--white);
+            }
+            .type--social &::before {
+                content: '\f390';
+                align-content:center;
+                width:30px;
+                background:var(--white);
+            }
+            .type--thread &::before {
+                content: '\f02d';
+                align-content:center;
+                width:30x;
+                background:var(--white);
+            }
+            .type--oneshot &::before {
+                content: '\f8c4';
+                align-content:center;
+                width:30px;
+                background:var(--white);
+            }
+            .type--event &::before {
+                content: '\f783';
+                align-content:center;
+                width:30px;
+                background:var(--white);
+            }
+        }
+
+        .iconblank {
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 30px;
+                width: 65px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-family: 'Font Awesome 6 Pro';
+                font-weight: 700;
+                color: var(--text-secondary);                
+                
             }
         }
         
