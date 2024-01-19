@@ -733,7 +733,7 @@ section {
     }
     &--buttons {
         display: grid;
-        grid-template-columns: repeat(3, 30px);
+        grid-template-columns: repeat(2, 30px);
         gap: 5px;
         justify-content: end;
         align-content: start;
@@ -742,17 +742,18 @@ section {
         padding-right:10px;
 
         @include mq-up(sm) {
-            grid-template-columns: repeat(1, 30px);
+            grid-template-columns: repeat(2, 30px);
         }
         
         button,
         .icon {
             width: 30px;
             height: 30px;
-            background: var(--bg-content);
+            text-align:center;
             border-radius: 2px;
             color: var(--text-body);
             border: none;
+            background:var(--white);
 
             .status--mine & {
                 background: transparent;
@@ -762,6 +763,7 @@ section {
                 background: transparent;
             }
         }
+
 
         .icon {
 
@@ -779,21 +781,70 @@ section {
                 font-family: 'Font Awesome 6 Pro';
                 font-weight: 700;
                 color: var(--text-secondary);
+                
+                .status--theirs & {
+                    background: var(--white);
+                }
+                .status--planned & {
+                    background: var(--white);
+                }
+                .status--hoarded & {
+                    background: var(--white);
+                }
             }
             .type--comm &::before {
                 content: '\f3cd';
+                align-content:center;
+                width:65px;
             }
             .type--social &::before {
                 content: '\f390';
+                align-content:center;
+                width:65px;
             }
             .type--thread &::before {
                 content: '\f02d';
+                align-content:center;
+                width:65px;
             }
             .type--oneshot &::before {
                 content: '\f8c4';
+                align-content:center;
+                width:65px;
             }
             .type--event &::before {
                 content: '\f783';
+                align-content:center;
+                width:65px;
+            }
+        }
+
+        .iconblank {
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 65px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-family: 'Font Awesome 6 Pro';
+                font-weight: 700;
+                color: var(--text-secondary);
+
+                .status--theirs & {
+                    background: var(--white);
+                }
+                .status--planned & {
+                    background: var(--white);
+                }
+                .status--hoarded & {
+                    background: var(--white);
+                }
             }
         }
         

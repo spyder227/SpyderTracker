@@ -202,10 +202,10 @@ function formatThread(site, siteURL, status, character, feature, title, threadID
     });
     let buttons = ``;
     if (status !== 'complete' && status !== 'archived') {
-        buttons = `<div class="icon" title="${type}"></div><button onClick="changeStatus(this)" data-status="${status}" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Change Turn"><i class="fa-regular fa-arrow-right-arrow-left"></i><i class="fa-solid fa-spinner fa-spin"></i></button>
+        buttons = `<div class="icon" title="${type}" style="width:65px;"></div><br><button onClick="changeStatus(this)" data-status="${status}" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Change Turn"><i class="fa-regular fa-arrow-right-arrow-left"></i><i class="fa-solid fa-spinner fa-spin"></i></button>
         <button onClick="markComplete(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Mark Complete"><i class="fa-regular fa-badge-check"></i><i class="fa-solid fa-spinner fa-spin"></i></button>
         <button onClick="hoardPost(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Hoard Post"><i class="fa-regular fa-floppy-disk"></i><i class="fa-solid fa-spinner fa-spin"></i></button>
-        <button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button>`;
+        <button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button><div class="iconblank" style="width:65px;"></div>`;
     } else if (status !== 'archived') {
         buttons = `<div class="icon" title="${type}"></div><button onClick="markArchived(this)" data-id="${threadID}" data-site="${site}" data-character="${character.split('#')[0]}" title="Archive"><i class="fa-regular fa-trash"></i><i class="fa-solid fa-spinner fa-spin"></i></button>`;
     } else {

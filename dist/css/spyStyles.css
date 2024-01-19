@@ -649,8 +649,8 @@ section form {
   .thread--buttons {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (30px)[3];
-    grid-template-columns: repeat(3, 30px);
+    -ms-grid-columns: (30px)[2];
+    grid-template-columns: repeat(2, 30px);
     gap: 5px;
     -webkit-box-pack: end;
     -webkit-justify-content: end;
@@ -664,16 +664,17 @@ section form {
     padding-right: 10px; }
     @media (min-width: 769px) {
       .thread--buttons {
-        -ms-grid-columns: (30px)[1];
-        grid-template-columns: repeat(1, 30px); } }
+        -ms-grid-columns: (30px)[2];
+        grid-template-columns: repeat(2, 30px); } }
     .thread--buttons button,
     .thread--buttons .icon {
       width: 30px;
       height: 30px;
-      background: var(--bg-content);
+      text-align: center;
       border-radius: 2px;
       color: var(--text-body);
-      border: none; }
+      border: none;
+      background: var(--white); }
       .status--mine .thread--buttons button, .status--mine
       .thread--buttons .icon {
         background: transparent; }
@@ -703,16 +704,71 @@ section form {
       font-family: 'Font Awesome 6 Pro';
       font-weight: 700;
       color: var(--text-secondary); }
+      .status--theirs .thread--buttons .icon::before {
+        background: var(--white); }
+      .status--planned .thread--buttons .icon::before {
+        background: var(--white); }
+      .status--hoarded .thread--buttons .icon::before {
+        background: var(--white); }
     .type--comm .thread--buttons .icon::before {
-      content: '\f3cd'; }
+      content: '\f3cd';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 65px; }
     .type--social .thread--buttons .icon::before {
-      content: '\f390'; }
+      content: '\f390';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 65px; }
     .type--thread .thread--buttons .icon::before {
-      content: '\f02d'; }
+      content: '\f02d';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 65px; }
     .type--oneshot .thread--buttons .icon::before {
-      content: '\f8c4'; }
+      content: '\f8c4';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 65px; }
     .type--event .thread--buttons .icon::before {
-      content: '\f783'; }
+      content: '\f783';
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      width: 65px; }
+    .thread--buttons .iconblank::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 65px;
+      height: 30px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      text-align: center;
+      font-family: 'Font Awesome 6 Pro';
+      font-weight: 700;
+      color: var(--text-secondary); }
+      .status--theirs .thread--buttons .iconblank::before {
+        background: var(--white); }
+      .status--planned .thread--buttons .iconblank::before {
+        background: var(--white); }
+      .status--hoarded .thread--buttons .iconblank::before {
+        background: var(--white); }
     .thread--buttons button {
       cursor: pointer; }
       .thread--buttons button:hover {
