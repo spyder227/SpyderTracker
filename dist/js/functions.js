@@ -1086,7 +1086,7 @@ function addDirectory(e) {
         romantic = e.currentTarget.querySelector('#romantic').value,
         sexual = e.currentTarget.querySelector('#sexual').value,
         face = e.currentTarget.querySelector('#face').value,
-        alternatefaces = e.currentTarget.querySelector('#alternateface').value,
+        alternatefaces = e.currentTarget.querySelector('#alternatefaces').value,
         image = e.currentTarget.querySelector('#image').value,
         genderfilter = e.currentTarget.querySelector('#genderfilter').options[e.currentTarget.querySelector('#genderfilter').selectedIndex].innerText.toLowerCase().trim(),
         agefilter = e.currentTarget.querySelector('#agefilter').options[e.currentTarget.querySelector('#agefilter').selectedIndex].innerText.toLowerCase().trim(),
