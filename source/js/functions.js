@@ -1002,6 +1002,8 @@ function formatCharacter(data, characterFilters, baseUrl) {
                 title = 'Years Dead';
             } else if (title === 'ImportantPeople') {
                 title = 'Important People';
+            } else if (title === 'Canon') {
+                title = 'Canon?';
             }
 
             //Template stage
@@ -1124,7 +1126,7 @@ function addDirectory(e) {
         'FilterShipped': shippedfilter,
         'FilterShippedWith': shippedwith,
         'FilterSitesPlayed': sitesplayed,
-        'Canon': canonfilter,
+        'FilterCanon': canonfilter,
         'Links': links
     }, null, directoryDeploy, e);
 }
