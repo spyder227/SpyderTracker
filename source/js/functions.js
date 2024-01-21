@@ -1002,7 +1002,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
                 title = 'Years Dead';
             } else if (title === 'ImportantPeople') {
                 title = 'Important People';
-            } else if (title === 'Canon') {
+            } else if (title === 'FilterCanon') {
                 title = 'Canon?';
             }
 
