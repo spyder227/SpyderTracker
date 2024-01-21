@@ -991,6 +991,8 @@ function formatCharacter(data, characterFilters, baseUrl) {
                 title = 'Sexual Orientation';
             } else if (title === 'RomanticOrientation') {
                 title = 'Romantic Orientation';
+            } else if (title === 'AlternateFaces') {
+                title = 'Alternate Faces'; 
             } else if (title === 'YearsDead') {
                 title = 'Years Dead';
             } else if (title === 'ImportantPeople') {
@@ -1108,6 +1110,7 @@ function addDirectory(e) {
         'RomanticOrientation': romantic,
         'SexualOrientation': sexual,
         'Face': face,
+        'AlternateFaces': alternatefaces,
         'Image': image,
         'FilterGender': genderfilter,
         'FilterAge': agefilter,
