@@ -186,8 +186,16 @@
                     <input required type="text" id="sitesplayed" />
                 </label>
                 <label>
+                    <b>Canon?</b>
+                    <select required id="canonfilter">
+                        <option value="">(select)</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                    </select>
+                </label>
+                <label>
                     <b>Links</b>
-                    <input required type="text" id="links" class="fullWidth" value="{&quot;url&quot;:&quot;here&quot;,&quot;title&quot;:&quot;click&quot;}"/>
+                    <input required type="text" id="links" value="{&quot;url&quot;:&quot;here&quot;,&quot;title&quot;:&quot;click&quot;}"/>
                 </label>
                 <button type="submit" class="fullWidth">Submit</button>
             </form>

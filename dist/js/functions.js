@@ -1086,12 +1086,14 @@ function addDirectory(e) {
         romantic = e.currentTarget.querySelector('#romantic').value,
         sexual = e.currentTarget.querySelector('#sexual').value,
         face = e.currentTarget.querySelector('#face').value,
+        alternatefaces = e.currentTarget.querySelector('#alternateface').value,
         image = e.currentTarget.querySelector('#image').value,
         genderfilter = e.currentTarget.querySelector('#genderfilter').options[e.currentTarget.querySelector('#genderfilter').selectedIndex].innerText.toLowerCase().trim(),
         agefilter = e.currentTarget.querySelector('#agefilter').options[e.currentTarget.querySelector('#agefilter').selectedIndex].innerText.toLowerCase().trim(),
         shippedfilter = e.currentTarget.querySelector('#shippedfilter').options[e.currentTarget.querySelector('#shippedfilter').selectedIndex].innerText.toLowerCase().trim(),
         shippedwith = e.currentTarget.querySelector('#shippedwith').value.toLowerCase().trim();
         sitesplayed = e.currentTarget.querySelector('#sitesplayed').value.toLowerCase().trim();
+        canonfilter = e.currentTarget.querySelector('#canonfilter').value,
         links = e.currentTarget.querySelector('#links').value.toLowerCase().trim();
 
     sendAjax({
@@ -1117,6 +1119,7 @@ function addDirectory(e) {
         'FilterShipped': shippedfilter,
         'FilterShippedWith': shippedwith,
         'FilterSitesPlayed': sitesplayed,
+        'FilterCanon': canonfilter,
         'Links': links
     }, null, directoryDeploy, e);
 }
