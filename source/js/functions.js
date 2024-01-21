@@ -923,6 +923,11 @@ function formatCharacter(data, characterFilters, baseUrl) {
     if(data.FilterSitesPlayed) {
         sitesPlayed = data.FilterSitesPlayed.split('+').map(item => `sitesPlayed-${item}`).join(' ');
     }
+    
+    let canon;
+    if(data.FilterCanon) {
+        canon = data.FilterCanon.split('+').map(item => `canon-${item}`).join(' ');
+    }
 
     let links = ``;
     if(data.Links) {
@@ -1093,7 +1098,7 @@ function addDirectory(e) {
         shippedfilter = e.currentTarget.querySelector('#shippedfilter').options[e.currentTarget.querySelector('#shippedfilter').selectedIndex].innerText.toLowerCase().trim(),
         shippedwith = e.currentTarget.querySelector('#shippedwith').value.toLowerCase().trim();
         sitesplayed = e.currentTarget.querySelector('#sitesplayed').value.toLowerCase().trim();
-        canonfilter = e.currentTarget.querySelector('#canonfilter').value,
+        canonfilter = e.currentTarget.querySelector('#canon').options[e.currentTarget.querySelector('#canon').selectedIndex].innerText.toLowerCase().trim(),
         links = e.currentTarget.querySelector('#links').value.toLowerCase().trim();
 
     sendAjax({
@@ -1119,7 +1124,7 @@ function addDirectory(e) {
         'FilterShipped': shippedfilter,
         'FilterShippedWith': shippedwith,
         'FilterSitesPlayed': sitesplayed,
-        'FilterCanon': canonfilter,
+        'Canon': canonfilter,
         'Links': links
     }, null, directoryDeploy, e);
 }
