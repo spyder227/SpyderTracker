@@ -1,4 +1,26 @@
 <div class="tracker--filter">
+    <button onClick="openFilters(this)">Shipped</button>
+    <div class="tracker--filter-dropdown">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterShipped">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+            <label><input type="checkbox" value=".shipped-taken">taken</label>
+            <label><input type="checkbox" value=".shipped-wanted">wanted</label>
+            <label><input type="checkbox" value=".shipped-open">open</label>
+            <label><input type="checkbox" value=".shipped-none">not interested</label>
+        </div><hr>
+            <div class="tracker--filter-group claim--labels" data-filter-group="FilterNeeds">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+            <label><input type="checkbox" value=".needs-family">family</label>
+            <label><input type="checkbox" value=".needs-friends">friends</label>
+            <label><input type="checkbox" value=".needs-coworkers">coworkers</label>
+            <label><input type="checkbox" value=".needs-flings">flings</label>
+            <label><input type="checkbox" value=".needs-romance">romance</label>
+            <label><input type="checkbox" value=".needs-enemies">enemies</label>
+            <label><input type="checkbox" value=".needs-other">other (ask)</label>
+        </div>
+    </div>
+</div>  
+<div class="tracker--filter">
     <button onClick="openFilters(this)">Shipped With</button>
     <div class="tracker--filter-dropdown">
         <div class="tracker--filter-group claim--labels" data-filter-group="FilterShippedWith">
