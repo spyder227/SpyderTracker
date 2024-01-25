@@ -928,6 +928,11 @@ function formatCharacter(data, characterFilters, baseUrl) {
     if(data.FilterCanon) {
         canon = data.FilterCanon.split('+').map(item => `canon-${item}`).join(' ');
     }
+    
+    let needs;
+    if(data.FilterNeeds) {
+        needs = data.FilterNeeds.split('+').map(item => `needs-${item}`).join(' ');
+    }
 
     let links = ``;
     if(data.Links) {
