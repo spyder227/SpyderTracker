@@ -933,6 +933,11 @@ function formatCharacter(data, characterFilters, baseUrl) {
     if(data.FilterNeeds) {
         needs = data.FilterNeeds.split('+').map(item => `needs-${item}`).join(' ');
     }
+    
+    let threads;
+    if(data.FilterThreads) {
+        threads = data.FilterThreads.split('+').map(item => `threads-${item}`).join(' ');
+    }
 
     let links = ``;
     if(data.Links) {
@@ -1033,7 +1038,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
         }
     }
 
-    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} canon-${data.FilterCanon} shipped-${data.FilterShipped} ${needs} gender-${data.FilterGender} ${ageFilters} ${sitesPlayed} housing-${data.FilterHousing} residence-${data.FilterResidence} homeowner-${data.FilterOwner}">
+    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} canon-${data.FilterCanon} shipped-${data.FilterShipped} ${needs} ${threads} gender-${data.FilterGender} ${ageFilters} ${sitesPlayed} housing-${data.FilterHousing} residence-${data.FilterResidence} homeowner-${data.FilterOwner}">
         <div class="character">
             <div class="character--image">
                 <img src="${data.Image}" />
