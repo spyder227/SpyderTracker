@@ -1,39 +1,4 @@
 <div class="tracker--filter">
-    <button onClick="openFilters(this)">Shipped</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterShipped">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-            <label><input type="checkbox" value=".shipped-taken">taken</label>
-            <label><input type="checkbox" value=".shipped-wanted">wanted</label>
-            <label><input type="checkbox" value=".shipped-open">open</label>
-            <label><input type="checkbox" value=".shipped-none">not interested</label>
-        </div><hr>
-            <div class="tracker--filter-group claim--labels" data-filter-group="needs">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
-            <label><input type="checkbox" value=".needs-family">family</label>
-            <label><input type="checkbox" value=".needs-friends">friends</label>
-            <label><input type="checkbox" value=".needs-coworkers">coworkers</label>
-            <label><input type="checkbox" value=".needs-flings">flings</label>
-            <label><input type="checkbox" value=".needs-romance">romance</label>
-            <label><input type="checkbox" value=".needs-enemies">enemies</label>
-            <label><input type="checkbox" value=".needs-other">other (ask)</label>
-        </div><hr>
-        <div class="tracker--filter-group claim--labels" data-filter-group="threads">
-        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
-        <label><input type="checkbox" value=".threads-med">could use threads</label>
-        <label><input type="checkbox" value=".threads-high">needs threads</label>
-        </div>
-    </div>
-</div>  
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Shipped With</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterShippedWith">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-        </div>
-    </div>
-</div>
-<div class="tracker--filter">
     <button onClick="openFilters(this)">Species</button>
     <div class="tracker--filter-dropdown">
         <div class="tracker--filter-group claim--labels" data-filter-group="FilterSpecies">
@@ -53,6 +18,12 @@
     <button onClick="openFilters(this)">Residence</button>
     <div class="tracker--filter-dropdown">
         <div class="tracker--filter-group claim--labels" data-filter-group="housing">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+            <label><input type="checkbox" value=".residence-temperance">Temperance</label>
+            <label><input type="checkbox" value=".residence-sydney">Sydney</label>
+            <label><input type="checkbox" value=".residence-other">other</label>
+        </div><hr>
+        <div class="tracker--filter-group claim--labels" data-filter-group="residence">
             <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
             <label><input type="checkbox" value=".housing-apartment">apartment</label>
             <label><input type="checkbox" value=".housing-condo">condo</label>
@@ -60,20 +31,47 @@
             <label><input type="checkbox" value=".housing-house">house</label>
             <label><input type="checkbox" value=".housing-farm">farm</label>
             <label><input type="checkbox" value=".housing-other">other</label>
-        </div>
-        <hr>
-        <div class="tracker--filter-group claim--labels" data-filter-group="residence">
-                <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
-                <label><input type="checkbox" value=".residence-temperance">Temperance</label>
-                <label><input type="checkbox" value=".residence-sydney">Sydney</label>
-                <label><input type="checkbox" value=".residence-other">other</label>
-        </div>
-        <hr>
+        </div><hr>
         <div class="tracker--filter-group claim--labels" data-filter-group="homeowner">
-                <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
-                <label><input type="checkbox" value=".homeowner-own">owns</label>
-                <label><input type="checkbox" value=".homeowner-rent">rents</label>
-                <label><input type="checkbox" value=".homeowner-other">other</label>
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+            <label><input type="checkbox" value=".homeowner-own">owns</label>
+            <label><input type="checkbox" value=".homeowner-rent">rents</label>
+            <label><input type="checkbox" value=".homeowner-other">other</label>
         </div>
     </div>
 </div>
+<div class="tracker--filter">
+    <button onClick="openFilters(this)">Plotting Needs</button>
+    <div class="tracker--filter-dropdown">
+            <div class="tracker--filter-group claim--labels" data-filter-group="needs">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+            <label><input type="checkbox" value=".needs-family">family</label>
+            <label><input type="checkbox" value=".needs-friends">friends</label>
+            <label><input type="checkbox" value=".needs-coworkers">coworkers</label>
+            <label><input type="checkbox" value=".needs-flings">flings</label>
+            <label><input type="checkbox" value=".needs-romance">romance</label>
+            <label><input type="checkbox" value=".needs-enemies">enemies</label>
+            <label><input type="checkbox" value=".needs-other">other (ask)</label>
+            </div><hr>
+            <div class="tracker--filter-group claim--labels" data-filter-group="threads">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+            <label><input type="checkbox" value=".threads-med">could use threads</label>
+            <label><input type="checkbox" value=".threads-high">needs threads</label>
+            </div>
+    </div>
+</div> 
+<div class="tracker--filter">
+    <button onClick="openFilters(this)">Ship Status</button>
+    <div class="tracker--filter-dropdown">
+        <div class="tracker--filter-group claim--labels" data-filter-group="FilterShipped">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+            <label><input type="checkbox" value=".shipped-taken">taken</label>
+            <label><input type="checkbox" value=".shipped-wanted">wanted</label>
+            <label><input type="checkbox" value=".shipped-open">open</label>
+            <label><input type="checkbox" value=".shipped-none">not interested</label>
+        </div><hr>
+            <div class="tracker--filter-group claim--labels" data-filter-group="FilterShippedWith">
+            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
+        </div>
+    </div>
+</div> 
