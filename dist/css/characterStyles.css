@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .spy-track,
 .spy {
   --rgb: var(--rgb);
@@ -130,8 +131,8 @@
   .spy-track.sakai,
   .spy.sakai {
     --rgb: 136, 71, 89; }
-  .spy-track.sebastian,
-  .spy.sebastian {
+  .spy-track.sebastián,
+  .spy.sebastián {
     --rgb: 128, 156, 70; }
   .spy-track.staff, .spy-track.npc, .spy-track.open,
   .spy.staff,
