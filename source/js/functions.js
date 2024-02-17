@@ -1038,7 +1038,7 @@ function formatCharacter(data, characterFilters, baseUrl) {
         }
     }
 
-    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} canon-${data.FilterCanon} shipped-${data.FilterShipped} ${needs} ${threads} gender-${data.FilterGender} ${ageFilters} ${sitesPlayed} housing-${data.FilterHousing} residence-${data.FilterResidence} homeowner-${data.FilterOwner}">
+    return `<div class="${data.Character.split(' ')[0].toLowerCase()} spy-track grid-item ${characterFilters} canon-${data.FilterCanon} shipped-${data.FilterShipped} ${needs} ${threads} gender-${data.FilterGender} ${ageFilters} ${sitesPlayed} housing-${data.FilterHousing} residence-${data.FilterResidence} homeowner-${data.FilterOwner} ${data.Active}">
         <div class="character">
             <div class="character--image">
                 <img src="${data.Image}" />
