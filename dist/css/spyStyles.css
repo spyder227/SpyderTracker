@@ -666,8 +666,7 @@ section form {
       .thread--buttons {
         -ms-grid-columns: (30px)[2];
         grid-template-columns: repeat(2, 30px); } }
-    .thread--buttons button,
-    .thread--buttons .icon {
+    .thread--buttons button {
       width: 30px;
       height: 30px;
       text-align: center;
@@ -675,11 +674,21 @@ section form {
       color: var(--text-body);
       border: none;
       background: var(--white); }
-      .status--mine .thread--buttons button, .status--mine
-      .thread--buttons .icon {
+      .status--mine .thread--buttons button {
         background: transparent; }
-      .status--start .thread--buttons button, .status--start
-      .thread--buttons .icon {
+      .status--start .thread--buttons button {
+        background: transparent; }
+    .thread--buttons .icon {
+      width: 65px;
+      height: 30px;
+      text-align: center;
+      border-radius: 2px;
+      color: var(--text-body);
+      border: none;
+      background: var(--white); }
+      .status--mine .thread--buttons .icon {
+        background: transparent; }
+      .status--start .thread--buttons .icon {
         background: transparent; }
     .thread--buttons .icon::before {
       content: '';

@@ -745,9 +745,26 @@ section {
             grid-template-columns: repeat(2, 30px);
         }
         
-        button,
-        .icon {
+        button {
             width: 30px;
+            height: 30px;
+            text-align:center;
+            border-radius: 2px;
+            color: var(--text-body);
+            border: none;
+            background:var(--white);
+
+            .status--mine & {
+                background: transparent;
+            }
+
+            .status--start & {
+                background: transparent;
+            }
+        }
+
+        .icon {
+            width: 65px;
             height: 30px;
             text-align:center;
             border-radius: 2px;
