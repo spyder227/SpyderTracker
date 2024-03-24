@@ -23,7 +23,7 @@ function loadCharts(threads, selector) {
 }
 function configStatus(threads) {
     let owing = threads.filter(thread => thread.status === 'mine' || thread.status === 'start').length;
-    let active = threads.filter(thread => thread.status === 'theirs' || thread.status === 'planned').length;
+    let active = threads.filter(thread => thread.status === 'theirs').length;
     let hoarded = threads.filter(thread => thread.status === 'hoarded').length;
     let complete = threads.filter(thread => thread.status === 'complete').length;
     let statusConfig = {
