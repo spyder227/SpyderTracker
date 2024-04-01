@@ -287,10 +287,10 @@ function configType(threads) {
     return typeConfig;
 }
 
-function configCurrentPartners(threads) {
-    console.log(threads);
-    threads = threads.filter(thread => thread.status && thread.status !== '' && (thread.status.toLowerCase().trim() === 'mine' || thread.status.toLowerCase().trim() === 'theirs'));
-    
+function configCurrentPartners(threads, onlyStarted = false) {
+    if(onlyStarted) {
+        threads = threads.filter(thread => thread.status && thread.status !== '' && (thread.status.toLowerCase().trim() === 'mine' || thread.status.toLowerCase().trim() === 'theirs'));
+    }
     let threadPartners = threads.map(thread => thread.partners.split('+').map(item => JSON.parse(item)));
     let partnerNames = [];
     threadPartners.forEach(thread => {
