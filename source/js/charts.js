@@ -23,7 +23,7 @@ function loadCharts(threads) {
     typeChart.render();
     let totalPartnerChart = new ApexCharts(document.querySelector(".chart--tpartner"), configTotalPartners(threads));
     totalPartnerChart.render();
-    let currentPartnerChart = new ApexCharts(document.querySelector(".chart--cpartner"), configCurrentPartners(threads));
+    let currentPartnerChart = new ApexCharts(document.querySelector(".chart--cpartner"), configCurrentPartners(threads, true));
     currentPartnerChart.render();
     let owingChart = new ApexCharts(document.querySelector(".chart--owing"), configOwing(threads));
     owingChart.render();
@@ -37,7 +37,7 @@ function loadCharts(threads) {
         typeChart.render();
         let totalPartnerChart = new ApexCharts(document.querySelector(".chart--tpartner"), configTotalPartners(threads));
         totalPartnerChart.render();
-        let currentPartnerChart = new ApexCharts(document.querySelector(".chart--cpartner"), configCurrentPartners(threads));
+        let currentPartnerChart = new ApexCharts(document.querySelector(".chart--cpartner"), configCurrentPartners(threads, true));
         currentPartnerChart.render();
         let owingChart = new ApexCharts(document.querySelector(".chart--owing"), configOwing(threads));
         owingChart.render();
