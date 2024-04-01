@@ -288,8 +288,8 @@ function configType(threads) {
 }
 
 function configCurrentPartners(threads) {
-    threads = threads.filter(thread => thread.Status && thread.Status !== '' && (thread.Status.toLowerCase().trim() === 'mine' || thread.Status.toLowerCase().trim() === 'theirs'));
-    console.log(threads)
+    console.log(threads);
+    threads = threads.filter(thread => thread.status && thread.status !== '' && (thread.status.toLowerCase().trim() === 'mine' || thread.status.toLowerCase().trim() === 'theirs'));
     
     let threadPartners = threads.map(thread => thread.partners.split('+').map(item => JSON.parse(item)));
     let partnerNames = [];
