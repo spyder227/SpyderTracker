@@ -21,8 +21,10 @@ function loadCharts(threads) {
     statusChart.render();
     let typeChart = new ApexCharts(document.querySelector(".chart--type"), configType(threads));
     typeChart.render();
-    let partnerChart = new ApexCharts(document.querySelector(".chart--partner"), configPartners(threads));
-    partnerChart.render();
+    let totalPartnerChart = new ApexCharts(document.querySelector(".chart--tpartner"), configTotalPartners(threads));
+    totalPartnerChart.render();
+    let currentPartnerChart = new ApexCharts(document.querySelector(".chart--cpartner"), configCurrentPartners(threads));
+    currentPartnerChart.render();
     let owingChart = new ApexCharts(document.querySelector(".chart--owing"), configOwing(threads));
     owingChart.render();
 
@@ -33,8 +35,10 @@ function loadCharts(threads) {
         statusChart.render();
         let typeChart = new ApexCharts(document.querySelector(".chart--type"), configType(threads));
         typeChart.render();
-        let partnerChart = new ApexCharts(document.querySelector(".chart--partner"), configPartners(threads));
-        partnerChart.render();
+        let totalPartnerChart = new ApexCharts(document.querySelector(".chart--tpartner"), configTotalPartners(threads));
+        totalPartnerChart.render();
+        let currentPartnerChart = new ApexCharts(document.querySelector(".chart--cpartner"), configCurrentPartners(threads));
+        currentPartnerChart.render();
         let owingChart = new ApexCharts(document.querySelector(".chart--owing"), configOwing(threads));
         owingChart.render();
     });
@@ -283,7 +287,10 @@ function configType(threads) {
     return typeConfig;
 }
 
-function configPartners(threads) {
+function configCurrentPartners(threads) {
+    threads = threads.filter(thread => thread.Status && thread.Status !== '' && (thread.Status.toLowerCase().trim() === 'mine' || thread.Status.toLowerCase().trim() === 'theirs'));
+    console.log(threads)
+    
     let threadPartners = threads.map(thread => thread.partners.split('+').map(item => JSON.parse(item)));
     let partnerNames = [];
     threadPartners.forEach(thread => {
@@ -324,8 +331,8 @@ function configPartners(threads) {
             return 0;
         }
     });
-    final = final.filter(item => item.x.toLowerCase() !== 'event group' && item.x.toLowerCase() !== 'staff intervention');
-    let partnerConfig = {
+    final = final.filter(item => item.x.toLowerCase() !== 'npc' && item.x.toLowerCase() !== 'open');
+    let currentPartnerConfig = {
         series: [{data: final}],
         chart: {
             type: 'bar',
@@ -337,7 +344,64 @@ function configPartners(threads) {
         },
     };
 
-    return partnerConfig;
+    return currentPartnerConfig;
+}
+
+function configTotalPartners(threads) {
+    let threadPartners = threads.map(thread => thread.partners.split('+').map(item => JSON.parse(item)));
+    let partnerNames = [];
+    threadPartners.forEach(thread => {
+        thread.forEach(threadPartner => {
+            partnerNames.push(threadPartner.partner);
+        });
+    });
+    let consolidatedPartners = [...new Set(partnerNames)];
+    let partnerCounts = consolidatedPartners.reduce((accumulator, value) => {
+        return {...accumulator, [value]: 0};
+    }, {});
+    threads.forEach(thread => {
+        let thisPartners = thread.partners.split('+').map(item => JSON.parse(item)).map(item => item.partner);
+        thisPartners.forEach(partner => {
+            partnerCounts[partner]++;
+        });
+    });
+    let partners = [], counts = [], final = [];
+    for (const partnerName in partnerCounts) {
+        partners.push(capitalize(partnerName, [`'`, `-`]));
+        counts.push(partnerCounts[partnerName]);
+        final.push({
+            x: capitalize(partnerName, [`'`, `-`]).trim(),
+            y: partnerCounts[partnerName],
+            fillColor: 'var(--accent)',
+        })
+    }
+    final.sort((a, b) => {
+        if(a.y > b.y) {
+            return -1;
+        } else if (a.y < b.y) {
+            return 1;
+        } else if (a.x < b.x) {
+            return -1;
+        } else if (a.x > b.x) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    final = final.filter(item => item.x.toLowerCase() !== 'npc' && item.x.toLowerCase() !== 'open');
+    let totalPartnerConfig = {
+        series: [{data: final}],
+        chart: {
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true
+            }
+        },
+    };
+
+    return totalPartnerConfig;
 }
 
 function configOwing(threads) {
@@ -387,7 +451,7 @@ function configOwing(threads) {
         }
     });
 
-    final = final.filter(item => item.x.toLowerCase() !== 'event group' && item.x.toLowerCase() !== 'staff intervention');
+    final = final.filter(item => item.x.toLowerCase() !== 'npc' && item.x.toLowerCase() !== 'open');
 
     let owingConfig = {
         series: [{ data: final }],
