@@ -81,7 +81,6 @@
         <li>
             <a href="" class="inactive">Archives</a>
             <ul>
-                <li><a href="../public/sites/corson.html">Corson Forever</a></li>
                 <li><a href="../public/sites/owe.html">Once We Were</a></li>
             </ul>
         </li>
@@ -125,7 +124,7 @@
     .then((response) => response.json())
     .then((threadData) => {
         console.log(threadData);
-        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'corson forever'.toLowerCase().trim() && item.Site.toLowerCase().trim() !== 'once we were'.toLowerCase().trim() );
+        let totalThreads = threadData.filter(item => item.Site.toLowerCase().trim() !== 'once we were'.toLowerCase().trim() );
         let threads = loadThreads(totalThreads);
         loadCharts(threads, '.total-charts');
     });
