@@ -76,6 +76,9 @@
   .spy-track.kieran,
   .spy.kieran {
     --rgb: 108, 112, 145; }
+  .spy-track.killian,
+  .spy.killian {
+    --rgb: 153, 55, 94; }
   .spy-track.logan,
   .spy.logan {
     --rgb: 113, 176, 191; }
@@ -122,9 +125,6 @@
   .spy-track.raymond,
   .spy.raymond {
     --rgb: 209, 130, 203; }
-  .spy-track.rhiannon,
-  .spy.rhiannon {
-    --rgb: 153, 55, 94; }
   .spy-track.sakai,
   .spy.sakai {
     --rgb: 136, 71, 89; }
