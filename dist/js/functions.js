@@ -105,6 +105,7 @@ function getDelay(date) {
     }
     return delayClass;
 }
+
 function formatOldThread(site, siteURL, status, character, feature, title, threadID, icDate, partnerObjects, type, lastPost, delayClass, directoryString) {
     //set writing partners
     let partners = ``;
@@ -459,6 +460,7 @@ function debounce(fn, threshold) {
         setTimeout(delayed, threshold || 100);
     };
 }
+
 function setCustomFilter() {
     const hideUnless = document.querySelector('.completed-label');
 
@@ -616,6 +618,7 @@ function initIsotope() {
         });
     });
 }
+
 function prepThreads(data, site) {
     let threads = data.filter(item => item.Site.toLowerCase().trim() === site.toLowerCase().trim() && item.Status.toLowerCase().trim() !== 'archived');
     threads.sort((a, b) => {
@@ -900,6 +903,7 @@ function populateCharacters(array, filters, baseUrl) {
         });
     });
     document.querySelector('#tracker--rows').insertAdjacentHTML('beforeend', html);
+
 }
 
 function formatCharacter(data, characterFilters, baseUrl) {
@@ -922,11 +926,6 @@ function formatCharacter(data, characterFilters, baseUrl) {
     let sitesPlayed;
     if(data.FilterSitesPlayed) {
         sitesPlayed = data.FilterSitesPlayed.split('+').map(item => `sitesPlayed-${item}`).join(' ');
-    }
-    
-    let canon;
-    if(data.FilterCanon) {
-        canon = data.FilterCanon.split('+').map(item => `canon-${item}`).join(' ');
     }
     
     let needs;
@@ -1075,6 +1074,7 @@ function openFilters(e) {
     e.parentNode.querySelector('.tracker--filter-dropdown').classList.toggle('is-open');
 }
 
+
 function openModalProfile(e) {
     document.querySelectorAll('.character--modal').forEach(modal => modal.classList.remove('is-open'));
     e.closest('.grid-item').querySelector('.character--modal').classList.add('is-open');
@@ -1084,6 +1084,15 @@ function openModalProfile(e) {
 function closeModalProfile(e) {
     document.querySelectorAll('.character--modal').forEach(modal => modal.classList.remove('is-open'));
     document.querySelector('body').classList.remove('modal-open');
+}
+
+function toggleActive(e) {
+    e.parentNode.parentNode.childNodes.forEach(item => {
+        if(item !== e.parentNode && item.classList) {
+            item.querySelectorAll('.is-active').forEach(el => el.classList.remove('is-active'));
+        }
+    });
+    e.nextElementSibling.classList.toggle('is-active');
 }
 
 // add to directory function

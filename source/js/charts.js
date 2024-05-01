@@ -45,7 +45,7 @@ function loadCharts(threads) {
 }
 
 function configTime(threads) {
-    let activeThreads = threads.filter(item => item.status !== 'complete');
+    let activeThreads = threads.filter(item => item.status !== 'complete' && item.status !== 'planned');
     let recent = activeThreads.filter(thread => thread.delay === 'okay').length;
     let week = activeThreads.filter(thread => thread.delay === 'week').length;
     let month = activeThreads.filter(thread => thread.delay === 'month').length;
@@ -344,7 +344,7 @@ function configCurrentPartners(threads, onlyStarted = false) {
         },
     };
 
-    return currentPartnerConfig;
+    return currentPartnerConfig;    
 }
 
 function configTotalPartners(threads) {

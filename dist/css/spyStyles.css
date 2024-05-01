@@ -349,6 +349,44 @@ section form {
     .charts .chart .apexcharts-canvas {
       max-width: 100%; }
 
+.chart--divider {
+  width: 90%;
+  margin: auto;
+  display: block;
+  border-bottom: 2px dashed var(--accent); }
+
+.total--charts {
+  display: block;
+  margin: auto;
+  padding: 30px;
+  width: 35%; }
+  .total--charts .chart {
+    max-width: 100%;
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: -webkit-max-content 1fr;
+    -ms-grid-rows: max-content 1fr;
+    grid-template-rows: -webkit-max-content 1fr;
+    grid-template-rows: max-content 1fr;
+    gap: 5px; }
+    .total--charts .chart--box {
+      background: var(--bg-content);
+      border-radius: 2px;
+      padding: 15px 20px; }
+    .total--charts .chart b {
+      font-family: var(--font-accent);
+      font-size: 18px;
+      text-transform: lowercase;
+      font-weight: 700;
+      color: var(--text-accent);
+      letter-spacing: -0.075em; }
+      @media (min-width: 769px) {
+        .total--charts .chart b {
+          font-size: 24px; } }
+    .total--charts .chart .apexcharts-canvas {
+      max-width: 100%; }
+
 /** All Tracking **/
 .tracker--header {
   position: -webkit-sticky;

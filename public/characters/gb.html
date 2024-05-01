@@ -99,6 +99,16 @@
     <div class="tracker--wrapper">
         <div class="tracker--filters">
             <div class="tracker--filter">
+                <button onClick="openFilters(this)">Active?</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="active">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="">all</label>
+                        <label><input type="checkbox" value=".active">yes</label>
+                        <label><input type="checkbox" value=".inactive">no</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
                 <button onClick="openFilters(this)">Gender</button>
                 <div class="tracker--filter-dropdown">
                     <div class="tracker--filter-group claim--labels" data-filter-group="gender">
@@ -141,14 +151,6 @@
     <button onClick="openFilters(this)">Species</button>
     <div class="tracker--filter-dropdown">
         <div class="tracker--filter-group claim--labels" data-filter-group="FilterSpecies">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-        </div>
-    </div>
-</div>
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Membergroup</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterMembergroup">
             <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
         </div>
     </div>
@@ -213,16 +215,6 @@
             <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any</label>
         </div>
     </div>
-</div> 
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Active?</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="active">
-            <label class="all"><input type="checkbox" class="all" value="" checked="">both</label>
-            <label class="is-checked"><input type="checkbox" value=".yes">yes</label>
-            <label><input type="checkbox" value=".no">no</label>
-        </div>
-    </div>
 </div>
             
             
@@ -247,7 +239,7 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterSpecies, FilterShippedWith, FilterMembergroup";
+        let filters = "FilterSpecies, FilterShippedWith";
         console.log(filters.split(', '));
 
         fetch(`https://opensheet.elk.sh/${characterSheet}/Godly Behaviour`)

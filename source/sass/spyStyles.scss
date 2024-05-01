@@ -398,6 +398,52 @@ section {
     }
 }
 
+.chart--divider {
+    width:90%;
+    margin:auto;
+    display:block;
+    border-bottom:2px dashed var(--accent);
+
+}
+
+.total--charts {
+    display: block;
+    margin:auto;
+    padding: 30px;
+    width:35%;
+
+    .chart {
+        max-width: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-rows: max-content 1fr;
+        gap: 5px;
+        
+        &--box {
+            background: var(--bg-content);
+            border-radius: 2px;
+            padding: 15px 20px;
+        }
+    
+        b {
+            font-family: var(--font-accent);
+            font-size: 18px;
+            text-transform: lowercase;
+            font-weight: 700;
+            color: var(--text-accent);
+            letter-spacing: -0.075em;
+            
+            @include mq-up(sm) {
+                font-size: 24px;
+            }
+        }
+
+        .apexcharts-canvas {
+            max-width: 100%;
+        }
+    }
+}
+
 
 /** All Tracking **/
 .tracker {
