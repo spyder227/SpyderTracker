@@ -14,8 +14,8 @@
                 <button onClick="openFilters(this)">Active?</button>
                 <div class="tracker--filter-dropdown">
                     <div class="tracker--filter-group claim--labels" data-filter-group="active">
-                        <label class="all is-checked"><input type="checkbox" class="all" value="">all</label>
-                        <label><input type="checkbox" value=".active">yes</label>
+                        <label class="all"><input type="checkbox" class="all" value="" checked="">both</label>
+                        <label class="is-checked"><input type="checkbox" value=".active">yes</label>
                         <label><input type="checkbox" value=".inactive">no</label>
                     </div>
                 </div>
@@ -70,9 +70,6 @@
             @@if (siteSheet === 'Once We Were') {
                 @@include('../../source/filters/oweFilters.html')
             }
-            @@if (siteSheet === 'Corson Forever') {
-                @@include('../../source/filters/corsonFilters.html')
-            }
             @@if (siteSheet === 'Turn On The Light') {
                 @@include('../../source/filters/totlFilters.html')
             }
@@ -93,7 +90,7 @@
         const filterOptions = `.tracker--filter-group input`;
         const sorts = `.tracker--header button`;
         const gridItem = `.grid-item`;
-        const defaultShow = `:not(.status--complete)`;
+        const defaultShow = ``;
 
         //set class variables
         let $container = $('#tracker--rows');
@@ -103,7 +100,15 @@
         fetch(`https://opensheet.elk.sh/${characterSheet}/@@siteSheet`)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            data.sort((a, b) => {
+                if(a.Character < b.Character) {
+                    return -1;
+                } else if (a.Character > b.Character) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })
             populateCharacters(data, filters = filters.split(', '), '@@siteURL');
 
         }).then(() => {
@@ -116,6 +121,7 @@
             $container.isotope({
                 itemSelector: gridItem,
                 percentPosition: true,
+                filter: '.active',
                 getSortData: {
                     charAsc: '.name',
                     charDesc: '.name',
@@ -129,16 +135,6 @@
                     ageDesc: false,
                 }
             });
-
-        }).then(() => {
-
-            const currentPage = window.location.pathname.split('/').pop();
-            let removeProfile = document.querySelectorAll('.profile--remove')
-            if (currentPage === 'directory.html') {
-            removeProfile.forEach(item => item.remove());}
-        
-        }).then(() => {
-
             setTimeout(function() {
                 $container.isotope('layout');
             }, 300);
