@@ -15,6 +15,9 @@
   .spy-track.annabeth,
   .spy.annabeth {
     --rgb: 65, 78, 125; }
+  .spy-track.athena,
+  .spy.athena {
+    --rgb: 168, 50, 42; }
   .spy-track.august,
   .spy.august {
     --rgb: 122, 108, 135; }
@@ -121,6 +124,9 @@
   .spy-track.oliver,
   .spy.oliver {
     --rgb: 135, 196, 140; }
+  .spy-track.piper,
+  .spy.piper {
+    --rgb: 116, 161, 181; }
   .spy-track.prudence,
   .spy.prudence {
     --rgb: 102, 88, 166; }
