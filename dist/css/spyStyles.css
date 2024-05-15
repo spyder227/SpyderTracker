@@ -312,16 +312,17 @@ section form {
 
 /** Charts **/
 .charts {
-  display: -ms-grid;
-  display: grid;
+  width: 100%;
+  display: -ms-inline-grid;
+  display: inline-grid;
   grid-gap: 30px;
   padding: 30px;
   -ms-grid-columns: 100%;
   grid-template-columns: 100%; }
   @media (min-width: 1281px) {
     .charts {
-      -ms-grid-columns: (calc(33% - (30px / 2)))[3];
-      grid-template-columns: repeat(3, calc(33% - (30px / 2))); } }
+      -ms-grid-columns: (calc(25% - 23px))[4];
+      grid-template-columns: repeat(4, calc(25% - 23px)); } }
   .charts .chart {
     max-width: 100%;
     width: 100%;

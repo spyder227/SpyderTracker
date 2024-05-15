@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../../source/templates/head.html', {
+            "prefix": "../../dist",
+            "siteTitle": "Spy | WTHI Characters",
+            "stylesheetName": "newStyles.css"
+        })
+        <link rel="stylesheet" href="../../dist/css/gbCharacters.css" />
+    </head>
+    <body>
+        @@include('../../source/templates/nav.html', {
+            "prefix": "../.."
+        })
+        @@include('../../source/templates/characters.html', {
+            "siteSheet": "Where The Hell Is",
+            "extraFilters": "FilterShippedWith, FilterAbility",
+            "siteURL": "https://wherethehellis.jcink.net",
+            "showMortality": "false",
+        })
+    </body>
+</html>

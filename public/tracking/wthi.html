@@ -2,11 +2,11 @@
 <html>
     <head>
         
-<title>Spy | TOTL Characters</title>
+<title>Spy | WTHI Threads</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
-<link rel="stylesheet" href="../../dist/css/newStyles.css" />
+<link rel="stylesheet" href="../../dist/css/spyStyles.css" />
 <link rel="stylesheet" href="../../dist/css/characterStyles.css" />
 
 <!--Fonts-->
@@ -31,7 +31,6 @@
 
 <!--Scripts-->
 <script type='text/javascript' src='../../dist/js/functions.js'></script>
-        <link rel="stylesheet" href="../../dist/css/gbCharacters.css" />
     </head>
     <body>
         <nav>
@@ -95,97 +94,84 @@
         </li>
     </ul>
 </nav>
-        <section class="characters">
+        <section class="tracker">
     <div class="tracker--header" data-type="flex">
         <input id="quicksearch" class="forminput memberlist-namesearch" type="text" size="25" name="name" value="" placeholder="Filter by name...">
         <div class="tracker--sort-buttons" data-type="flex">
-            <button type="button" class="tracker--sort is-checked" data-sort="charAsc">Name (A -> Z)</button>
-            <button type="button" class="tracker--sort" data-sort="charDesc">Name (Z -> A)</button>
-            <button type="button" class="tracker--sort" data-sort="ageAsc">Age (Asc)</button>
-            <button type="button" class="tracker--sort" data-sort="ageDesc">Age (Desc)</button>
+            <button type="button" class="tracker--sort is-checked" data-sort="character">Character (A -> Z)</button>
+            <button type="button" class="tracker--sort" data-sort="title">Title (A -> Z)</button>
+            <button type="button" class="tracker--sort" data-sort="icdate">IC Date (Asc)</button>
+            <button type="button" class="tracker--sort" data-sort="lastpost">Last Post (Desc)</button>
         </div>
     </div>
     <div class="tracker--wrapper">
+
         <div class="tracker--filters">
             <div class="tracker--filter">
-                <button onClick="openFilters(this)">Active?</button>
+                <button onClick="openFilters(this)">Character</button>
                 <div class="tracker--filter-dropdown">
-                    <div class="tracker--filter-group claim--labels" data-filter-group="active">
-                        <label class="all"><input type="checkbox" class="all" value="" checked="">both</label>
-                        <label class="is-checked"><input type="checkbox" value=".active">yes</label>
-                        <label><input type="checkbox" value=".inactive">no</label>
+                    <div class="tracker--filter-group claim--labels tracker--characters" data-filter-group="character">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
                     </div>
                 </div>
             </div>
             <div class="tracker--filter">
-                <button onClick="openFilters(this)">Gender</button>
+                <button onClick="openFilters(this)">Partner</button>
                 <div class="tracker--filter-dropdown">
-                    <div class="tracker--filter-group claim--labels" data-filter-group="gender">
+                    <div class="tracker--filter-group claim--labels tracker--partners" data-filter-group="partner">
                         <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                        <label><input type="checkbox" value=".gender-male">male</label>
-                        <label><input type="checkbox" value=".gender-female">female</label>
-                        <label><input type="checkbox" value=".gender-nonbinary">nonbinary</label>
                     </div>
                 </div>
             </div>
             <div class="tracker--filter">
-                <button onClick="openFilters(this)">Age</button>
+                <button onClick="openFilters(this)">Featuring</button>
                 <div class="tracker--filter-dropdown">
-                    <div class="tracker--filter-group claim--labels" data-filter-group="age">
+                    <div class="tracker--filter-group claim--labels tracker--featuring" data-filter-group="featuring">
                         <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                        
-                            <label><input type="checkbox" value=".age-under20">Under 20</label>
-                            <label><input type="checkbox" value=".age-20-29">20-29</label>
-                            <label><input type="checkbox" value=".age-30-39">30-39</label>
-                            <label><input type="checkbox" value=".age-40-49">40-49</label>
-                            <label><input type="checkbox" value=".age-50">50+</label>
-                        
-                        
                     </div>
-                    
                 </div>
             </div>
-            
-            
-            
-                <div class="tracker--filter">
-    <button onClick="openFilters(this)">Shipped</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterShipped">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-            <label><input type="checkbox" value=".shipped-taken">taken</label>
-            <label><input type="checkbox" value=".shipped-wanted">wanted</label>
-            <label><input type="checkbox" value=".shipped-open">open</label>
-            <label><input type="checkbox" value=".shipped-none">not interested</label>
-        </div>
-    </div>
-</div>
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Shipped With</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterShippedWith">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-        </div>
-    </div>
-</div>
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Blood Status</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterBloodStatus">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-        </div>
-    </div>
-</div>
-<div class="tracker--filter">
-    <button onClick="openFilters(this)">Abilities</button>
-    <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterAbility">
-            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-        </div>
-    </div>
-</div>
-            
-            
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Last Reply</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="lastreply">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">any time</label>
+                        <label><input type="checkbox" value=".delay--okay">less than a week</label>
+                        <label><input type="checkbox" value=".delay--week">more than a week</label>
+                        <label><input type="checkbox" value=".delay--month">more than a month</label>
+                        <label><input type="checkbox" value=".delay--quarter">more than 3 months</label>
+                        <label><input type="checkbox" value=".delay--half">more than 6 months</label>
+                        <label><input type="checkbox" value=".delay--year">more than a year</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Status</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="status">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".status--mine">my turn</label>
+                        <label><input type="checkbox" value=".status--theirs">their turn</label>
+                        <label><input type="checkbox" value=".status--hoarded">hoarded</label>
+                        <label><input type="checkbox" value=".status--start">to start</label>
+                        <label><input type="checkbox" value=".status--planned">planned</label>
+                        <label class="completed-label"><input type="checkbox" value=".status--complete">completed</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
+                <button onClick="openFilters(this)">Thread Type</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="type">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".type--thread">thread</label>
+                        <label><input type="checkbox" value=".type--comm">comm</label>
+                        <label><input type="checkbox" value=".type--event">event</label>
+                        <label><input type="checkbox" value=".type--one-shot">one-shot</label>
+                        <label><input type="checkbox" value=".type--social">social media</label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="tracker--content">
             <div id="tracker--rows" class="tracker--threads"></div>
@@ -193,35 +179,29 @@
     </div>
     <script>
         //set overall variables
+        let siteName = 'Where The Hell Is';
         const typeSearch = `#quicksearch`;
-        const blockTitle = `.grid-item .name`;
+        const blockTitle = `.thread--title`;
         const visible = `is-visible`;
         const filterGroup = `.tracker--filter-group`;
         const filterOptions = `.tracker--filter-group input`;
         const sorts = `.tracker--header button`;
         const gridItem = `.grid-item`;
-        const defaultShow = ``;
+        const defaultShow = `:not(.status--complete)`;
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterShippedWith, FilterBloodStatus, FilterAbility";
-        console.log(filters.split(', '));
 
-        fetch(`https://opensheet.elk.sh/${characterSheet}/Turn On The Light`)
+        fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
         .then((response) => response.json())
-        .then((data) => {
-            data.sort((a, b) => {
-                if(a.Character < b.Character) {
-                    return -1;
-                } else if (a.Character > b.Character) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            })
-            populateCharacters(data, filters = filters.split(', '), 'https://totl.jcink.net');
-
-        }).then(() => {
+        .then((threadData) => {
+            fetch(`https://opensheet.elk.sh/${threadSheet}/Sites`)
+            .then((response) => response.json())
+            .then((siteData) => {
+                let siteObject = siteData.filter(item => item.Site.toLowerCase().trim() === siteName.toLowerCase().trim())[0];
+                let threads = prepThreads(threadData, siteObject.Site);
+                populateThreads(threads, siteObject);
+            }).then(() => {
             //initialize isotope
             // quick search regex
             let qsRegex;
@@ -231,18 +211,22 @@
             $container.isotope({
                 itemSelector: gridItem,
                 percentPosition: true,
-                filter: '.active',
+                filter: defaultShow,
                 getSortData: {
-                    charAsc: '.name',
-                    charDesc: '.name',
-                    ageAsc: '.age parseInt',
-                    ageDesc: '.age parseInt',
+                    character: '.thread--character',
+                    title: '.thread--title',
+                    icdate: function ($elem) {
+                        return Date.parse($elem.querySelector('.thread--ic-date span').innerText);
+                    },
+                    lastpost: function ($elem) {
+                        return Date.parse($elem.querySelector('.thread--last-post span').innerText);
+                    },
                 },
                 sortAscending: {
-                    charAsc: true,
-                    charDesc: false,
-                    ageAsc: true,
-                    ageDesc: false,
+                    character: true,
+                    title: true,
+                    icdate: false,
+                    lastpost: true,
                 }
             });
             setTimeout(function() {
@@ -250,7 +234,11 @@
             }, 300);
             initIsotope();
         });
+        });
     </script>
 </section>
+
+        <!--Scripts-->
+        <script type='text/javascript' src='../../dist/js/scripts.js'></script>
     </body>
 </html>

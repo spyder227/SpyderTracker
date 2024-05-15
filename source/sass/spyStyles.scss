@@ -356,14 +356,16 @@ section {
 
 
 /** Charts **/
+
 .charts {
-    display: grid;
+    width:100%;
+    display: inline-grid;
     grid-gap: 30px;
     padding: 30px;
     grid-template-columns: 100%;
 
     @include mq-up(lg) {
-        grid-template-columns: repeat(3, calc(33% - (30px / 2)));
+        grid-template-columns: repeat(4, calc(25% - 23px));
     }
 
     .chart {
