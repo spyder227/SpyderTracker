@@ -153,8 +153,10 @@
                 <div class="tracker--filter">
     <button onClick="openFilters(this)">Abilities</button>
     <div class="tracker--filter-dropdown">
-        <div class="tracker--filter-group claim--labels" data-filter-group="FilterAbility">
+        <div class="tracker--filter-group claim--labels" data-filter-group="ability">
             <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+            <label><input type="checkbox" value=".ability-fire">fire manipulation</label>
+            <label><input type="checkbox" value=".ability-none">powerless</label>
         </div>
     </div>
 </div>
@@ -213,7 +215,7 @@
 
         //set class variables
         let $container = $('#tracker--rows');
-        let filters = "FilterShippedWith, FilterAbility";
+        let filters = "FilterShippedWith";
         console.log(filters.split(', '));
 
         fetch(`https://opensheet.elk.sh/${characterSheet}/Where The Hell Is`)
