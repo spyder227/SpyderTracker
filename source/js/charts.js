@@ -289,7 +289,7 @@ function configType(threads) {
 
 function configCurrentPartners(threads, onlyStarted = false) {
     if(onlyStarted) {
-        threads = threads.filter(thread => thread.status && thread.status !== '' && (thread.status.toLowerCase().trim() === 'mine' || thread.status.toLowerCase().trim() === 'theirs'));
+        threads = threads.filter(thread => thread.status && thread.status !== '' && (thread.status.toLowerCase().trim() === 'mine' || thread.status.toLowerCase().trim() === 'theirs' || thread.status.toLowerCase().trim() === 'hoarded'));
     }
     let threadPartners = threads.map(thread => thread.partners.split('+').map(item => JSON.parse(item)));
     let partnerNames = [];
