@@ -123,6 +123,17 @@
     .then((response) => response.json())
     .then((threadData) => {
         console.log(threadData);
+        let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Where The Hell Is'.toLowerCase().trim());
+        let threads = loadThreads(siteThreads);
+
+        loadCharts(threads, '.wthi-charts');
+    });
+</script>
+        <script>
+    fetch(`https://opensheet.elk.sh/${threadSheet}/Threads`)
+    .then((response) => response.json())
+    .then((threadData) => {
+        console.log(threadData);
         let siteThreads = threadData.filter(item => item.Site.toLowerCase().trim() === 'Remember The Name'.toLowerCase().trim());
         let threads = loadThreads(siteThreads);
 
