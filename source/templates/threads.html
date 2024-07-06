@@ -49,6 +49,19 @@
                 </div>
             </div>
             <div class="tracker--filter">
+                <button onClick="openFilters(this)">Thread Type</button>
+                <div class="tracker--filter-dropdown">
+                    <div class="tracker--filter-group claim--labels" data-filter-group="type">
+                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        <label><input type="checkbox" value=".type--thread">thread</label>
+                        <label><input type="checkbox" value=".type--comm">comm</label>
+                        <label><input type="checkbox" value=".type--event">event</label>
+                        <label><input type="checkbox" value=".type--one-shot">one-shot</label>
+                        <label><input type="checkbox" value=".type--social">social media</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tracker--filter">
                 <button onClick="openFilters(this)">Status</button>
                 <div class="tracker--filter-dropdown">
                     <div class="tracker--filter-group claim--labels" data-filter-group="status">
@@ -59,19 +72,6 @@
                         <label><input type="checkbox" value=".status--start">to start</label>
                         <label><input type="checkbox" value=".status--planned">planned</label>
                         <label class="completed-label"><input type="checkbox" value=".status--complete">completed</label>
-                    </div>
-                </div>
-            </div>
-            <div class="tracker--filter">
-                <button onClick="openFilters(this)">Thread Type</button>
-                <div class="tracker--filter-dropdown">
-                    <div class="tracker--filter-group claim--labels" data-filter-group="type">
-                        <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                        <label><input type="checkbox" value=".type--thread">thread</label>
-                        <label><input type="checkbox" value=".type--comm">comm</label>
-                        <label><input type="checkbox" value=".type--event">event</label>
-                        <label><input type="checkbox" value=".type--one-shot">one-shot</label>
-                        <label><input type="checkbox" value=".type--social">social media</label>
                     </div>
                 </div>
             </div>
