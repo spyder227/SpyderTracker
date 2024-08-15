@@ -24,6 +24,9 @@
   .spy-track.bane,
   .spy.bane {
     --rgb: 196, 88, 67; }
+  .spy-track.bastien,
+  .spy.bastien {
+    --rgb: 91, 49, 163; }
   .spy-track.beau,
   .spy.beau {
     --rgb: 219, 130, 92; }
