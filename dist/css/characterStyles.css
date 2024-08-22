@@ -183,6 +183,9 @@
   .spy-track.violet,
   .spy.violet {
     --rgb: 185, 155, 186; }
+  .spy-track.wolfgang,
+  .spy.wolfgang {
+    --rgb: 88, 115, 135; }
   .spy-track.wren,
   .spy.wren {
     --rgb: 136, 109, 68; }
