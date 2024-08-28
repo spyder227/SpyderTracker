@@ -128,7 +128,10 @@ nav {
 
                         &:hover {
                             border: none;
-                            padding: 5px 10px 5px 15px;
+                            padding: 5px 10px 5px 10px;
+                            border-left:5px solid var(--dkAccent);
+                            border-radius:0px;
+                            margin-left:10px;
                         }
                     }
                 }
@@ -509,8 +512,8 @@ section {
             flex-wrap:wrap;
         }
 
-        @media screen and (max-width:415px) {
-            flex-wrap:wrap;
+        @media screen and (max-width:420px) {
+            display:none;
         }
     }
     &--filter {
@@ -647,6 +650,14 @@ section {
         margin: 0 auto;
         position:relative;
         top:60px;
+
+        @media screen and (max-width:630px) {
+            top:100px;
+        }
+
+        @media screen and (max-width:419px) {
+            top:-100px;
+        }
 
         .grid-item {
             width: 100%;
