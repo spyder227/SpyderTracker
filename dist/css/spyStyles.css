@@ -130,8 +130,8 @@ nav {
         font-family: var(--font-body); }
         nav > ul li > ul > li a:hover {
           border: none;
-          padding: 8px 10px 5px 10px;
-          margin-left: 10px; }
+          padding: 5px 10px 5px 10px;
+          margin-left: 15px; }
     nav > ul li:hover > ul {
       display: -webkit-box;
       display: -webkit-flex;
