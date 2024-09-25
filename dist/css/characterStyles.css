@@ -52,16 +52,22 @@
   .spy-track.cyrus,
   .spy.cyrus {
     --rgb: 82, 124, 95; }
-  .spy-track.dixon, .spy-track.dean,
-  .spy.dixon,
-  .spy.dean {
-    --rgb: 98, 114, 71; }
   .spy-track.dawson,
   .spy.dawson {
     --rgb: 74, 119, 85; }
+  .spy-track.dimitri,
+  .spy.dimitri {
+    --rgb: 207, 196, 97; }
+  .spy-track.dixon, .spy-track.dean,
+  .spy.dixon,
+  .spy.dean {
+    --rgb: 97, 120, 53; }
   .spy-track.emily,
   .spy.emily {
     --rgb: 194, 87, 94; }
+  .spy-track.evelyn,
+  .spy.evelyn {
+    --rgb: 92, 163, 59; }
   .spy-track.francis,
   .spy.francis {
     --rgb: 87, 116, 125; }
@@ -73,7 +79,7 @@
     --rgb: 88, 88, 88; }
   .spy-track.henry,
   .spy.henry {
-    --rgb: 79, 84, 120; }
+    --rgb: 102, 94, 81; }
   .spy-track.isaac,
   .spy.isaac {
     --rgb: 130, 151, 179; }
@@ -113,7 +119,7 @@
     --rgb: 120, 128, 159; }
   .spy-track.mace,
   .spy.mace {
-    --rgb: 132, 111, 168; }
+    --rgb: 90, 115, 148; }
   .spy-track.mary,
   .spy.mary {
     --rgb: 173, 154, 179; }
@@ -188,7 +194,7 @@
     --rgb: 107, 99, 87; }
   .spy-track.verona,
   .spy.verona {
-    --rgb: 171, 118, 162; }
+    --rgb: 143, 179, 199; }
   .spy-track.violet,
   .spy.violet {
     --rgb: 185, 155, 186; }
